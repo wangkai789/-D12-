@@ -1,0 +1,263 @@
+object Frame_BoilMed: TFrame_BoilMed
+  Left = 0
+  Top = 0
+  Width = 870
+  Height = 515
+  TabOrder = 0
+  object GroupBox3: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 870
+    Height = 62
+    Align = alTop
+    TabOrder = 0
+    object Label15: TLabel
+      Left = 93
+      Top = 26
+      Width = 12
+      Height = 12
+      Caption = #20174
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 227
+      Top = 26
+      Width = 12
+      Height = 12
+      Caption = #21040
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ParentFont = False
+    end
+    object btn_Search: TBitBtn
+      Left = 378
+      Top = 19
+      Width = 75
+      Height = 25
+      Caption = #26597#35810
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = #23435#20307
+      Font.Style = []
+      Glyph.Data = {
+        F6000000424DF600000000000000760000002800000010000000100000000100
+        0400000000008000000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+        8888888888888888888800000888880000080F000888880F00080F000888880F
+        0008000000080000000800F000000F00000800F000800F00000800F000800F00
+        00088000000000000088880F00080F0008888800000800000888888000888000
+        88888880F08880F0888888800088800088888888888888888888}
+      ParentFont = False
+      TabOrder = 0
+      OnClick = btn_SearchClick
+    end
+    object DT_from: TDateTimePicker
+      Left = 110
+      Top = 22
+      Width = 110
+      Height = 21
+      Date = 36266.000000000000000000
+      Time = 0.671265740740636800
+      DateFormat = dfLong
+      ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+      TabOrder = 1
+    end
+    object DT_to: TDateTimePicker
+      Left = 246
+      Top = 22
+      Width = 111
+      Height = 21
+      Date = 36266.000000000000000000
+      Time = 0.671236458343628300
+      DateFormat = dfLong
+      ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+      TabOrder = 2
+    end
+    object btn_ExportXls: TBitBtn
+      Left = 454
+      Top = 18
+      Width = 75
+      Height = 25
+      Caption = #23548#20986
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3333333333333333333333333333333333333FF3FFFFFFF3FFFF003000000030
+        0000773777777737777703330030033300037FFF77F77FFF7773700007330000
+        003377777733777777F3303003330030003337F77F3377F77733303073333030
+        033337F77F3337F77F3337007333300003333777733337777333330033333000
+        33333377F3333777F33333073333330033333377333333773333333333333333
+        33333333FF333333FF33333973333337933333377FF333377F33333999333399
+        93333337773333777F333339933333399333333773FF33377F33333939733793
+        93333337377FF773733333333399993333333333337777333333}
+      NumGlyphs = 2
+      TabOrder = 3
+      OnClick = btn_ExportXlsClick
+    end
+    object BitBtn11: TBitBtn
+      Left = 530
+      Top = 17
+      Width = 75
+      Height = 25
+      Caption = #36864#20986
+      Kind = bkClose
+      NumGlyphs = 2
+      TabOrder = 4
+    end
+    object rg1: TRadioGroup
+      Left = 1652
+      Top = 12
+      Width = 126
+      Height = 46
+      Caption = #33647#21697#31867#22411
+      Columns = 2
+      ItemIndex = 0
+      Items.Strings = (
+        #20840#37096
+        #35199#33647
+        #20013#33609#33647
+        #20013#25104#33647
+        #26448#26009)
+      TabOrder = 5
+      Visible = False
+    end
+    object rg_SearchCondition: TRadioGroup
+      Left = 1751
+      Top = 11
+      Width = 117
+      Height = 39
+      Caption = #26597#35810#31867#22411
+      Columns = 2
+      ItemIndex = 0
+      Items.Strings = (
+        #33647#21697
+        #21457#31080#21495)
+      TabOrder = 6
+      Visible = False
+    end
+    object RadioGroup1: TRadioGroup
+      Left = 7
+      Top = 8
+      Width = 69
+      Height = 50
+      Caption = #26085#26399
+      ItemIndex = 0
+      Items.Strings = (
+        #22788#26041
+        #26085#32467)
+      TabOrder = 7
+    end
+  end
+  object cxgrd: TcxGrid
+    Left = 0
+    Top = 62
+    Width = 870
+    Height = 453
+    Align = alClient
+    BorderWidth = 1
+    TabOrder = 1
+    LookAndFeel.Kind = lfUltraFlat
+    LookAndFeel.NativeStyle = False
+    object cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      ScrollbarAnnotations.CustomAnnotations = <>
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Format = #20154#25968':0'
+          Kind = skCount
+        end
+        item
+          Kind = skCount
+        end>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = #35760#24405':0'
+          Kind = skCount
+        end
+        item
+          Format = '0.00'
+          Kind = skSum
+        end
+        item
+          Format = '0.00'
+          Kind = skSum
+        end
+        item
+          Format = '0.00'
+          Kind = skSum
+        end
+        item
+          Format = '0.00'
+          Kind = skSum
+        end
+        item
+          Format = '0.00'
+          Kind = skSum
+        end
+        item
+          Format = '0.00'
+          Kind = skSum
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsData.CancelOnExit = False
+      OptionsData.Deleting = False
+      OptionsData.DeletingConfirmation = False
+      OptionsData.Editing = False
+      OptionsData.Inserting = False
+      OptionsSelection.CellSelect = False
+      OptionsView.DataRowHeight = 20
+      OptionsView.Footer = True
+      OptionsView.HeaderHeight = 25
+    end
+    object cxgrdbtblvw: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      ScrollbarAnnotations.CustomAnnotations = <>
+      DataController.DataSource = DS_Result
+      DataController.Summary.DefaultGroupSummaryItems = <
+        item
+          Kind = skSum
+          FieldName = 'qe'
+        end>
+      DataController.Summary.FooterSummaryItems = <
+        item
+          Format = #35760#24405#25968':0'
+          Kind = skCount
+        end
+        item
+          Format = #21512#35745':0.00'
+          Kind = skSum
+        end>
+      DataController.Summary.SummaryGroups = <>
+      OptionsData.Editing = False
+      OptionsView.DataRowHeight = 20
+      OptionsView.Footer = True
+      OptionsView.HeaderHeight = 25
+    end
+    object cxgrdlvlGrid1Level1: TcxGridLevel
+      Caption = #26126#32454#25968#25454
+      GridView = cxgrdbtblvw
+    end
+  end
+  object Q_Result: TUniQuery
+    Connection = dm.con1
+    Left = 88
+    Top = 128
+  end
+  object DS_Result: TDataSource
+    DataSet = Q_Result
+    Left = 119
+    Top = 128
+  end
+end

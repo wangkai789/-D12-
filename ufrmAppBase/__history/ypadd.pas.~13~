@@ -1,0 +1,1219 @@
+unit ypadd;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, Grids, DBGrids, StdCtrls, Buttons, jpeg, Data.DB;
+
+type
+  TFm_ypadd = class(TForm)
+    Panel_title: TPanel;
+    Panel_yp: TPanel;
+    Label1: TLabel;
+    BBtn_add: TBitBtn;
+    BBtn_save: TBitBtn;
+    BBtn_canel: TBitBtn;
+    BBtn_quit: TBitBtn;
+    Cmbx_storetype: TComboBox;
+    Label44: TLabel;
+    Label45: TLabel;
+    Panel1: TPanel;
+    GroupBox4: TGroupBox;
+    Image1: TImage;
+    Label3: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label30: TLabel;
+    Label4: TLabel;
+    Label37: TLabel;
+    Label38: TLabel;
+    Label39: TLabel;
+    Label23: TLabel;
+    Label40: TLabel;
+    Label41: TLabel;
+    Label8: TLabel;
+    Label13: TLabel;
+    Label48: TLabel;
+    Label49: TLabel;
+    Label50: TLabel;
+    Label53: TLabel;
+    Label2: TLabel;
+    Edt_pym: TEdit;
+    Edt_ywm: TEdit;
+    Edt_ddd: TEdit;
+    ComBox_jx: TComboBox;
+    ComBox_ypzl: TComboBox;
+    Edt_gg: TEdit;
+    Edt_lsm: TEdit;
+    Edt_bm: TEdit;
+    ComBox_jjyp: TComboBox;
+    edt_produce: TEdit;
+    edt_lba: TEdit;
+    edt_lbb: TEdit;
+    CmbBx_selfyp: TComboBox;
+    CmbBx_ifzy: TComboBox;
+    com_skintry: TComboBox;
+    CmbBx_lb: TComboBox;
+    CmbBx_basic: TComboBox;
+    edt_cjbm: TEdit;
+    Ed_ypbh: TEdit;
+    Ed_ym: TEdit;
+    cmbx_fplb: TComboBox;
+    edt_barcode: TEdit;
+    cmb_StoreClass: TComboBox;
+    edt_pwh: TEdit;
+    cmb_basicProvince: TComboBox;
+    ed_status: TEdit;
+    GroupBox1: TGroupBox;
+    Label14: TLabel;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label31: TLabel;
+    Label32: TLabel;
+    Label27: TLabel;
+    Lbl_dw: TLabel;
+    Label12: TLabel;
+    Label20: TLabel;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    lbl6: TLabel;
+    Label46: TLabel;
+    Label28: TLabel;
+    ComBox_zxdw: TComboBox;
+    ComBox_jldw: TComboBox;
+    Combox_cfzxdw: TComboBox;
+    Edt_hsb: TEdit;
+    edt_cfhsb: TEdit;
+    ComBox_kind: TComboBox;
+    Edt_lsj: TEdit;
+    Edt_pfj: TEdit;
+    Edt_ypjj: TEdit;
+    edt_mzlsj: TEdit;
+    edt_dosage: TEdit;
+    cbb_AddRate: TComboBox;
+    GroupBox2: TGroupBox;
+    Label15: TLabel;
+    Label33: TLabel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Combox_yb: TComboBox;
+    edt_ybbm_country: TEdit;
+    edt_ybmc_country: TEdit;
+    edt_ybremark: TEdit;
+    GroupBox3: TGroupBox;
+    Label7: TLabel;
+    Label9: TLabel;
+    Label22: TLabel;
+    edt_bankplace: TEdit;
+    edt_inplace: TEdit;
+    edt_outplace: TEdit;
+    cmbx_jxdw: TComboBox;
+    grp1: TGroupBox;
+    Label42: TLabel;
+    lbl_zyyfdw: TLabel;
+    lbl3: TLabel;
+    lbl_mzyfdw: TLabel;
+    edt_xsj: TEdit;
+    edt_mzxsj: TEdit;
+    DBGrd_xm: TDBGrid;
+    dbgrd_ym: TDBGrid;
+    Label21: TLabel;
+    cbb_groupbuy: TComboBox;
+    procedure FormShow(Sender: TObject);
+    procedure BBtn_addClick(Sender: TObject);
+    procedure BBtn_canelClick(Sender: TObject);
+    procedure BBtn_quitClick(Sender: TObject);
+    procedure ComBox_jxKeyPress(Sender: TObject; var Key: Char);
+    procedure ComBox_zxdw11KeyPress(Sender: TObject; var Key: Char);
+    procedure ComBox_jldwKeyPress(Sender: TObject; var Key: Char);
+    procedure ComBox_ypzlKeyPress(Sender: TObject; var Key: Char);
+    procedure ComBox_ybKeyPress(Sender: TObject; var Key: Char);
+    procedure BBtn_saveClick(Sender: TObject);
+    procedure Ed_ypjjChange(Sender: TObject);
+    procedure Combox_cfzxdwKeyPress(Sender: TObject; var Key: Char);
+    procedure ComBox_jxEnter(Sender: TObject);
+    procedure ComBox_zxdw11Enter(Sender: TObject);
+    procedure ComBox_jldwEnter(Sender: TObject);
+    procedure ComBox_ypzlEnter(Sender: TObject);
+    procedure Combox_cfzxdwEnter(Sender: TObject);
+    procedure Combox_ybEnter(Sender: TObject);
+    procedure ck_kbKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_hsbKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_ymKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_ggKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_pfjKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_ypjjKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_lsjKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_pymKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_lsmKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_bmKeyPress(Sender: TObject; var Key: Char);
+    procedure ComBox_jjypKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_dddKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_ywmKeyPress(Sender: TObject; var Key: Char);
+    procedure ed_cfhsbKeyPress(Sender: TObject; var Key: Char);
+    procedure com_skintryEnter(Sender: TObject);
+    procedure com_skintryKeyPress(Sender: TObject; var Key: Char);
+    procedure ComBox_jjypEnter(Sender: TObject);
+    procedure ComBox_zxdw11Exit(Sender: TObject);
+    procedure ComBox_kindKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_ggExit(Sender: TObject);
+    procedure ComBox_jldwChange(Sender: TObject);
+    procedure ComBox_zxdwKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_pfjChange(Sender: TObject);
+    procedure ComBox_zxdwChange(Sender: TObject);
+    procedure DBGrd_xmDblClick(Sender: TObject);
+    procedure edt_cjbmKeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrd_xmExit(Sender: TObject);
+    procedure DBGrd_xmKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_pfjKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_bmKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_ywmKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_pymKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_lsmKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_ggKeyPress(Sender: TObject; var Key: Char);
+    procedure CmbBx_basicKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_dddKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_lbaKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_lbbKeyPress(Sender: TObject; var Key: Char);
+    procedure CmbBx_selfypKeyPress(Sender: TObject; var Key: Char);
+    procedure CmbBx_ifzyKeyPress(Sender: TObject; var Key: Char);
+    procedure CmbBx_lbKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_lsjKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_hsbKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_cfhsbKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_xsjKeyPress(Sender: TObject; var Key: Char);
+    procedure Edt_ypjjKeyPress(Sender: TObject; var Key: Char);
+    procedure CmbBx_ifzyChange(Sender: TObject);
+    procedure Ed_ypbhEnter(Sender: TObject);
+    procedure Ed_ypbhExit(Sender: TObject);
+    procedure edt_mzlsjKeyPress(Sender: TObject; var Key: Char);
+    procedure CmbBx_lbChange(Sender: TObject);
+    procedure Ed_ymExit(Sender: TObject);
+    procedure dbgrd_ymExit(Sender: TObject);
+    procedure dbgrd_ymDblClick(Sender: TObject);
+    procedure dbgrd_ymKeyPress(Sender: TObject; var Key: Char);
+    procedure Combox_cfzxdwChange(Sender: TObject);
+    procedure edt_dosageKeyPress(Sender: TObject; var Key: Char);
+    procedure cmbx_fplbKeyPress(Sender: TObject; var Key: Char);
+    procedure ComBox_jxChange(Sender: TObject);
+    procedure edt_barcodeKeyPress(Sender: TObject; var Key: Char);
+    procedure cmb_StoreClassKeyPress(Sender: TObject; var Key: Char);
+    procedure cmb_StoreClassChange(Sender: TObject);
+    procedure edt_pwhKeyPress(Sender: TObject; var Key: Char);
+    procedure cbb_groupbuyKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    procedure SetCmbxList();
+    procedure listLba(pym:string);
+    procedure listLbb(pym:string);
+    function  GetComboxIndex(Source:tcombobox;Compstr:string):integer;
+    function  GetComboxValue(Source:tcombobox;substr:string;front:boolean):string;
+    function  Search_Ym(ym,gg:string):Boolean;
+  public
+    { Public declarations }
+  function CheckInput():boolean;
+  end;
+
+var
+  Fm_ypadd: TFm_ypadd;
+
+implementation
+
+uses main, data, Factory,InterfaceMedStore,pyproc;
+
+{$R *.DFM}
+
+procedure TFm_ypadd.FormShow(Sender: TObject);
+begin
+  BBtn_canel.Click;
+  SetCmbxList();
+  CmbBx_lbChange(sender);
+
+  dbgrd_ym.Top:=90;
+  dbgrd_ym.Left:=90;
+
+  DBGrd_xm.Top:=210;
+  DBGrd_xm.Left:=90;
+  self.Caption:=dm.sysinfo.hospitalName+'-'+'新增药品';
+end;
+
+procedure TFm_ypadd.BBtn_addClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+begin
+  BBtn_canel.Click;
+  MYMedStore:=TMedStore.Create;
+  Ed_ypbh.Text:=MYMedStore.GetMedID(dm.Q_comm);
+  Ed_ym.SetFocus;
+
+end;
+
+procedure TFm_ypadd.BBtn_canelClick(Sender: TObject);
+begin
+  ed_status.Visible :=false ;
+  ed_status.Clear;
+
+  Ed_ypbh.Clear;
+  Ed_ym.Clear;
+  Edt_gg.Clear;
+  Edt_pfj.clear;
+  Edt_ypjj.clear;
+  Edt_lsj.Clear;
+  Edt_mzlsj.Clear;
+  Edt_pym.Clear;
+  ComBox_jldw.Itemindex :=-1;
+  ComBox_zxdw.Itemindex:=-1;
+  Combox_cfzxdw.Itemindex:=-1;
+  Edt_hsb.text:='1';
+  Edt_cfhsb.Text:='1';
+  com_skintry.ItemIndex :=0;
+  Combox_yb.ItemIndex:=2;
+  CmbBx_basic.ItemIndex:=1;
+  cmb_basicProvince.ItemIndex:=1;
+  CmbBx_selfyp.ItemIndex:=1;
+  CmbBx_ifzy.ItemIndex:=0;
+  CmbBx_lb.ItemIndex:=0;
+  //cmbx_fplb.ItemIndex:=CmbBx_lb.ItemIndex;
+  ComBox_ypzl.ItemIndex:=0;
+  ComBox_jjyp.ItemIndex:=1;
+  ComBox_kind.ItemIndex:=0;
+  Image1.Visible:=false;
+  lbl2.Caption:='';
+  lbl_zyyfdw.Caption:='';
+  lbl_mzyfdw.Caption:='';
+
+  edt_xsj.Clear;
+  edt_mzxsj.Clear;
+  edt_cjbm.Clear;
+  edt_produce.Clear;
+  edt_dosage.Clear;
+  edt_barcode.Clear;
+//  Lbl_cfzxdw1.Caption:='';
+  edt_pwh.Clear;
+  cbb_groupbuy.ItemIndex:=1;
+end;
+
+procedure TFm_ypadd.BBtn_quitClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TFm_ypadd.ComBox_jxKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13) and  (trim(ComBox_jx.text)<>'') then ComBox_ypzl.SetFocus
+end;
+
+procedure TFm_ypadd.ComBox_zxdw11KeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then
+     begin
+       Edt_hsb.SetFocus;
+     end;
+end;
+
+procedure TFm_ypadd.ComBox_jldwKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13) and  (trim(ComBox_jldw.Text)<>'')  then
+  begin
+   ComBox_zxdw.ItemIndex:=ComBox_jldw.ItemIndex;
+   Edt_hsb.SetFocus;
+  end;
+end;
+
+procedure TFm_ypadd.ComBox_ypzlKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then cmb_StoreClass.SetFocus
+end;
+
+procedure TFm_ypadd.ComBox_ybKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then Edt_ddd.SetFocus;
+end;
+
+procedure TFm_ypadd.BBtn_saveClick(Sender: TObject);
+var  Medinfo:txyzb;
+begin
+    if application.MessageBox('您确定数据正确并保存数据吗?', '提示信息',
+      mb_yesno + mb_iconquestion + mb_defbutton1) = idno then
+      exit;
+    if CheckInput then
+      exit; // 输入内容检查
+    Medinfo.ypbh := Ed_ypbh.Text;
+    Medinfo.ym := Ed_ym.Text;
+    Medinfo.pym := Edt_pym.Text;
+    Medinfo.lsm := Edt_lsm.Text;
+    Medinfo.zlbm := strtoint(GetComboxValue(ComBox_ypzl, ':', true));
+    Medinfo.zlm := GetComboxValue(ComBox_ypzl, ':', false);
+    try
+      Medinfo.jxbm := strtoint(GetComboxValue(ComBox_jx, ':', true));
+    except
+      application.MessageBox('剂型没有选择 ！', '提示信息', 64);
+      exit;
+    end;
+    Medinfo.jx := GetComboxValue(ComBox_jx, ':', false);
+    Medinfo.gg := Edt_gg.Text;
+    Medinfo.zxdw := ComBox_zxdw.Text;
+    Medinfo.hsb := strtoint(Edt_hsb.Text);
+    Medinfo.jldw := ComBox_jldw.Text;
+    Medinfo.pfj := strtocurr(Edt_pfj.Text);
+    Medinfo.ypj := strtocurr(Edt_ypjj.Text);
+    Medinfo.ylsj := strtocurr(Edt_lsj.Text);
+    Medinfo.mzylsj := strtocurr(edt_mzlsj.Text);
+    Medinfo.bm := Edt_bm.Text;
+    Medinfo.ywm := Edt_ywm.Text;
+    Medinfo.lb := strtoint(GetComboxValue(CmbBx_lb, ':', true));
+    Medinfo.lbm := GetComboxValue(CmbBx_lb, ':', false);
+    try
+      Medinfo.checklb := strtoint(GetComboxValue(cmbx_fplb, ':', true));
+    except
+      application.MessageBox('发票类别没有选择 ！', '提示信息', 64);
+      exit;
+    end;
+    Medinfo.checklbm := GetComboxValue(cmbx_fplb, ':', false);
+    Medinfo.ddd := strtointdef(Edt_ddd.Text, 0);
+    if ComBox_jjyp.Itemindex = 0 then
+      Medinfo.jjyp := true
+    else
+      Medinfo.jjyp := false;
+    Medinfo.cfhsb := strtoint(edt_cfhsb.Text);
+    Medinfo.cfzxdw := Combox_cfzxdw.Text;
+    if CmbBx_ifzy.Itemindex = 0 then
+      Medinfo.ifzy := true
+    else
+      Medinfo.ifzy := false;
+    if CmbBx_selfyp.Itemindex = 0 then
+      Medinfo.selfyp := '1'
+    else
+      Medinfo.selfyp := '0';
+    Medinfo.oper_date := now();
+    Medinfo.operbh := strtoint(dm.Fopid);
+    Medinfo.up_date := now();
+    Medinfo.upbh := strtoint(dm.Fopid);
+    Medinfo.skintry := com_skintry.Itemindex;
+    Medinfo.atype := strtoint(GetComboxValue(ComBox_kind, ':', true));
+    Medinfo.Inp_Place := edt_inplace.Text;
+    Medinfo.Outp_Place := edt_outplace.Text;
+    Medinfo.bank_place := edt_bankplace.Text;
+    Medinfo.xnhbm := '';
+    Medinfo.xnhkind := '';
+    Medinfo.xnhbl := 0;
+    Medinfo.gf := strtointdef(GetComboxValue(Combox_yb, ':', true), 0);
+    Medinfo.ybkind := GetComboxValue(Combox_yb, ':', false);
+    Medinfo.ybbm := '';
+    Medinfo.lbA := edt_lba.Text;
+    Medinfo.lbB := edt_lbb.Text;
+    Medinfo.produce := edt_produce.Text;
+    Medinfo.ypkind := strtoint(GetComboxValue(cmb_StoreClass, ':', true));
+    try
+      Medinfo.cjbm := strtoint(edt_cjbm.Text);
+    except
+      application.MessageBox('生产厂家没有选择 ！', '提示信息', 64);
+      exit;
+    end;
+    Medinfo.dosage := StrToCurrdef(edt_dosage.Text, 0);
+    Medinfo.barcode := trim(edt_barcode.Text);
+
+    if CmbBx_basic.Itemindex = 0 then
+      Medinfo.basic := true
+    else
+      Medinfo.basic := false;
+    if cmb_basicProvince.Itemindex = 0 then
+      Medinfo.basicProvince := true
+    else
+      Medinfo.basicProvince := false;
+    if cbb_groupbuy.Itemindex = 0 then
+      Medinfo.groupbuy := true
+    else
+      Medinfo.groupbuy := false;
+
+    Medinfo.StoreType := trim(Cmbx_storetype.Text);
+    Medinfo.pwh := trim(edt_pwh.Text);
+
+    if dm.AddMed(Medinfo, dm.Fopid) then
+      BBtn_canel.Click;
+  end;
+
+  procedure TFm_ypadd.Ed_ypjjChange(Sender: TObject);
+  begin
+    Edt_pfj.Text := Edt_ypjj.Text;
+  end;
+
+  procedure TFm_ypadd.Combox_cfzxdwKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13) and (trim(Combox_cfzxdw.text)<>'') then
+  begin
+    //Lbl_cfzxdw1.Caption:=Combox_cfzxdw.Text;
+    edt_dosage.SetFocus;
+  end;
+end;
+
+procedure TFm_ypadd.ComBox_jxEnter(Sender: TObject);
+begin
+ComBox_jx.ItemIndex:=0;
+end;
+
+procedure TFm_ypadd.ComBox_zxdw11Enter(Sender: TObject);
+begin
+ComBox_zxdw.ItemIndex:=0;
+end;
+
+procedure TFm_ypadd.ComBox_jldwEnter(Sender: TObject);
+begin
+ComBox_jldw.ItemIndex:=0;
+end;
+
+procedure TFm_ypadd.ComBox_ypzlEnter(Sender: TObject);
+begin
+ComBox_ypzl.ItemIndex:=0;
+end;
+
+procedure TFm_ypadd.Combox_cfzxdwEnter(Sender: TObject);
+begin
+ComBox_cfzxdw.ItemIndex:=0;
+end;
+
+procedure TFm_ypadd.Combox_ybEnter(Sender: TObject);
+begin
+ComBox_yb.ItemIndex:=0;
+end;
+
+procedure TFm_ypadd.ck_kbKeyPress(Sender: TObject; var Key: Char);
+begin
+if key=#13 then begin     BBtn_save.SetFocus; self.KeyPreview:=true; end;
+end;
+
+function TFm_ypadd.CheckInput: boolean;
+var ErrorMess:string;
+label Error,Error1;
+begin
+
+if Ed_ypbh.text='' then
+  begin
+    ErrorMess:='请选择药品编号。';
+    goto Error;
+  end;
+
+if Ed_ym.text='' then
+  begin
+    ErrorMess:='请输入药品名称。';
+    goto Error;
+  end;
+if Edt_gg.text='' then
+  begin
+    ErrorMess:='请输入药品规格。';
+    goto Error;
+  end;
+if ComBox_jx.ItemIndex<0 then
+  begin
+    ErrorMess:='请选择药品剂型。';
+    goto Error;
+  end;
+if Trim(ComBox_zxdw.text)='' then
+  begin
+    ErrorMess:='请选择药房单位。';
+    goto Error;
+  end;
+if Trim(ComBox_jldw.text)='' then
+  begin
+    ErrorMess:='请选择药库单位。';
+    goto Error;
+  end;
+if ComBox_ypzl.ItemIndex<0 then
+  begin
+    ErrorMess:='请选择药品种类。';
+    goto Error;
+  end;
+if Combox_yb.ItemIndex<0 then
+  begin
+    ErrorMess:='请选择药品医保类型。';
+    goto Error;
+  end;
+if Edt_lsj.text='' then
+  begin
+    ErrorMess:='请输入药品零售价。';
+    goto Error;
+  end
+else try
+      strtofloat(Edt_lsj.text);
+    except
+      ErrorMess:='药品零售价输入错误。';
+      application.MessageBox(pchar(ErrorMess),'信使',mb_ok);
+      result:=true;
+      exit;
+    end;
+if Edt_pym.text='' then
+  begin
+    ErrorMess:='请输入药品拼音码。';
+    goto Error;
+ end;
+
+
+if Edt_ypjj.text='' then
+  begin
+    ErrorMess:='请输入药品进货价。';
+    goto Error;
+  end
+else try
+      strtofloat(Edt_ypjj.text);
+    except
+      ErrorMess:='药品进货价输入错误。';
+      application.MessageBox(pchar(ErrorMess),'信使',mb_ok);
+      result:=true;
+      exit;
+    end;
+
+    if strtoint(GetComboxValue(CmbBx_lb,':',true))=2 then
+    begin
+      if strtoint(GetComboxValue(ComBox_kind,':',true))<>98 then
+      begin
+        application.MessageBox('类别为草药拆分类别必须选择【98:可拆分】！！','信息',32);
+        result:=true;
+        exit;
+      end;
+    end ;
+
+{判断单位}
+   If trim(ComBox_jldw.text)='' then
+      begin
+        showmessage('药库单位不能为空 ');
+        result:=true;
+        exit;
+      end;
+
+   If trim(ComBox_zxdw.text)='' then
+      begin
+        showmessage('药房单位不能为空 ');
+        result:=true;
+        exit;
+      end;
+
+ {  If trim(ComBox_cfzxdw.text)='' then
+      begin
+        showmessage('医嘱单位不能为空 ');
+        result:=true;
+        exit;
+      end;}
+
+ If trim(ComBox_jldw.text)=trim(ComBox_zxdw.text) then
+ begin
+   if Trim(Edt_hsb.text)<>'1' then
+   begin
+     ErrorMess:='药库单位与药房单位相同，药库单位/药房单位(比例)应该等于1。是否保存？';
+     goto Error1;
+   end;
+ end
+ Else
+    begin
+      if Trim(Edt_hsb.text)='1' then
+      begin
+        ErrorMess:='药库单位与药房单位不相同，药库单位/药房单位(比例)应该不等于1。是否保存？';
+        goto Error1;
+      end;
+    end;
+
+ Result:=false;
+ Exit;
+  Error:
+  begin
+    application.MessageBox(pchar(ErrorMess),'信使',mb_ok);
+    result:=true;
+    exit;
+  end;
+  Error1:
+  begin
+    if application.messagebox(pchar(ErrorMess),'信使',mb_yesno+MB_DEFBUTTON2+MB_ICONQUESTION)=idno  then
+    begin
+      result:=true;
+      exit;
+    end
+  end;
+end;
+procedure TFm_ypadd.Ed_hsbKeyPress(Sender: TObject; var Key: Char);
+begin
+  If key=#13 Then BBtn_save.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_ymKeyPress(Sender: TObject; var Key: Char);
+begin
+  If (key=#13) and  (trim(Ed_ym.text)<>'') Then
+  begin
+    Search_Ym(Trim(Ed_ym.text),Trim(Edt_gg.text));
+    Edt_pym.Text:=MakeSpellCode(AnsiString(Ed_ym.text), 0, 0);
+
+  end;
+end;
+
+procedure TFm_ypadd.Ed_ggKeyPress(Sender: TObject; var Key: Char);
+begin
+   If key=#13 Then ComBox_ypzl.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_pfjKeyPress(Sender: TObject; var Key: Char);
+begin
+  If key=#13 then Edt_lsj.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_ypjjKeyPress(Sender: TObject; var Key: Char);
+begin
+  If key=#13 then Edt_lsj.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_lsjKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then Edt_pym.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_pymKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then Edt_lsm.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_lsmKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then Edt_bm.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_bmKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then Edt_ywm.SetFocus ;
+end;
+
+procedure TFm_ypadd.ComBox_jjypKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then CmbBx_selfyp.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_dddKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then  com_skintry.SetFocus ;
+end;
+
+procedure TFm_ypadd.Ed_ywmKeyPress(Sender: TObject; var Key: Char);
+begin
+  If key=#13 Then Combox_yb.SetFocus ;
+end;
+
+procedure TFm_ypadd.ed_cfhsbKeyPress(Sender: TObject; var Key: Char);
+begin
+  If key=#13 then ComBox_kind.SetFocus ;
+end;
+
+procedure TFm_ypadd.com_skintryEnter(Sender: TObject);
+begin
+com_skintry.ItemIndex:=0;
+end;
+
+procedure TFm_ypadd.com_skintryKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then ComBox_jjyp.SetFocus;
+end;
+
+procedure TFm_ypadd.ComBox_jjypEnter(Sender: TObject);
+begin
+ComBox_jjyp.ItemIndex:=0;
+end;
+
+procedure TFm_ypadd.ComBox_zxdw11Exit(Sender: TObject);
+begin
+   Combox_cfzxdw.text:=ComBox_zxdw.Text ;
+   edt_cfhsb.text:='1';
+end;
+
+procedure TFm_ypadd.ComBox_kindKeyPress(Sender: TObject; var Key: Char);
+begin
+ If key=#13 Then Edt_pfj.SetFocus;
+end;
+
+procedure TFm_ypadd.Ed_ggExit(Sender: TObject);
+begin
+ If Trim(Ed_ym.text)='' Then Exit;
+  with dm.Q_public do
+  begin
+    close;
+    sql.Clear;
+    sql.add('select num=count(*) From xyzb where ym=:ym and gg=:gg');
+    parambyname('ym').asstring:=Ed_ym.text;
+    parambyname('gg').asstring:=edt_gg.text;
+    Open;
+    If dm.Q_public.FieldByName('num').asinteger>0 then
+    begin
+      if application.messagebox('此种规格的药品已经在数据库中存在,您确实要继续吗','提示信息',mb_yesno+mb_iconwarning+mb_defbutton2)=idno then
+      begin
+        Ed_ym.Clear ;
+        edt_pym.clear;
+        Ed_ym.setfocus;
+        exit;
+      end;
+    end;
+   end;
+end;
+
+procedure TFm_ypadd.ComBox_jldwChange(Sender: TObject);
+begin
+   Lbl_dw.caption:='元/'+ComBox_jldw.Text;
+   lbl2.caption:='元/'+ComBox_jldw.Text;
+end;
+
+procedure TFm_ypadd.ComBox_zxdwKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13) and  (trim(ComBox_zxdw.Text)<>'')  then
+  begin
+    Combox_cfzxdw.SetFocus;
+  end;
+end;
+
+procedure TFm_ypadd.Ed_pfjChange(Sender: TObject);
+begin
+  Edt_ypjj.text:=Edt_pfj.Text;
+end;
+
+procedure TFm_ypadd.ComBox_zxdwChange(Sender: TObject);
+begin
+   edt_cfhsb.text:='1';
+   lbl_zyyfdw.caption:='元/'+ComBox_zxdw.Text;
+   lbl_mzyfdw.caption:='元/'+ComBox_zxdw.Text;
+end;
+
+function TFm_ypadd.GetComboxIndex(Source: tcombobox;
+  Compstr: string): integer;
+var icount,index:integer;
+    astr:string;
+begin
+  for icount:=0 to Source.Items.Count-1 do
+  begin
+    index:=pos(':',Source.Items[icount]);
+    astr:=copy(Source.Items[icount],index+1,50);
+    if  astr='' then astr:=Source.Items[icount];
+     if trim(Compstr)=trim(astr) then
+     begin
+       result:=icount;
+       exit;
+     end else
+     begin
+       if icount=Source.Items.Count-1 then result:=-1;
+     end;
+  end;
+end;
+
+function TFm_ypadd.GetComboxValue(Source: tcombobox; substr: string;
+  front: boolean): string;
+begin
+    if front then
+     begin
+       result:=copy(Source.Text,1,pos(substr,Source.Text)-1)
+     end
+    else
+     begin
+       result:=copy(Source.Text,pos(substr,Source.Text)+1,length(Source.Text)-Pos(':',Source.Text));
+     end ;
+end;
+
+procedure TFm_ypadd.listLba(pym: string);
+begin
+
+end;
+
+procedure TFm_ypadd.listLbb(pym: string);
+begin
+
+end;
+
+procedure TFm_ypadd.SetCmbxList;
+var aSqlStr:string;
+begin
+  aSqlStr:='select zjdw from zjdw';
+  dm.SetCmbxValue(ComBox_zxdw,asqlstr,1);
+  dm.SetCmbxValue(ComBox_jldw,asqlstr,1);
+  dm.SetCmbxValue(ComBox_cfzxdw,asqlstr,1);
+
+  aSqlStr:='select jxbm,jx from ypjx';
+  dm.SetCmbxValue(ComBox_jx,asqlstr,2);
+
+  aSqlStr:='select zlbm,zlm from ypzl';
+  dm.SetCmbxValue(ComBox_ypzl,asqlstr,2);
+
+  aSqlStr:='select bh,lbmc from ypzl_yb';
+  dm.SetCmbxValue(ComBox_yb,asqlstr,2);
+
+  aSqlStr:='select fplb,lbmc from cwsf_fplb';
+  dm.SetCmbxValue(Cmbx_fplb,asqlstr,2);
+
+  aSqlStr:=' select bh,mc from pub_constant where kind=68 ';
+  dm.SetCmbxValue(cmb_StoreClass,asqlstr,2);
+  dm.SetStoreValue(cmbx_storetype);
+  //wk 2023.09.18 默认库存505疫苗药房,库存分类
+  if (dm.SysInfo.HospitalYBCode='H41030300339')  and  (dm.sysinfo.yfbm='505')    then
+  begin
+    cmb_StoreClass.ItemIndex:=GetComboxIndex(cmb_StoreClass,'疫苗');
+    cmbx_fplb.ItemIndex:=GetComboxIndex(cmbx_fplb,'疫苗费')
+  end;
+  DM.SetAdditionRateValue(cbb_AddRate);
+  cbb_AddRate.ItemIndex:=1;
+end;
+
+procedure TFm_ypadd.DBGrd_xmDblClick(Sender: TObject);
+begin
+ case DBGrd_xm.Tag of
+   8:begin
+      edt_cjbm.Text:=DBGrd_xm.Fields[0].AsString;
+      edt_produce.Text:=DBGrd_xm.Fields[1].AsString;
+      edt_pwh.SetFocus;
+     end;
+  15:begin
+      edt_lba.Text:=DBGrd_xm.Fields[1].AsString;
+      edt_lbb.SetFocus;
+    end;
+  16:begin
+      edt_lbb.Text:=DBGrd_xm.Fields[1].AsString;
+      com_skintry.SetFocus;
+    end;
+   end;
+end;
+
+procedure TFm_ypadd.edt_cjbmKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13)  then
+  begin
+    DBGrd_xm.DataSource:=dm.listProduce(trim(edt_cjbm.Text));
+    if DBGrd_xm.DataSource<>nil then
+    begin
+      DBGrd_xm.Visible:=true;
+      DBGrd_xm.Tag:=tedit(sender).Tag;
+      DBGrd_xm.SetFocus;
+    end;
+  end;
+end;
+
+procedure TFm_ypadd.DBGrd_xmExit(Sender: TObject);
+begin
+ DBGrd_xm.Visible:=false;
+end;
+
+procedure TFm_ypadd.DBGrd_xmKeyPress(Sender: TObject; var Key: Char);
+begin
+if key=#13 then   DBGrd_xmDblClick(sender);
+end;
+
+procedure TFm_ypadd.Edt_pfjKeyPress(Sender: TObject; var Key: Char);
+var aylsj:string;
+begin
+  if (key=#13)   and (trim(Edt_pfj.Text)<>'') then
+  begin
+   Edt_ypjj.Text:=Edt_pfj.Text;
+   case CmbBx_lb.ItemIndex of
+   0,2:aylsj:=formatcurr('#.##',(strtocurr(Edt_pfj.Text)*strtocurr(cbb_AddRate.Text)));
+   1:aylsj:=formatcurr('#.####',(strtocurr(Edt_pfj.Text)*strtocurr(cbb_AddRate.Text)));
+   end;
+   Edt_lsj.Text:=aylsj;
+   Edt_lsj.SetFocus;
+  end;
+end;
+
+procedure TFm_ypadd.Edt_bmKeyPress(Sender: TObject; var Key: Char);
+begin
+  If key=#13 Then Edt_ywm.SetFocus ;
+end;
+
+procedure TFm_ypadd.Edt_ywmKeyPress(Sender: TObject; var Key: Char);
+begin
+ If key=#13 Then Edt_pym.SetFocus ;
+end;
+
+procedure TFm_ypadd.Edt_pymKeyPress(Sender: TObject; var Key: Char);
+begin
+ If (key=#13)  and  (trim(Edt_pym.text)<>'') Then Edt_lsm.SetFocus ;
+end;
+
+procedure TFm_ypadd.Edt_lsmKeyPress(Sender: TObject; var Key: Char);
+begin
+ If (key=#13)  Then Edt_gg.SetFocus ;
+end;
+
+procedure TFm_ypadd.Edt_ggKeyPress(Sender: TObject; var Key: Char);
+begin
+  {If (key=#13) and (trim(Edt_gg.text)<>'')  Then
+   begin
+     if  Search_Ym(Trim(Ed_ym.text),Trim(Edt_gg.text)) then
+      begin
+        application.MessageBox('此药品已经增加！','信使',mb_ok);
+        Ed_ym.Clear;
+        Edt_gg.Clear;
+        Ed_ym.SetFocus;
+        Exit;
+      end;
+    edt_cjbm.SetFocus ;
+  end; }
+  if (key=#13) and (trim(Edt_gg.text)<>'')  then edt_cjbm.SetFocus ;
+end;
+
+procedure TFm_ypadd.CmbBx_basicKeyPress(Sender: TObject; var Key: Char);
+begin
+ if (key=#13) then Edt_ddd.SetFocus;
+end;
+
+procedure TFm_ypadd.Edt_dddKeyPress(Sender: TObject; var Key: Char);
+begin
+ if (key=#13) then ComBox_jx.SetFocus;
+end;
+
+procedure TFm_ypadd.edt_lbaKeyPress(Sender: TObject; var Key: Char);
+begin
+   if (key=#13) then edt_lbb.SetFocus;
+end;
+
+procedure TFm_ypadd.edt_lbbKeyPress(Sender: TObject; var Key: Char);
+begin
+   if (key=#13) then com_skintry.SetFocus;
+end;
+
+procedure TFm_ypadd.CmbBx_selfypKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then CmbBx_ifzy.SetFocus ;
+end;
+
+procedure TFm_ypadd.CmbBx_ifzyKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then cmb_StoreClass.SetFocus ;
+end;
+
+procedure TFm_ypadd.CmbBx_lbKeyPress(Sender: TObject; var Key: Char);
+begin
+   if key=#13 then cmbx_fplb.SetFocus ;
+end;
+
+procedure TFm_ypadd.Edt_lsjKeyPress(Sender: TObject; var Key: Char);
+var aylsj:string;
+begin
+  if (key=#13) and  (trim(Edt_lsj.Text)<>'') then
+  begin
+    edt_mzlsj.Text:=Edt_lsj.Text;
+    edt_mzlsj.SetFocus;
+  try
+     case CmbBx_lb.ItemIndex of
+      0,2:
+      aylsj:=formatcurr('#.##',(strtocurr(Edt_lsj.Text)/strtoint(Edt_hsb.Text)));
+      1:
+      aylsj:=formatcurr('#.####',(strtocurr(Edt_lsj.Text)/strtoint(Edt_hsb.Text)));
+    end;
+     edt_xsj.Text:= aylsj;
+     //edt_mzxsj.Text:=aylsj;
+    except
+      exit;
+    end;
+  end;
+end;
+
+procedure TFm_ypadd.Edt_hsbKeyPress(Sender: TObject; var Key: Char);
+var aylsj:string;
+begin
+
+ if (key=#13) and  (trim(Edt_hsb.Text)<>'') then
+ begin
+       ComBox_zxdw.SetFocus;
+ end;
+end;
+
+procedure TFm_ypadd.edt_cfhsbKeyPress(Sender: TObject; var Key: Char);
+begin
+if key=#13 then edt_dosage.SetFocus;
+end;
+
+procedure TFm_ypadd.edt_xsjKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13) and  (trim(edt_xsj.Text)<>'')  then   edt_cfhsb.SetFocus;
+end;
+
+procedure TFm_ypadd.Edt_ypjjKeyPress(Sender: TObject; var Key: Char);
+begin
+ if (key=#13)  and (trim(Edt_ypjj.Text)<>'')  then Edt_lsj.SetFocus;
+end;
+
+procedure TFm_ypadd.CmbBx_ifzyChange(Sender: TObject);
+begin
+  if   CmbBx_ifzy.ItemIndex=0 then Image1.Visible:=false
+  else Image1.Visible:=true;
+end;
+
+procedure TFm_ypadd.Ed_ypbhEnter(Sender: TObject);
+begin
+  tedit(Sender).Font.Color:=clWhite;
+  tedit(Sender).Color:=$00FF8080;
+end;
+
+procedure TFm_ypadd.Ed_ypbhExit(Sender: TObject);
+begin
+   tedit(Sender).Color:=clWhite;
+   tedit(Sender).Font.Color:=clblack;
+end;
+
+procedure TFm_ypadd.edt_mzlsjKeyPress(Sender: TObject; var Key: Char);
+var aylsj:string;
+begin
+  if (key=#13) and  (trim(Edt_lsj.Text)<>'') then
+  begin
+  try
+     case CmbBx_lb.ItemIndex of
+      0,2:
+      aylsj:=formatcurr('#.##',(strtocurr(Edt_lsj.Text)/strtoint(Edt_hsb.Text)));
+      1:
+      aylsj:=formatcurr('#.####',(strtocurr(Edt_lsj.Text)/strtoint(Edt_hsb.Text)));
+    end;
+     edt_mzxsj.Text:=aylsj;
+     BBtn_save.SetFocus;
+    except
+      exit;
+    end;
+  end;
+end;
+
+procedure TFm_ypadd.CmbBx_lbChange(Sender: TObject);
+begin
+  case CmbBx_lb.ItemIndex of
+    0,2: cbb_AddRate.ItemIndex:=1;
+    1: cbb_AddRate.ItemIndex:=2;
+  end;
+end;
+
+function TFm_ypadd.Search_Ym(ym,gg: string): Boolean;
+begin
+   Result:=False;
+   with dm.qry_yp do
+   begin
+    close;
+    sql.Clear;
+    sql.Add('select * from xyzb where ym like :ym');
+    parambyname('ym').AsString:='%'+ym+'%';
+    open;
+    if recordcount>0 then
+      begin
+        dbgrd_ym.Visible:=true;
+        dbgrd_ym.SetFocus;
+        dbgrd_ym.DataSource :=dm.DS_yp ;
+        ed_status.Visible :=true ;
+        ed_status.Text :='多条';
+      end
+    else
+      begin
+       dbgrd_ym.Visible:=false;
+       dbgrd_ym.DataSource :=nil ;
+       ed_status.Visible :=false ;
+       ed_status.Clear;
+       Edt_gg.SetFocus;
+      end;
+    if isempty then Exit;
+   end;
+  Result:=true;
+end;
+
+procedure TFm_ypadd.Ed_ymExit(Sender: TObject);
+begin
+   tedit(Sender).Color:=clWhite;
+   tedit(Sender).Font.Color:=clblack;
+end;
+
+procedure TFm_ypadd.dbgrd_ymExit(Sender: TObject);
+begin
+   dbgrd_ym.Visible:=False;
+end;
+
+procedure TFm_ypadd.dbgrd_ymDblClick(Sender: TObject);
+begin
+  Edt_gg.text:=dbgrd_ym.DataSource.DataSet.FieldByName('gg').AsString;
+  Edt_gg.SetFocus;
+end;
+
+procedure TFm_ypadd.dbgrd_ymKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (Key=#13) then dbgrd_ymDblClick(sender);
+end;
+
+procedure TFm_ypadd.Combox_cfzxdwChange(Sender: TObject);
+begin
+//  Lbl_cfzxdw1.Caption:=Combox_cfzxdw.Text;
+end;
+
+procedure TFm_ypadd.edt_dosageKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key<>#13) then exit;
+  if  (trim(edt_dosage.text)<>'') then ComBox_kind.SetFocus;
+end;
+
+procedure TFm_ypadd.cmbx_fplbKeyPress(Sender: TObject; var Key: Char);
+begin
+ if key=#13 then cbb_groupbuy.SetFocus;
+end;
+
+procedure TFm_ypadd.ComBox_jxChange(Sender: TObject);
+begin
+  CmBx_jxdw.ItemIndex:=ComBox_jx.ItemIndex;
+end;
+
+procedure TFm_ypadd.edt_barcodeKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13)  then
+  Ed_ym.SetFocus;
+end;
+
+procedure TFm_ypadd.cmb_StoreClassKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13) and (trim(cmb_StoreClass.Text)<>'')  then
+  cmbx_fplb.SetFocus ;
+end;
+
+procedure TFm_ypadd.cmb_StoreClassChange(Sender: TObject);
+begin
+  case strtoint(dm.GetComboxValue(cmb_StoreClass,':',true)) of
+  1,6:
+  begin
+    CmbBx_lb.ItemIndex:=0;
+    cmbx_fplb.ItemIndex:=0;
+    cbb_AddRate.ItemIndex:=1;
+  end;
+  2,7:
+  begin
+    CmbBx_lb.ItemIndex:=1;
+    cmbx_fplb.ItemIndex:=1;
+    cbb_AddRate.ItemIndex:=2;
+  end;
+  3:
+  begin
+    CmbBx_lb.ItemIndex:=2;
+    cmbx_fplb.ItemIndex:=2;
+    cbb_AddRate.ItemIndex:=1;
+  end;
+  4:
+  begin
+    CmbBx_lb.ItemIndex:=0;
+    cmbx_fplb.ItemIndex:=17;
+    cbb_AddRate.ItemIndex:=1;
+  end;
+  5:
+  begin
+    CmbBx_lb.ItemIndex:=0;
+        //wk 2023.09.18凯东社区默认疫苗费
+    if dm.SysInfo.HospitalYBCode='H41030300339'    then
+      cmbx_fplb.ItemIndex:=GetComboxIndex(cmbx_fplb,'疫苗费')
+    else
+      cmbx_fplb.ItemIndex:=0;
+    cbb_AddRate.ItemIndex:=1;
+  end;
+  end;
+end;
+
+procedure TFm_ypadd.edt_pwhKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then Edt_ddd.SetFocus ;
+end;
+
+procedure TFm_ypadd.cbb_groupbuyKeyPress(Sender: TObject; var Key: Char);
+begin
+ if key=#13 then ComBox_jldw.SetFocus;
+end;
+
+end.

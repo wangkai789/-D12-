@@ -1,0 +1,614 @@
+unit bmly;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Buttons, Grids, DBGrids, ExtCtrls, ComCtrls,db;
+
+type
+  TFm_bmly = class(TForm)
+    BitBtn1: TBitBtn;
+    Panel1: TPanel;
+    DBGrid_qld: TDBGrid;
+    Panel2: TPanel;
+    GroupBox1: TGroupBox;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label21: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Ed_lyr: TEdit;
+    Ed_ksbm: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    Edit7: TEdit;
+    Edit8: TEdit;
+    Edit9: TEdit;
+    Edit10: TEdit;
+    Ed_sfl: TEdit;
+    Edit15: TEdit;
+    Edit16: TEdit;
+    Edit17: TEdit;
+    GroupBox2: TGroupBox;
+    Splitter1: TSplitter;
+    DBGrid_qlyp: TDBGrid;
+    DBGrid_dbyp: TDBGrid;
+    RadioGroup1: TRadioGroup;
+    Panel3: TPanel;
+    BBtn_bmly_db: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn4: TBitBtn;
+    BBtn_new: TBitBtn;
+    BitBtn3: TBitBtn;
+    procedure FormShow(Sender: TObject);
+    procedure DBGrid_dbypDblClick(Sender: TObject);
+    procedure DBGrid_dbypKeyPress(Sender: TObject; var Key: Char);
+    procedure Ed_sflExit(Sender: TObject);
+    procedure Ed_sflKeyPress(Sender: TObject; var Key: Char);
+    procedure BBtn_quitClick(Sender: TObject);
+    procedure BBtn_newClick(Sender: TObject);
+    procedure Edit16Change(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure BBtn_bmly_dbClick(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure RadioGroup1Click(Sender: TObject);
+    procedure DBGrid_qldCellClick(Column: TColumn);
+    procedure DBGrid_qlypCellClick(Column: TColumn);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure frReport1GetValue(const ParName: String;
+      var ParValue: Variant);
+   // procedure frReport1BeforePrint(Memo: TStringList; View: TfrView);
+  private
+    { Private declarations }
+    Fckh:integer;
+    procedure  Get_QldInfo(flag:integer);
+    procedure  Show_QldInfo(flag,qldh:integer);
+    procedure  Show_YpKcunInfo(IFTY:boolean);
+    procedure  print_FyInfo;
+    procedure  Save_FyInfo();
+    procedure  Set_sfl(flag:integer);
+    procedure  adjust_sfl(IFTY:boolean);
+    function   adjust_IfZero:boolean;
+    procedure  SeekRecord(ypbh:string);
+    procedure  Add_ypinfo(ypbh:string);
+
+
+  public
+    { Public declarations }
+  end;
+
+var
+  Fm_bmly: TFm_bmly;
+  mbypkcl:currency;
+
+implementation
+
+uses data, czydl, Factory, main, reportform;
+
+{$R *.DFM}
+
+procedure TFm_bmly.FormShow(Sender: TObject);
+begin
+  edit1.text:=fm_czydl.Ed_xm.Text;
+  edit2.text:=datetostr(now);
+  RadioGroup1Click(sender);
+end;
+
+procedure TFm_bmly.DBGrid_dbypDblClick(Sender: TObject);
+begin
+  case RadioGroup1.ItemIndex of
+  2:adjust_sfl(false);
+  1,3:adjust_sfl(true);
+  end;
+end;
+
+procedure TFm_bmly.DBGrid_dbypKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then DBGrid_dbypDblClick(Sender);
+end;
+
+procedure TFm_bmly.Ed_sflExit(Sender: TObject);
+begin
+  try
+    if strtocurr(trim(Ed_sfl.text))>mbypkcl then
+    begin
+      application.MessageBox('实发量>所选药品的库存量，请重输！！','错误提示',0+mb_iconstop);
+      BBtn_bmly_db.Enabled:=false;
+      exit;
+    end
+  except
+
+  end;
+end;
+
+procedure TFm_bmly.Ed_sflKeyPress(Sender: TObject; var Key: Char);
+begin
+  ISDIGIT(KEY);
+  if key=#13 then  Set_sfl(RadioGroup1.ItemIndex);
+end;
+
+procedure TFm_bmly.BBtn_quitClick(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TFm_bmly.BBtn_newClick(Sender: TObject);
+begin
+  DBGrid_qld.left:=70;
+
+  Edit6.Clear;
+  edit7.clear;
+  edit8.clear;
+  edit9.clear;
+  edit10.clear;
+  Ed_lyr.Clear;
+  Ed_ksbm.Clear;
+  ed_sfl.clear;
+  edit5.clear;
+
+  dm.Q_comm.Close;
+  DBGrid_qlyp.DataSource:=nil;
+  DBGrid_dbyp.DataSource:=nil;
+  BBtn_bmly_db.Enabled:=false;
+  
+  BitBtn2.Enabled:=false;
+  RadioGroup1Click(sender);
+end;
+
+procedure TFm_bmly.Edit16Change(Sender: TObject);
+begin
+if edit16.text<>'' then ed_sfl.enabled:=true else  ed_sfl.enabled:=false;
+end;
+
+procedure TFm_bmly.BitBtn3Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TFm_bmly.Get_QldInfo(flag:integer);
+begin
+ with dm.Q_song do
+ begin
+    close;
+    sql.Clear;
+    case flag of
+    0:begin
+       exit;
+      end;
+    1:begin
+       sql.add('select distinct a.qldh,qlrq,qlr,yfbm,c.ksmc from qlyf a,qldb b,jgxx c');
+       sql.add('where a.qldh=b.qldh and a.yfbm=c.ksbm and fyrq is null and ifty=1');
+       DBGrid_qlyp.Color:=$008080FF;
+       end;
+    2:begin
+      sql.add('select distinct a.qldh,qlrq,qlr,yfbm,c.ksmc from depqlyf a,depqldb b,jgxx c ');
+      sql.add('where a.qldh=b.qldh and a.yfbm=c.ksbm and fyrq is null and ifty=0');
+      DBGrid_qlyp.Color:=clWhite;
+       end;
+    3:begin
+      sql.add('select distinct a.qldh,qlrq,qlr,yfbm,c.ksmc from depqlyf a,depqldb b,jgxx c ');
+      sql.add('where a.qldh=b.qldh and a.yfbm=c.ksbm and fyrq is null and ifty=1');
+      DBGrid_qlyp.Color:=$008080FF;
+      end;
+    end;
+    open;
+    If not isempty then
+       DBGrid_qld.SetFocus
+    Else
+      begin
+        Edit6.clear;
+        Ed_ksbm.clear;
+        Edit5.clear;
+        Ed_lyr.clear;
+      end;
+    BBtn_bmly_db.Enabled:=false;
+    BitBtn2.Enabled:=false;
+ end;
+end;
+
+procedure TFm_bmly.Save_FyInfo;
+begin
+
+  if application.messagebox('是否发药？','信息',mb_yesno+MB_DEFBUTTON2
+    +MB_ICONQUESTION)=idno  then exit;
+
+  if (trim(edit6.Text)='') then
+  begin
+    application.MessageBox('请领单号不能为空！','信息',32);
+    exit;
+  end;
+
+{  if adjust_IfZero=false then
+  begin
+    application.MessageBox('实发量不能为零！','信息',32);
+    exit;
+  end;}
+
+  with dm.Q_comm do
+  begin
+    close;
+    sql.clear;
+    SQL.Add('exec get_new_bmly_ckh :lb ');
+    ParamByName('lb').asinteger:=dm.q_master['lb'];
+    try
+      open;
+      Fckh:=dm.Q_comm['ckh'];
+    except
+      application.MessageBox('生成出库号出错，请重试！','错误提示',0);
+      exit;
+    end;
+  end;
+
+  with dm.Q_comm do
+  begin
+    close;
+    sql.clear;
+
+    SQL.Add('update xykchu  set ckh=:ckh,lb=:lb where qldh=:qldh');
+
+    case RadioGroup1.ItemIndex of
+    1:SQL.Add('update qlyf  set fyrq=getdate(),fyr_bh=:fyr_bh,fyr=:fyr,ckh=:ckh where qldh=:qldh ');
+    2,3:SQL.Add('update depqlyf  set fyrq=getdate(),fyr_bh=:fyr_bh,fyr=:fyr,ckh=:ckh where qldh=:qldh ');
+    end;
+    
+    ParamByName('qldh').asinteger:=strtoint(trim(edit6.text));
+    ParamByName('fyr_bh').asinteger:=strtoint(trim(fm_czydl.Ed_bh.text));
+    ParamByName('fyr').asstring:=trim(fm_czydl.Ed_xm.text);
+    ParamByName('lb').asinteger:=dm.q_master['lb'];
+    ParamByName('ckh').asinteger:=Fckh;
+    try
+      ExecSQL;
+      application.MessageBox('发药成功','提示',0);
+      BitBtn2.Click;
+      BBtn_new.Click;
+    except
+      application.MessageBox('发药出现错误，请输入请领单号后，重试！！','错误提示',mb_iconstop);
+    end;
+  end;
+end;
+
+
+procedure TFm_bmly.Set_sfl(flag:integer);
+var  aypbh:string;
+begin
+    if  (trim(Ed_sfl.text)='') or  (trim(Ed_sfl.text)='0') then
+    begin
+      application.MessageBox('实发量不能为空或0','提示',0);
+      exit;
+    end;
+
+    case RadioGroup1.ItemIndex of
+    2:begin
+      if strtocurr(trim(Ed_sfl.text))<=0 then
+      begin
+        application.MessageBox('实发量不能为负数或零！','提示',0);
+        Ed_sfl.setfocus;
+        exit;
+      end;
+    end;
+   1,3:begin
+       if (strtocurr(ed_sfl.text)+DBGrid_qlyp.Fields[6].ascurrency-DBGrid_qlyp.Fields[4].ascurrency)<0 then
+       begin
+         application.MessageBox('实发量数量不正确','错误',32);
+         ed_sfl.text:='0';
+         exit;
+       end;
+       end;
+   end;
+
+   //if  DBGrid_qlyp.Fields[6].AsCurrency+strtocurr(trim(Ed_sfl.text))-
+   //    DBGrid_qlyp.Fields[4].AsCurrency>0   then
+   if  abs(DBGrid_qlyp.Fields[6].AsCurrency)+abs(strtocurr(trim(Ed_sfl.text)))-
+       abs(DBGrid_qlyp.Fields[4].AsCurrency)>0   then
+   begin
+     application.MessageBox('实发量不能超过请领量！','提示',0);
+     Ed_sfl.Clear;
+     exit;
+   end;
+
+   aypbh:=DBGrid_qlyp.Fields[0].asstring;
+
+   with dm.Q_comm do
+    begin
+      close;
+      sql.clear;
+      case flag of
+      1: SQL.Add('Exec yp_bmly :qldh,:rkxh,:ypbh,:qll,:ckr,:lyr,:ksbm,:opid');
+      2,3:SQL.Add('Exec yp_ksly :qldh,:rkxh,:ypbh,:qll,:ckr,:lyr,:ksbm,:opid');
+      end;
+      try
+        ParamByName('qldh').asinteger:=strtoint(trim(edit6.text));
+        ParamByName('rkxh').asinteger:=dm.Q_detail.FieldByName('rkxh').asinteger;
+        ParamByName('ypbh').Asstring:=dm.Q_detail.FieldByName('ypbh').asstring;
+        ParamByName('qll').ascurrency:=strtocurr(Ed_sfl.text);
+        ParamByName('ckr').asinteger:=strtoint(trim(fm_czydl.Ed_bh.text));
+        ParamByName('lyr').asinteger:=strtoint(trim(Ed_lyr.text));
+        ParamByName('ksbm').assmallint:=strtoint(trim(ed_ksbm.text));
+        ParamByName('opid').asinteger:=strtoint(trim(fm_czydl.Ed_bh.text));
+        ExecSQL;
+        application.MessageBox('该药品实发量确认成功','提示',0);
+        BitBtn2.Enabled:=true;
+        BBtn_bmly_db.setfocus;
+      except
+        application.MessageBox(
+        pchar('该药品实发量确认错误，请重试.'
+        +#13'可能原因：本请领单不是【'+RadioGroup1.Items[RadioGroup1.ItemIndex]+'】类型的请领单，请选择正确的请领类型'),
+        '错误提示',mb_iconerror);
+        exit;
+      end;
+    end;
+     Show_QldInfo(RadioGroup1.ItemIndex,strtoint(trim(edit6.text)));
+     SeekRecord(aypbh);
+     DBGrid_qlyp.Visible:=true;
+     DBGrid_qlyp.SetFocus;
+end;
+procedure TFm_bmly.Show_QldInfo(flag,qldh:integer);
+begin
+  with dm.Q_master do
+  begin
+    Close;
+    SQL.Clear;
+    case flag of
+    1:begin
+        SQL.Add('select b.ypbh, b.ym, b.gg, c.jx,a.qll, b.jldw,a.sfl,lb=a.type');
+        SQL.Add('FROM qldb a, xyzb b, ypjx c where a.qldh=:mqldh AND b.ypbh=a.ypbh and b.jxbm=c.jxbm ORDER BY a.ypbh');
+      end;
+    2,3:begin
+       SQL.Add('select b.ypbh,b.ym, b.gg, c.jx,a.qll, b.jldw,a.sfl,lb=a.zlbm');
+       SQL.Add('FROM depqldb a, xyzb b, ypjx c where a.qldh=:mqldh AND b.ypbh=a.ypbh and b.jxbm=c.jxbm ORDER BY a.ypbh');
+      end;
+    end;
+    ParamByName('mqldh').AsInteger:=qldh;
+    open;
+    if not isempty then
+    begin
+      DBGrid_qlyp.DataSource:=dm.ds_master;
+      DBGrid_dbyp.DataSource:=nil;
+      BBtn_bmly_db.Enabled:=true;
+      BitBtn2.Enabled:=true;
+    end else
+    begin
+      DBGrid_qlyp.DataSource:=nil;
+      BBtn_bmly_db.Enabled:=false;
+      BitBtn2.Enabled:=false;
+    end;
+  end;
+end;
+procedure TFm_bmly.BBtn_bmly_dbClick(Sender: TObject);
+begin
+  Save_FyInfo;
+end;
+
+procedure TFm_bmly.print_FyInfo;
+begin
+try
+    with dm.Q_comm do
+    begin
+      close;
+      sql.Clear;
+      case  RadioGroup1.ItemIndex of
+      1:begin
+          sql.Add('select distinct a.qldh,a.ypbh,a.sfl,a.type,b.ckh,b.lsj,d.ksmc,e.fyr,f.ym,f.gg,f.jldw,e.qlrq,e.fyrq,je=b.lsj*a.sfl '
+           +' from qldb a,xykchu b,xykcun c,jgxx d,qlyf e,xyzb f '
+           +' where a.qldh=b.qldh and a.ypbh=c.ypbh and c.rkxh=b.rkxh '
+           +' and d.ksbm=b.ksbm and a.qldh=e.qldh and a.ypbh=f.ypbh and a.qldh=:mqldh ');
+          sql.add('ORDER BY a.ypbh');
+         end;
+      2,3:begin
+           sql.Add('select distinct a.qldh,a.ypbh,a.sfl,[type]=a.zlbm,b.ckh,b.lsj,d.ksmc,e.fyr,f.ym,f.gg,f.jldw,e.qlrq, '
+            +' e.fyrq,je=b.lsj*a.sfl '
+            +' from depqldb a,xykchu b,xykcun c,jgxx d,depqlyf e,xyzb f '
+            +' where a.qldh=b.qldh and a.ypbh=c.ypbh and c.rkxh=b.rkxh '
+            +' and d.ksbm=b.ksbm and a.qldh=e.qldh and a.ypbh=f.ypbh and a.qldh=:mqldh '
+            +' ORDER BY a.ypbh');
+          end;
+      end;
+      ParamByName('mqldh').AsInteger:=strtoint(trim(edit6.text));
+      open;
+    end;
+  //  frReport1.clear;
+    //frReport1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'ykreport\请领单.frf');
+    //frReport1.ShowReport;
+  except
+    application.MessageBox('报表缺少所需的数据','信使',mb_ok);
+    exit;
+  end;
+end;
+
+procedure TFm_bmly.BitBtn2Click(Sender: TObject);
+begin
+ print_FyInfo;
+end;
+
+procedure TFm_bmly.SeekRecord(ypbh: string);
+var locatetype:TLocateOptions;
+begin
+    include(locatetype,loCaseInsensitive);
+    dm.Q_master.Locate('ypbh',ypbh,locatetype);
+end;
+
+procedure TFm_bmly.RadioGroup1Click(Sender: TObject);
+begin
+  Get_QldInfo(RadioGroup1.ItemIndex);
+end;
+
+procedure TFm_bmly.DBGrid_qldCellClick(Column: TColumn);
+begin
+
+  if  DBGrid_qld.DataSource.DataSet.IsEmpty then exit;
+  edit5.text:=dm.Q_song['ksmc'];
+  edit6.text:=dm.q_song.Fields[0].asstring;
+  Ed_lyr.Text:=dm.q_song.Fields[2].asstring;
+  ed_ksbm.text:=dm.q_song.Fields[3].asstring;
+
+  Show_QldInfo(RadioGroup1.ItemIndex,strtoint(trim(edit6.text)));
+
+  DBGrid_qlyp.SetFocus;
+end;
+
+procedure TFm_bmly.Show_YpKcunInfo(IFTY: boolean);
+begin
+  if DBGrid_qlyp.DataSource=nil then exit;
+  if DBGrid_qlyp.DataSource.DataSet.IsEmpty then exit;
+  if DBGrid_qlyp.Fields[4].AsCurrency=
+     DBGrid_qlyp.Fields[6].AsCurrency  then
+  begin
+     DBGrid_dbyp.DataSource:=nil;
+     exit;
+  end;
+
+  with dm.Q_detail do
+  begin
+    close;
+    sql.Clear;
+    SQL.Add('exec yp_seek :back,:ypbh');
+    parambyname('back').asboolean:=IFTY;
+    ParamByName('ypbh').AsString:=DBGrid_qlyp.Fields[0].asstring;
+    try
+      open;
+       if isempty then
+      begin
+      //  Add_ypinfo(DBGrid_qlyp.Fields[0].asstring);
+
+       Application.MessageBox('该编号的药品无库存！，请继续出库其它药品！','提示',64);
+        if application.messagebox('是否增加此药品？','信息',mb_yesno+MB_DEFBUTTON2
+          +MB_ICONQUESTION)=idyes  then
+           Add_ypinfo(DBGrid_qlyp.Fields[0].asstring)
+        else   begin
+          DBGrid_qlyp.SetFocus;
+          exit;
+        end;
+          DBGrid_qlyp.SetFocus;
+          exit;
+      end;
+      edit7.text:=dm.Q_detail['ypbh'];
+      edit8.text:=dm.Q_detail['ym'];
+      edit9.text:=dm.Q_detail['gg'];
+      edit10.text:=dm.Q_detail['jx'];
+      edit15.text:=dm.Q_detail['jldw'];
+      DBGrid_dbyp.DataSource:=dm.DS_detail;
+
+      DBGrid_dbyp.SetFocus;
+      Ed_sfl.Clear;
+    except
+        application.MessageBox('该编号的药品无库存！，请继续出库其它药品！','提示',64);
+        exit;
+    end;
+ end;
+end;
+
+procedure TFm_bmly.DBGrid_qlypCellClick(Column: TColumn);
+begin
+  case RadioGroup1.ItemIndex of
+  2:Show_YpKcunInfo(false);
+  1,3:Show_YpKcunInfo(true);
+  end;
+end;
+
+procedure TFm_bmly.adjust_sfl(IFTY: boolean);
+begin
+ if  DBGrid_dbyp.DataSource=nil then exit;
+ if  DBGrid_dbyp.DataSource.DataSet.IsEmpty then exit;
+ edit16.text:=DBGrid_dbyp.Fields[3].asstring;
+
+ if not ifty then
+ begin
+   if (DBGrid_qlyp.Fields[4].ascurrency-DBGrid_qlyp.Fields[6].ascurrency)>0 then
+   if DBGrid_dbyp.Fields[5].ascurrency>=DBGrid_qlyp.Fields[4].ascurrency-DBGrid_qlyp.Fields[6].ascurrency then
+   begin
+     ed_sfl.text:=currtostr(DBGrid_qlyp.Fields[4].ascurrency-DBGrid_qlyp.Fields[6].ascurrency);
+     try
+       ed_sfl.SetFocus;
+     except
+         application.MessageBox ('没有批号的药品无法出库!','信使',mb_ok);
+     end;
+   end  else
+   begin
+       ed_sfl.text:=DBGrid_dbyp.Fields[5].asstring;
+       ed_sfl.SetFocus;
+   end else
+   begin
+     ed_sfl.text:='0';
+     if application.MessageBox('现在实发量已经大于或等于请领量，继续发这种药么？',
+     '提示',MB_yesno + MB_DEFBUTTON1+mb_iconquestion)=Id_yes then  ed_sfl.SetFocus
+     else  DBGrid_qlyp.SetFocus;
+   end;
+ end else
+ begin
+   if (DBGrid_qlyp.Fields[4].ascurrency-DBGrid_qlyp.Fields[6].ascurrency)>0 then exit   else
+   begin
+       ed_sfl.text:=currtostr(DBGrid_qlyp.Fields[4].ascurrency-DBGrid_qlyp.Fields[6].ascurrency);
+       try
+          ed_sfl.SetFocus;
+       except
+         application.MessageBox ('没有批号的药品无法出库!','信使',mb_ok);
+       end;
+   end;
+ end;
+  edit15.text:=DBGrid_dbyp.Fields[6].asstring;
+  edit16.text:=DBGrid_dbyp.Fields[3].asstring;
+ // mbypkcl:=DBGrid_dbyp.Fields[5].ascurrency;  //某笔药品库存量
+end;
+
+function TFm_bmly.adjust_IfZero: boolean;
+begin
+  {DBGrid_qlyp.DataSource.DataSet.First;
+  while not DBGrid_qlyp.DataSource.DataSet.Eof do
+  begin
+    if DBGrid_qlyp.Fields[6].AsCurrency=0 then
+    begin
+      result:=false;
+      exit;
+    end else result:=true;
+      DBGrid_qlyp.DataSource.DataSet.Next;
+  end;}
+end;
+
+procedure TFm_bmly.Add_ypinfo(ypbh: string);
+begin
+   with dm.Q_comm do
+   begin
+     close;
+     sql.clear;
+     sql.add('exec proc_yktk_ypadd :ypbh');
+     parambyname('ypbh').asstring:=trim(ypbh);
+     ExecSQL;
+   end;
+end;
+
+procedure TFm_bmly.BitBtn4Click(Sender: TObject);
+begin
+//    Fm_report.frReport1.clear;
+  //  Fm_report.frReport1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'ykreport\请领单.frf');
+   // Fm_report.frReport1.DesignReport;
+end;
+
+procedure TFm_bmly.frReport1GetValue(const ParName: String;
+  var ParValue: Variant);
+begin
+   if ParName='type' then
+   begin
+     case  dm.Q_comm.FieldByName('type').AsInteger of
+     1:ParValue:='西药 字';
+     2:ParValue:='中草药 字';
+     3:ParValue:='中成药 字';
+     end;
+   end;
+end;
+
+{procedure TFm_bmly.frReport1BeforePrint(Memo: TStringList; View: TfrView);
+begin
+  if View.Name='Mem_title' then memo.Text:=Trim(fm_main.Label_hospital.Caption)+'药品出库单';
+end;}
+
+end.

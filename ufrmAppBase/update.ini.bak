@@ -1,0 +1,12 @@
+[Message]
+Mainurl=http://192.168.0.1/药库系统/
+#更新日期
+Update=2007-12-12
+#更新列表  文件夹分隔符必须是\
+[Updatefiles]
+inifile=update.ini
+exefile=Pyk.exe
+dllfile=public.dll
+reportb=ykreport/入库单.frf
+reportc=ykreport/出库单.frf
+reportd=ykreport/请领单.frf

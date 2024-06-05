@@ -1,0 +1,657 @@
+object Fm_report: TFm_report
+  Left = 908
+  Top = 264
+  Width = 727
+  Height = 547
+  Caption = 'Fm_report'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object frReport1: TfrReport
+    InitialZoom = pzDefault
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
+    ShowProgress = False
+    RebuildPrinter = False
+    OnGetValue = frReport1GetValue
+    OnBeforePrint = frReport1BeforePrint
+    Left = 115
+    Top = 88
+    ReportForm = {19000000}
+  end
+  object frDBDataSet1: TfrDBDataSet
+    DataSet = dm.Q_MedStore
+    Left = 168
+    Top = 144
+  end
+  object frDBDataSet2: TfrDBDataSet
+    DataSet = dm.Q_comm
+    Left = 200
+    Top = 144
+  end
+  object frShapeObject1: TfrShapeObject
+    Left = 132
+    Top = 44
+  end
+  object frDesigner1: TfrDesigner
+    Left = 328
+    Top = 72
+  end
+  object frDBDataSet3: TfrDBDataSet
+    DataSet = dm.Q_public
+    Left = 240
+    Top = 144
+  end
+  object frDBDataSet4: TfrDBDataSet
+    DataSet = dm.Q_comm
+    Left = 272
+    Top = 144
+  end
+  object frDBDataSet5: TfrDBDataSet
+    DataSet = dm.Q_use
+    Left = 304
+    Top = 144
+  end
+  object frxrprt1: TfrxReport
+    Version = '4.6.8'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42968.418357338000000000
+    ReportOptions.LastChange = 42968.447896481480000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    OnBeforePrint = frxrprt1BeforePrint
+    OnGetValue = frxrprt1GetValue
+    Left = 72
+    Top = 216
+    Datasets = <
+      item
+        DataSet = frxdbdtst_tj
+        DataSetName = 'frxdbdtst_tj'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 100.000000000000000000
+      PaperSize = 256
+      LeftMargin = 5.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 5.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object ReportTitle1: TfrxReportTitle
+        Height = 22.677180000000000000
+        Top = 18.897650000000000000
+        Width = 737.008350000000000000
+        object Memo13: TfrxMemoView
+          Left = 211.653680000000000000
+          Width = 449.764070000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8 = (
+            '')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        Height = 22.677180000000000000
+        Top = 158.740260000000000000
+        Width = 737.008350000000000000
+        DataSet = frxdbdtst_tj
+        DataSetName = 'frxdbdtst_tj'
+        RowCount = 0
+        object frxdbdtst_tjypbh: TfrxMemoView
+          Left = 3.779530000000000000
+          Width = 56.692950000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'ypbh'
+          DataSet = frxdbdtst_tj
+          DataSetName = 'frxdbdtst_tj'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            '[frxdbdtst_tj."ypbh"]')
+          ParentFont = False
+        end
+        object frxdbdtst_tjym: TfrxMemoView
+          Left = 64.252010000000000000
+          Width = 162.519790000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'ym'
+          DataSet = frxdbdtst_tj
+          DataSetName = 'frxdbdtst_tj'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            '[frxdbdtst_tj."ym"]')
+          ParentFont = False
+        end
+        object frxdbdtst_tjgg: TfrxMemoView
+          Left = 230.551330000000000000
+          Width = 109.606370000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'gg'
+          DataSet = frxdbdtst_tj
+          DataSetName = 'frxdbdtst_tj'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            '[frxdbdtst_tj."gg"]')
+          ParentFont = False
+        end
+        object frxdbdtst_tjproduce: TfrxMemoView
+          Left = 347.716760000000000000
+          Width = 128.504020000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'produce'
+          DataSet = frxdbdtst_tj
+          DataSetName = 'frxdbdtst_tj'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            '[frxdbdtst_tj."produce"]')
+          ParentFont = False
+        end
+        object frxdbdtst_tjpfj: TfrxMemoView
+          Left = 480.000310000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'pfj'
+          DataSet = frxdbdtst_tj
+          DataSetName = 'frxdbdtst_tj'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            '[frxdbdtst_tj."pfj"]')
+          ParentFont = False
+        end
+        object frxdbdtst_tjrksl: TfrxMemoView
+          Left = 566.929500000000000000
+          Width = 41.574830000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'rksl'
+          DataSet = frxdbdtst_tj
+          DataSetName = 'frxdbdtst_tj'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            '[frxdbdtst_tj."rksl"]')
+          ParentFont = False
+        end
+        object frxdbdtst_tjjldw: TfrxMemoView
+          Left = 619.842920000000000000
+          Width = 52.913420000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'jldw'
+          DataSet = frxdbdtst_tj
+          DataSetName = 'frxdbdtst_tj'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            '[frxdbdtst_tj."jldw"]')
+          ParentFont = False
+        end
+        object frxdbdtst_tjpfjqe: TfrxMemoView
+          Left = 676.535870000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          DataField = 'pfjqe'
+          DataSet = frxdbdtst_tj
+          DataSetName = 'frxdbdtst_tj'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            '[frxdbdtst_tj."pfjqe"]')
+          ParentFont = False
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        Height = 22.677180000000000000
+        Top = 241.889920000000000000
+        Width = 737.008350000000000000
+        object Memo1: TfrxMemoView
+          Left = 283.464750000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          HAlign = haRight
+          Memo.UTF8 = (
+            '[Page#]')
+        end
+      end
+      object ColumnHeader1: TfrxColumnHeader
+        Height = 34.015770000000000000
+        Top = 64.252010000000000000
+        Width = 737.008350000000000000
+        object Memo2: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 7.338590000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #38013#57882#25639#32514#26663#24447)
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          Left = 75.590600000000000000
+          Top = 7.338590000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #38013#57882#25639#37722#23943#1054)
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          Left = 230.551330000000000000
+          Top = 7.338590000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #29785#21228#29304)
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Left = 347.716760000000000000
+          Top = 7.338590000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #27996#1091#57741)
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          Left = 483.779840000000000000
+          Top = 7.338590000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #26473#28055#29615)
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          Left = 559.370440000000000000
+          Top = 7.338590000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #29825#8243#22429#37825#20276#22138)
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          Left = 627.401980000000000000
+          Top = 0.338590000000000000
+          Width = 34.015770000000000000
+          Height = 34.015770000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #38013#57882#31793#37719#26330#32133)
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Left = 672.756340000000000000
+          Top = 7.338590000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          ShowHint = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8 = (
+            #26473#28055#29615#38322#25126#58754)
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object frxdbdtst_tj: TfrxDBDataset
+    UserName = 'frxdbdtst_tj'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'flag=flag'
+      'ypbh=ypbh'
+      'ym=ym'
+      'gg=gg'
+      'produce=produce'
+      'pfj=pfj'
+      'rksl=rksl'
+      'jldw=jldw'
+      'inc_name=inc_name'
+      'createdate=createdate'
+      'opid=opid'
+      'auditdate=auditdate'
+      'auditopid=auditopid'
+      'inbankdate=inbankdate'
+      'inbankopid=inbankopid'
+      'num=num'
+      'days=days'
+      'cjbm=cjbm'
+      'ylsj=ylsj'
+      'jx=jx'
+      'rksl_1=rksl_1'
+      'qe=qe'
+      'lb=lb'
+      'zxdw=zxdw'
+      'hsb=hsb'
+      'pfj_1=pfj_1'
+      'inc_code=inc_code'
+      'kcl=kcl'
+      'zykcl=zykcl'
+      'mzkcl=mzkcl'
+      'pivaskcl=pivaskcl'
+      'planid=planid'
+      'pfjqe=pfjqe')
+    DataSet = dm.Q_tj
+    Left = 136
+    Top = 216
+  end
+  object frxdsgnr1: TfrxDesigner
+    DefaultScriptLanguage = 'PascalScript'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -13
+    DefaultFont.Name = 'Arial'
+    DefaultFont.Style = []
+    DefaultLeftMargin = 10.000000000000000000
+    DefaultRightMargin = 10.000000000000000000
+    DefaultTopMargin = 10.000000000000000000
+    DefaultBottomMargin = 10.000000000000000000
+    DefaultPaperSize = 9
+    DefaultOrientation = poPortrait
+    TemplatesExt = 'fr3'
+    Restrictions = []
+    RTLLanguage = False
+    Left = 136
+    Top = 304
+  end
+  object RIP1: TfrxDBDataset
+    UserName = 'RIP1'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'cfdh=cfdh'
+      'use=use'
+      'yl=yl'
+      'zsldw=zsldw'
+      'XH=XH'
+      'yzdh=yzdh'
+      'ksbm=ksbm'
+      'mzh=mzh'
+      'yzlb=yzlb'
+      'yznr=yznr'
+      'ypbh=ypbh'
+      'gg=gg'
+      'xmbm=xmbm'
+      'xmmc=xmmc'
+      'groupid=groupid'
+      'grdchar=grdchar'
+      'mryl=mryl'
+      'ts=ts'
+      'zsl=zsl'
+      'ylsj=ylsj'
+      'QE=QE'
+      'ysbm=ysbm'
+      'OPID=OPID'
+      'cfdh_1=cfdh_1'
+      'yf=yf'
+      'rcs=rcs'
+      'usage=usage'
+      'cs=cs'
+      'cfzxdw=cfzxdw'
+      'frequency=frequency'
+      'speed=speed'
+      'zxdw=zxdw'
+      'mxbz=mxbz'
+      'usenum=usenum'
+      'useunit=useunit'
+      'remark=remark'
+      'yfbm=yfbm'
+      'time_start=time_start'
+      'zxhs_no=zxhs_no'
+      'zxtime=zxtime'
+      'fyrq=fyrq'
+      'Appoint_Id=Appoint_Id'
+      'no=no'
+      'no_zf=no_zf'
+      'cflb=cflb'
+      'CourseCode=CourseCode'
+      'CourseName=CourseName'
+      'freqCode=freqCode')
+    DataSet = dm.qrcfview1
+    Left = 224
+    Top = 256
+  end
+  object Rip2: TfrxDBDataset
+    UserName = 'Rip2'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'cfdh=cfdh'
+      'use=use'
+      'yl=yl'
+      'zsldw=zsldw'
+      'XH=XH'
+      'yzdh=yzdh'
+      'ksbm=ksbm'
+      'mzh=mzh'
+      'yzlb=yzlb'
+      'yznr=yznr'
+      'ypbh=ypbh'
+      'gg=gg'
+      'xmbm=xmbm'
+      'xmmc=xmmc'
+      'groupid=groupid'
+      'grdchar=grdchar'
+      'mryl=mryl'
+      'ts=ts'
+      'zsl=zsl'
+      'ylsj=ylsj'
+      'QE=QE'
+      'ysbm=ysbm'
+      'OPID=OPID'
+      'cfdh_1=cfdh_1'
+      'yf=yf'
+      'rcs=rcs'
+      'usage=usage'
+      'cs=cs'
+      'cfzxdw=cfzxdw'
+      'frequency=frequency'
+      'speed=speed'
+      'zxdw=zxdw'
+      'mxbz=mxbz'
+      'usenum=usenum'
+      'useunit=useunit'
+      'remark=remark'
+      'yfbm=yfbm'
+      'time_start=time_start'
+      'zxhs_no=zxhs_no'
+      'zxtime=zxtime'
+      'fyrq=fyrq'
+      'Appoint_Id=Appoint_Id'
+      'no=no'
+      'no_zf=no_zf'
+      'cflb=cflb'
+      'CourseCode=CourseCode'
+      'CourseName=CourseName'
+      'freqCode=freqCode')
+    DataSet = dm.qrcfview2
+    Left = 272
+    Top = 256
+  end
+  object Rip3: TfrxDBDataset
+    UserName = 'Rip3'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'cfdh=cfdh'
+      'use=use'
+      'yl=yl'
+      'zsldw=zsldw'
+      'XH=XH'
+      'yzdh=yzdh'
+      'ksbm=ksbm'
+      'mzh=mzh'
+      'yzlb=yzlb'
+      'yznr=yznr'
+      'ypbh=ypbh'
+      'gg=gg'
+      'xmbm=xmbm'
+      'xmmc=xmmc'
+      'groupid=groupid'
+      'grdchar=grdchar'
+      'mryl=mryl'
+      'ts=ts'
+      'zsl=zsl'
+      'ylsj=ylsj'
+      'QE=QE'
+      'ysbm=ysbm'
+      'OPID=OPID'
+      'cfdh_1=cfdh_1'
+      'yf=yf'
+      'rcs=rcs'
+      'usage=usage'
+      'cs=cs'
+      'cfzxdw=cfzxdw'
+      'frequency=frequency'
+      'speed=speed'
+      'zxdw=zxdw'
+      'mxbz=mxbz'
+      'usenum=usenum'
+      'useunit=useunit'
+      'remark=remark'
+      'yfbm=yfbm'
+      'time_start=time_start'
+      'zxhs_no=zxhs_no'
+      'zxtime=zxtime'
+      'fyrq=fyrq'
+      'Appoint_Id=Appoint_Id'
+      'no=no'
+      'no_zf=no_zf'
+      'cflb=cflb'
+      'CourseCode=CourseCode'
+      'CourseName=CourseName'
+      'freqCode=freqCode')
+    DataSet = dm.qrcfview3
+    Left = 312
+    Top = 256
+  end
+  object frxDBDataset2: TfrxDBDataset
+    UserName = 'RipTitle'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'mzh=mzh'
+      'name=name'
+      'sex=sex'
+      'sflb=sflb'
+      'ksmc=ksmc'
+      'ghrq=ghrq'
+      'age=age'
+      'address=address'
+      'ysbm=ysbm'
+      'ys_name=ys_name'
+      'med_clinical=med_clinical'
+      'med_history=med_history'
+      'med_lab=med_lab'
+      'med_advice=med_advice'
+      'Med_HistoryAllergy=Med_HistoryAllergy'
+      'telephone=telephone'
+      'bh=bh'
+      'Out_Patient_ID=Out_Patient_ID')
+    DataSet = dm.Q_RipTitle
+    Left = 232
+    Top = 216
+  end
+end

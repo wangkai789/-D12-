@@ -1,0 +1,206 @@
+object fm_sxypcx: Tfm_sxypcx
+  Left = 103
+  Top = 10
+  Width = 1293
+  Height = 721
+  Caption = #22833#25928#33647#21697#26597#35810
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 31
+    Top = 23
+    Width = 48
+    Height = 12
+    Caption = #36215#22987#26085#26399
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 251
+    Top = 23
+    Width = 48
+    Height = 12
+    Caption = #32456#27490#26085#26399
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 4
+    Top = 56
+    Width = 916
+    Height = 558
+    DataSource = dm.DS_comm
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    TitleFont.Charset = GB2312_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = #23435#20307
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ym'
+        Title.Alignment = taCenter
+        Title.Caption = #33647#21517
+        Width = 92
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ghdw'
+        Title.Alignment = taCenter
+        Title.Caption = #20379#36135#21333#20301
+        Width = 140
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'sccj'
+        Title.Alignment = taCenter
+        Title.Caption = #29983#20135#21378#23478
+        Width = 150
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'sxrq'
+        Title.Alignment = taCenter
+        Title.Caption = #22833#25928#26085#26399
+        Width = 121
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'jx'
+        Title.Alignment = taCenter
+        Title.Caption = #21058#22411
+        Width = 35
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'gg'
+        Title.Alignment = taCenter
+        Title.Caption = #35268#26684
+        Width = 78
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'dw'
+        Title.Alignment = taCenter
+        Title.Caption = #35745#37327#21333#20301
+        Width = 52
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'sl'
+        Title.Alignment = taCenter
+        Title.Caption = #24211#23384#37327
+        Width = 46
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ylsj'
+        Title.Alignment = taCenter
+        Title.Caption = #38646#21806#20215
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'je'
+        Title.Alignment = taCenter
+        Title.Caption = #37329#39069
+        Width = 89
+        Visible = True
+      end>
+  end
+  object btn_cx: TBitBtn
+    Left = 520
+    Top = 14
+    Width = 87
+    Height = 31
+    Caption = #26597#35810
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = btn_cxClick
+  end
+  object btn_exit: TBitBtn
+    Left = 632
+    Top = 14
+    Width = 87
+    Height = 31
+    Caption = #36864#20986
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    OnClick = btn_exitClick
+  end
+  object datefrom: TDateTimePicker
+    Left = 103
+    Top = 19
+    Width = 121
+    Height = 20
+    Date = 37102.000000000000000000
+    Time = 37102.000000000000000000
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnKeyPress = datefromKeyPress
+  end
+  object dateto: TDateTimePicker
+    Left = 323
+    Top = 19
+    Width = 113
+    Height = 20
+    Date = 37102.999988425900000000
+    Time = 37102.999988425900000000
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    OnKeyPress = datetoKeyPress
+  end
+end

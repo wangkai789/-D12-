@@ -1,0 +1,66 @@
+unit OutStore;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, 
+  Dialogs, BaseFrame, StdCtrls, Buttons, ExtCtrls;
+
+type
+  TFrame_OutStore = class(TFrame)
+    Frame_base1: TFrame_base;
+    rg_StoreClass: TRadioGroup;
+    btn_print: TBitBtn;
+    procedure Frame_base1btn_SearchClick(Sender: TObject);
+    procedure Frame_base1btn_SearchInStoreTotalClick(Sender: TObject);
+    procedure btn_printClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+implementation
+
+uses InterfaceMedStore,data;
+
+{$R *.dfm}
+
+procedure TFrame_OutStore.btn_printClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+     ackh:integer;
+     ackrq:tdatetime;
+begin
+  ackh:=strtoint(trim(Ed_ckdh.text));
+  ackrq:=date();
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.PrintOutStore(Fm_report.frxrprt1,dm.q_comm,ackrq,ackh);
+end;
+
+procedure TFrame_OutStore.Frame_base1btn_SearchClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+     ayfbm:integer;
+begin
+  MYMedStore:=TMedStore.Create;
+  ayfbm:=strtoint(dm.GetComboxValue(Frame_base1.cbb_yfbm,':',true));
+  with Frame_base1 do
+  begin
+    dm.InitGrid(1,'MedStore_OutStore.xml',Frame_base1.cxgrdbtblvw);
+    Frame_base1.FTemplateName:='³ö¿â±í';
+    MYMedStore.SearchOutStore(Q_Result,ayfbm,rg1.itemindex,rg_StoreClass.ItemIndex,edt_SearchCondition.Text,DT_from.date,DT_to.Date);
+  end;
+end;
+
+procedure TFrame_OutStore.Frame_base1btn_SearchInStoreTotalClick(
+  Sender: TObject);
+var  MYMedStore:IMedStore;
+begin
+  MYMedStore:=TMedStore.Create;
+  with Frame_base1 do
+  begin
+    dm.InitGrid(1,'MedStore_OutStoreTotal.xml',Frame_base1.cxgrdbtblvw);
+    MYMedStore.SearchOutStoreTotal(Q_Result,OutPatient,rg1.itemindex,DT_from.date,DT_to.Date);
+  end;
+end;
+
+end.

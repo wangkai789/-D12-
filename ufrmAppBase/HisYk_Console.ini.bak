@@ -1,0 +1,15 @@
+[rk]
+certify='合格'
+face='完整'
+explain='齐全'
+StoreCondition='常温'
+CheckConclusion='合格'
+[storetype]
+StoreA=A库
+
+[user]
+safekeep=8:杜严明
+purchase=8:杜严明
+accountant=8:杜严明
+
+

@@ -1,0 +1,301 @@
+unit SendMedRePrintUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Grids, DBGrids, StdCtrls, Mask, Buttons, ComCtrls, ExtCtrls, Data.DB, MemDS,
+  DBAccess, Uni;
+
+type
+  TFrm_SendMedRePrint = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    qstime: TDateTimePicker;
+    jztime: TDateTimePicker;
+    BitBtn1: TBitBtn;
+    DBgrid_bq: TDBGrid;
+    Panel2: TPanel;
+    dt_from: TDateTimePicker;
+    dt_to: TDateTimePicker;
+    Label21: TLabel;
+    cmbx_storetype: TComboBox;
+    edt_sendno: TEdit;
+    lbl1: TLabel;
+    pnl1: TPanel;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    DBGrid_MedDetail: TDBGrid;
+    TabSheet2: TTabSheet;
+    grd_total: TDBGrid;
+    btn_search: TBitBtn;
+    Label3: TLabel;
+    edt_DeptID: TMaskEdit;
+    edt_DeptName: TEdit;
+    lab1: TLabel;
+    Label4: TLabel;
+    cbb_sendkind: TComboBox;
+    dbgrd_send: TDBGrid;
+    Splitter1: TSplitter;
+    btn_sendoprint: TBitBtn;
+    BitBtn_pt: TBitBtn;
+    Label5: TLabel;
+    cbb_yfbm: TComboBox;
+    Q_Detail: TUniQuery;
+    Q_Total: TUniQuery;
+    DS_Detail: TDataSource;
+    DS_Total: TDataSource;
+    procedure edt_DeptIDChange(Sender: TObject);
+    procedure edt_DeptIDKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
+    procedure DBgrid_bqDblClick(Sender: TObject);
+    procedure DBgrid_bqKeyPress(Sender: TObject; var Key: Char);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn_ptClick(Sender: TObject);
+    procedure edt_sendnoKeyPress(Sender: TObject; var Key: Char);
+    procedure btn_sendoprintClick(Sender: TObject);
+    procedure btn_searchClick(Sender: TObject);
+    procedure dbgrd_sendCellClick(Column: TColumn);
+    procedure DBgrid_bqExit(Sender: TObject);
+  private
+    { Private declarations }
+    function  SearchMedDetail(sendno:string;MedType,yfbm:integer):boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_SendMedRePrint: TFrm_SendMedRePrint;
+
+implementation
+
+uses data,Factory, reportform, czydl,InterfaceMedStore, main;
+
+{$R *.DFM}
+
+procedure TFrm_SendMedRePrint.edt_DeptIDChange(Sender: TObject);
+begin
+  DBGrid_MedDetail.Visible:=false;
+  grd_total.Visible:=false;
+  BitBtn_pt.Enabled:=false;
+end;
+
+procedure TFrm_SendMedRePrint.edt_DeptIDKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key<>#13 then exit;
+  with dm.Q_comm1 do
+  begin
+    close;
+    sql.clear;
+    sql.add(' select 序号=ksbm,科室名称=ksmc  from jgxx where ifzy=1 and lbd in (2,3)');
+    if length(trim(edt_DeptID.text))<>0 then
+    begin
+      sql.add('and  ksbm=:ksbm');
+      parambyname('ksbm').assmallint:=strtoint(edt_DeptID.text);
+    end;
+    open;
+    case recordcount of
+      0:begin
+          application.MessageBox('无此科室！请重选。','错误提示',0+mb_iconstop);
+          edt_DeptID.clear;
+          edt_DeptName.clear;
+          exit;
+        end;
+      1:DBGrid_bqDblClick(sender);
+    else  begin
+      DBGrid_bq.Visible:=true;
+      DBGrid_bq.SetFocus;
+    end;
+    end;
+  end;
+end;
+
+procedure TFrm_SendMedRePrint.FormShow(Sender: TObject);
+var MYMedStore:IMedStore;
+begin
+  dt_from.date:=date;
+  dt_to.date:=date;
+  edt_sendno.Clear;
+  qstime.Time :=strtotime('0:01:01');
+  jztime.Time :=strtotime('23:59:59');
+  cbb_sendkind.ItemIndex:=0;
+  dm.SetStoreValue(cmbx_storetype);
+   //--2024.04.22 wk 库房类别
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.GetYfbm(dm.Q_comm,cbb_yfbm,false);
+  cbb_yfbm.ItemIndex:=dm.GetComboxIndex(cbb_yfbm,dm.sysinfo.yfmc);//设置默认药房
+  //---
+  self.Caption:=dm.sysinfo.hospitalName+'-'+'住院发药重打';
+end;
+
+procedure TFrm_SendMedRePrint.DBgrid_bqDblClick(Sender: TObject);
+begin
+   edt_DeptName.text:=dm.Q_comm1['科室名称'];
+   edt_DeptID.text:=dm.Q_comm1['序号'];
+   DBgrid_bq.Visible :=false ;
+   btn_search.Click;
+end;
+
+procedure TFrm_SendMedRePrint.DBgrid_bqKeyPress(Sender: TObject; var Key: Char);
+begin
+   if key=#13 then DBgrid_bqDblClick(Sender);
+end;
+
+procedure TFrm_SendMedRePrint.BitBtn1Click(Sender: TObject);
+begin
+  dm.Q_fybq.Close;
+  close;
+end;
+
+procedure TFrm_SendMedRePrint.BitBtn_ptClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+     amedclass,akind,ayfbm:integer;
+     Asendno,ayzlb:string;
+begin
+    MYMedStore:=TMedStore.Create;
+    akind:=dm.sysinfo.InPatSendkind;
+    ayfbm:=strtoint(dm.GetComboxValue(cbb_yfbm,':',true));
+    ayzlb:=dbgrd_send.DataSource.DataSet.fieldbyname('yzlb').AsString;
+    Asendno:=trim(edt_sendno.Text);
+    Fm_report.Fyf:='';
+    Fm_report.Fhospital_name:=dm.sysinfo.hospitalName;
+    Fm_report.Ffyrq:=dbgrd_send.DataSource.DataSet.fieldbyname('fyrq').AsString;
+    Fm_report.FprintType:='重打('+ayzlb+')';
+    Fm_report.FHLDY:=dbgrd_send.DataSource.DataSet.fieldbyname('ksmc').AsString;
+    Fm_report.Ffyr:=dm.FopidName;
+    Fm_report.Fsendno:=Asendno;
+    Fm_report.FPatQty:=MYMedStore.SearchPatientCount(dm.Q_public1,Asendno);
+    MYMedStore.PrintSendMedTotal(Fm_report.frxrprt1,dm.Q_fybq,Asendno,amedclass,akind,ayfbm);
+
+end;
+procedure TFrm_SendMedRePrint.edt_sendnoKeyPress(Sender: TObject; var Key: Char);
+begin
+ if (Key=#13) then btn_sendoprint.Click();
+end;
+
+procedure TFrm_SendMedRePrint.btn_sendoprintClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+     amedclass,akind,ayfbm:integer;
+     Asendno,ayzlb:string;
+begin
+    if ((Trim(edt_sendno.text))='') then exit;
+    Asendno:=trim(edt_sendno.Text);
+    MYMedStore:=TMedStore.Create;
+    ayzlb:=dbgrd_send.DataSource.DataSet.fieldbyname('yzlb').AsString;
+    Fm_report.Fyf:='';
+    Fm_report.Fhospital_name:=Fm_main.Label_hospital.caption;
+    Fm_report.Ffyrq:=dbgrd_send.DataSource.DataSet.fieldbyname('fyrq').AsString;
+
+    Fm_report.FprintType:='发药重打('+ayzlb+')';
+    Fm_report.FHLDY:=dbgrd_send.DataSource.DataSet.fieldbyname('ksmc').AsString;
+    Fm_report.Ffyr:=dm.FopidName;
+    Fm_report.Fsendno:=trim(edt_sendno.Text);
+    Fm_report.FPatQty:=MYMedStore.SearchPatientCount(dm.Q_public1,Asendno);
+
+    //---2021.03.15 wk 判断打印中草药摆药单
+    if dbgrd_send.DataSource.DataSet.FieldByName('cflb').asstring='西药' then
+      amedclass:=0
+    else
+      amedclass:=1;
+    akind:=dm.sysinfo.InPatSendkind;
+    ayfbm:=strtoint(dm.GetComboxValue(cbb_yfbm,':',true));
+    MYMedStore.PrintSendMedDetail(Fm_report.frxrprt1,dm.Q_SendMedDetail,Asendno,amedclass,akind,ayfbm);
+end;
+
+procedure TFrm_SendMedRePrint.btn_searchClick(Sender: TObject);
+begin
+  with dm.Q_comm do
+  begin
+    Close ;
+    Sql.Clear ;
+    Sql.Add('exec Medstore_RePrint :datefrom,:dateto,:ksbm');
+    ParamByName('datefrom').AsDateTime :=strtodatetime(datetostr(dt_from.date)+' '+timetostr(qstime.time));
+    ParamByName('dateto').AsDateTime :=strtodatetime(datetostr(dt_to.date)+' '+timetostr(jztime.time));
+    if trim(edt_DeptID.text)<>'' then
+       ParamByName('ksbm').asstring:=trim(edt_DeptID.text)
+    else
+       ParamByName('ksbm').asstring:='999';
+    ParamByName('datefrom').AsDateTime :=strtodatetime(datetostr(dt_from.date)+' '+timetostr(qstime.time));
+    ParamByName('dateto').AsDateTime :=strtodatetime(datetostr(dt_to.date)+' '+timetostr(jztime.time));
+    Open ;
+    dbgrd_send.DataSource :=dm.DS_comm ;
+  end;
+end;
+
+procedure TFrm_SendMedRePrint.dbgrd_sendCellClick(Column: TColumn);
+var  ayfbm:integer;
+begin
+   ayfbm:=strtoint(dm.GetComboxValue(cbb_yfbm,':',true));
+   if not dbgrd_send.DataSource.DataSet.Active then Exit;
+   if dbgrd_send.DataSource.DataSet.RecordCount < 1 then Exit;
+   edt_sendno.Text:=trim(dbgrd_send.DataSource.DataSet.FieldByName('no').AsString) ;
+
+   if SearchMedDetail(edt_sendno.Text,1,ayfbm) then
+     DBGrid_MedDetail.DataSource:=DS_Detail
+   else
+     DBGrid_MedDetail.DataSource:=nil;
+
+   with Q_total do
+    begin
+      Close;
+      SQL.Clear;
+      sql.Add('select c.ypbh,c.ym,c.gg,sl=sum(b.mryl),c.jxbm,c.zxdw,gf=convert(char(1),b.gf),');
+      sql.Add('ylsj=round(c.ylsj/c.hsb,2),level='''',inp_place,produce,qe=sum(b.qe),c.hsb,');
+      sql.Add('mryl=');
+      sql.Add('case');
+      sql.Add('when ((sum(b.mryl)>0)) and (sum(b.mryl)>=c.hsb) and (sum(b.mryl)%c.hsb=0) then');
+      sql.Add('ltrim(rtrim(convert(char(10),floor(sum(b.mryl)/c.hsb))))+c.jldw');
+      sql.Add('when ((sum(b.mryl)>0)) and (sum(b.mryl)>=c.hsb) and (sum(b.mryl)%c.hsb<>0) then');
+      sql.Add('rtrim(ltrim(rtrim(convert(char(10),floor(sum(b.mryl)/c.hsb))))+c.jldw)');
+      sql.Add('+ltrim(rtrim(convert(char(10),floor(sum(b.mryl)%c.hsb))))+c.zxdw collate database_default');
+      sql.Add('else');
+      sql.Add('ltrim(rtrim(convert(char(10),convert(float,sum(b.mryl)))))+c.zxdw collate database_default  ');
+      sql.Add('end');
+      sql.Add(',sl=sum(b.mryl)');
+      sql.Add('from cfdb a,cfyb b,xyzb c');
+      sql.Add('where  a.cfdh=b.cfdh and b.ypbh=c.ypbh and b.mryl<>0 ');
+      sql.Add('and a.sendno=:sendno');
+      sql.Add('group by c.jxbm,c.ypbh,c.ym,c.gg,c.jldw,c.zxdw,convert(char(1),b.gf),');
+      sql.Add('c.ylsj,c.inp_place,c.produce,c.hsb ');
+      sql.Add('order by inp_place,c.jxbm,c.ypbh');
+      ParamByName('sendno').asstring:=trim(edt_sendno.text);
+      Open;
+      if IsEmpty then
+        grd_total.DataSource:=NIL
+      ELSE
+        grd_total.DataSource:=DS_TOTAL;
+    end;
+    DBGrid_MedDetail.Visible:=true;
+    grd_total.Visible:=true;
+    DBgrid_bq.Visible:=false;
+    BitBtn_pt.Enabled:=true;
+    //----2021.03.15 wk 中药摆药单
+    if dbgrd_send.DataSource.DataSet.FieldByName('cflb').AsString='西药' then
+      cbb_sendkind.ItemIndex:=0
+    else
+      cbb_sendkind.ItemIndex:=2;
+end;
+
+procedure TFrm_SendMedRePrint.DBgrid_bqExit(Sender: TObject);
+begin
+  DBgrid_bq.Visible :=false ;
+end;
+
+function TFrm_SendMedRePrint.SearchMedDetail(sendno:string;MedType,yfbm:integer): boolean;
+begin
+  result:=false;
+  with  Q_Detail do
+  begin
+   Close;
+   SQL.Clear;
+   sql.add('exec Medstore_SearchMedDetail :sendno,:kind,:yfbm');
+   ParamByName('sendno').asstring:=sendno;
+   ParamByName('kind').asinteger:=1;
+   ParamByName('yfbm').AsInteger:=yfbm;
+   Open;
+   if isempty then exit;
+  end;
+  result:=true;
+end;
+end.

@@ -1,0 +1,348 @@
+unit yffy_abq_level;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Buttons, Mask, Grids, DBGrids, ExtCtrls,ComCtrls,Data.DB;
+
+
+type
+  TFm_yffy_abq_level = class(TForm)
+    DBGrid_yp: TDBGrid;
+    Panel2: TPanel;
+    Label1: TLabel;
+    Edt_roomid: TEdit;
+    edt_room: TEdit;
+    print_previw: TCheckBox;
+    Dbgrd_nurseunit: TDBGrid;
+    Splitter1: TSplitter;
+    RadioGroup1: TRadioGroup;
+    cmbx_dept: TComboBox;
+    BitBtn2: TBitBtn;
+    btn_send: TBitBtn;
+    btn_search: TBitBtn;
+    btn_print: TBitBtn;
+    StatusBar1: TStatusBar;
+    RdGrp_yzlb: TRadioGroup;
+    RdGrp_house: TRadioGroup;
+    Label2: TLabel;
+    Label4: TLabel;
+    edt_sendno: TEdit;
+    Label21: TLabel;
+    cbb_yfbm: TComboBox;
+    RG_MedClass: TRadioGroup;
+    procedure BitBtn2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btn_searchClick(Sender: TObject);
+    procedure btn_sendClick(Sender: TObject);
+    procedure Dbgrd_nurseunitDblClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_printClick(Sender: TObject);
+    procedure RadioGroup1Click(Sender: TObject);
+    procedure RdGrp_yzlbClick(Sender: TObject);
+  private
+    { Private declarations }
+    Fsendno:string;
+    Frecount:integer;
+    Fsendsucess:integer;
+    procedure ListSickBuilding();
+    procedure ListSickRoom();
+  public
+    { Public declarations }
+  end;
+
+var
+  Fm_yffy_abq_level: TFm_yffy_abq_level;
+implementation
+
+uses data,czydl,factory, main,InterfaceMedStore, reportform;
+{$R *.DFM}
+procedure TFm_yffy_abq_level.ListSickBuilding();
+begin
+   RdGrp_house.Items.Clear ;
+   with dm.q_comm do
+   begin
+     close;
+     sql.clear;
+     sql.add('select roomid,room From zy_sickroom where LEN(roomid)=2');
+     sql.add('order by roomid');
+     try
+       open;
+       first;
+       while not eof do
+       begin
+         RdGrp_house.Items.Add(fieldbyname('roomid').AsString+':'+fieldbyname('room').AsString);
+         next;
+       end;
+     except
+         exit;
+     end;
+   end;
+end;
+
+procedure TFm_yffy_abq_level.ListSickRoom();
+begin
+   with dm.q_comm1 do
+   begin
+     close;
+     sql.clear;
+     sql.add('select roomid,room,memo From zy_sickroom where LEN(roomid)=4');
+     sql.add('order by roomid');
+     open;
+     Dbgrd_nurseunit.DataSource:=dm.ds_comm1;
+   end;
+end;
+
+procedure TFm_yffy_abq_level.BitBtn2Click(Sender: TObject);
+begin
+ close;
+end;
+
+procedure TFm_yffy_abq_level.FormShow(Sender: TObject);
+var machinename:string;
+    MYMedStore:IMedStore;
+begin
+   DBGrid_yp.DataSource:=dm.DS_fybq;
+   ListSickBuilding();
+   ListSickRoom();
+   dm.List_DeptInfo(cmbx_dept);
+   dm.List_NurseUnit('');
+   RdGrp_house.ItemIndex :=0;
+   RadioGroup1.ItemIndex :=1;
+   cmbx_dept.Enabled:=false;
+   edt_sendno.Clear ;
+   StatusBar1.Panels[0].text:=dm.Fopid+':'+dm.FopidName;
+   RadioGroup1.OnClick(sender);
+
+   //--2024.14.22 wk 库房类别
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.GetYfbm(dm.Q_comm,cbb_yfbm,false);
+
+
+
+  cbb_yfbm.ItemIndex:=dm.GetComboxIndex(cbb_yfbm,dm.sysinfo.yfmc);//设置默认药房
+  //---
+end;
+
+procedure TFm_yffy_abq_level.btn_searchClick(Sender: TObject);
+var  adeptid,ayzlb,azyh,ayfbm:integer;
+     aroomid,arecount,Asendtype,Amsg:string;
+     MYMedStore:IMedStore;
+begin
+  MYMedStore:=TMedStore.Create;
+  ayfbm:=strtoint(dm.GetComboxValue(cbb_yfbm,':',true));
+  if RdGrp_yzlb.ItemIndex=2 then ayzlb:=999   else  ayzlb:=RdGrp_yzlb.ItemIndex;
+  case RadioGroup1.ItemIndex of
+  0:begin
+     Asendtype:='3';
+     azyh:=0;
+     adeptid:=0;
+     aroomid:=copy(RdGrp_house.Items[RdGrp_house.ItemIndex],1,2);
+   end;
+  1:begin
+    if trim(Edt_roomid.Text)='' then
+    begin
+        messagedlg('请选择准备发药的楼层！', mtWarning,[mbok],0);
+        exit;
+    end;
+     Asendtype:='3';
+     azyh:=0;
+     adeptid:=0;
+     aroomid:=trim(Edt_roomid.Text);
+   end;
+  2:begin
+    if trim(cmbx_dept.text)='' then
+    begin
+        messagedlg('请选择准备发药的科室！', mtWarning,[mbok],0);
+        exit;
+     end;
+       Asendtype:='4';
+       azyh:=0;
+       aroomid:='0000';
+       adeptid:=strtoint(copy(cmbx_dept.text,1,3));
+   end;
+ end;
+  if MYMedStore.ClearMedstoreTemp(dm.Q_public,adeptid,ayzlb,strtoint(fm_czydl.ed_bh.text),aroomid,asendtype,'1',ayfbm) then
+     begin
+         Amsg:=dm.Q_public.FieldByName('msg').AsString;
+         if application.MessageBox(pchar(Amsg),'提示',mb_yesno+MB_ICONQUESTION)=IDYES  then
+         MYMedStore.ClearMedstoreTemp(dm.Q_public,adeptid,ayzlb,strtoint(fm_czydl.ed_bh.text),aroomid,asendtype,'2',ayfbm)
+     end;
+  if  MYMedStore.LockMedinfo(dm.Q_fybq,aroomid,1,ayzlb,strtoint(dm.Fopid),adeptid,azyh,Asendtype,ayfbm)=true then
+      btn_send.Enabled:=true
+  else
+      btn_send.Enabled:=false;
+  try
+    arecount:=inttostr(dm.Q_fybq.recordcount); //记录数
+  except
+    exit;
+  end;
+  case RadioGroup1.ItemIndex of
+     0,1:StatusBar1.Panels[1].Text:=edt_room.text+'记录数：'+arecount;
+     2:StatusBar1.Panels[1].Text:=cmbx_dept.text+'记录数：'+arecount;
+  end;
+end;
+
+procedure TFm_yffy_abq_level.btn_sendClick(Sender: TObject);
+var ayzlb,ayplb,arecount,acfclass,atimeout,Ayfbm:integer;
+    aroomid,Asendtype,Amessage:string;
+    MYMedStore:IMedStore;
+begin
+  try
+    MYMedStore:=TMedStore.Create;
+    ayfbm:=strtoint(dm.GetComboxValue(cbb_yfbm,':',true));
+    arecount:=DBGrid_yp.DataSource.DataSet.RecordCount;
+    acfclass:=999;
+    if RdGrp_yzlb.ItemIndex=2  then   ayzlb:=999   else ayzlb:=RdGrp_yzlb.ItemIndex;
+    case  RadioGroup1.ItemIndex of
+    0:begin
+        Asendtype:='3';
+        aroomid:=copy(RdGrp_house.Items[RdGrp_house.ItemIndex],1,2);
+      end;
+    1:begin
+        Asendtype:='3';
+        aroomid:=trim(Edt_roomid.Text);
+      end;
+    2:begin
+        Asendtype:='4';
+        ayzlb:=999;
+        aroomid:='0000';
+      end;
+    end;
+    ayplb:=1;
+     //产生发药序号
+     edt_sendno.Text:=MYMedStore.GetSendno(dm.Q_public1);
+     //发药序号传递给窗体全局变量
+     //---------软件测试--------------------
+      //application.MessageBox(pchar(edt_sendno.Text),'信息',mb_iconerror);
+      //exit;
+
+     //--------------------------------
+     Fsendno:=trim(edt_sendno.Text);
+     if trim(edt_sendno.Text)='' then
+     begin
+       application.MessageBox('产生发药序号出错，请联系信息中心！','错误信息',mb_iconerror);
+       exit;
+     end;
+
+    if MYMedStore.SendMedinfo(dm.Q_public,strtoint(dm.Fopid),arecount,ayzlb,acfclass,aroomid,Asendtype,trim(edt_sendno.Text),'',ayfbm) then
+    begin
+        //发药后取回发药记录数 ，记录数传递给窗体全局变量
+        Frecount:=MYMedStore.CheckSend(dm.Q_public1,Asendtype,trim(edt_sendno.Text),ayfbm);
+         //比较返回的记录与锁定记录是否一致，如果一致打印报表
+        if Frecount=arecount then
+        begin
+         // dm.PrintMedinfo(0,strtointdef(copy(cmbx_dept.text,1,3),0),aroomid,ayplb,ayzlb,trim(edt_sendno.Text),Asendtype);
+          Fsendsucess:=255;
+          atimeout:=0;
+          btn_print.Click;
+          btn_send.Enabled:=false;
+
+        end else
+        begin
+          application.MessageBox(pchar('锁定记录与发药记录不同，请联系信息中心！'
+           +#13+'发药序号：'+Fsendno+'锁定记录：'+inttostr(arecount)+' 发药记录：'+inttostr(Frecount)),'错误信息',mb_iconerror);
+          //flog.AddLog('发药', '-------', '发药结束！','锁定记录与发药记录不同，请联系信息中心!','',flogtype);
+          Exit;
+        end;
+    end else
+    begin
+       DBGrid_yp.DataSource.DataSet.Close;
+       btn_send.Enabled:=false;
+       Exit;
+    end;
+  except
+     Exit;
+  end;
+end;
+
+procedure TFm_yffy_abq_level.Dbgrd_nurseunitDblClick(Sender: TObject);
+begin
+  if  Dbgrd_nurseunit.DataSource.DataSet.IsEmpty then exit;
+  Edt_roomid.Text:=Dbgrd_nurseunit.DataSource.DataSet.fieldbyname('CODE').AsString;
+  edt_room.Text:=Dbgrd_nurseunit.DataSource.DataSet.fieldbyname('NAME').AsString;
+  edt_sendno.Clear ;
+  btn_search.Click;
+end;
+
+procedure TFm_yffy_abq_level.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+   dm.Q_comm.Close;
+   dm.q_fybq.close;
+   Dbgrd_nurseunit.DataSource:=nil;
+   DBGrid_yp.DataSource:=nil;
+end;
+
+procedure TFm_yffy_abq_level.btn_printClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+     amedclass,akind,ayfbm:integer;
+begin
+
+    Fm_report.Fyf:='';
+    Fm_report.Fhospital_name:=dm.sysinfo.hospitalName;
+    Fm_report.Ffyrq:=datetimetostr(now);
+    Fm_report.FHLDY:=edt_room.Text;
+    Fm_report.Ffyr:=dm.FopidName;
+    Fm_report.Fsendno:=Fsendno;
+   // Frecount:=inttostr(Frecount);
+    case RdGrp_yzlb.ItemIndex of
+    0:Fm_report.FprintType:='发药打印【临】';
+    1:Fm_report.FprintType:='发药打印【长】';
+    2:Fm_report.FprintType:='发药打印【全】';
+    end;
+    akind:=dm.sysinfo.InPatSendkind;
+    ayfbm:=strtoint(dm.GetComboxValue(cbb_yfbm,':',true));
+    MYMedStore:=TMedStore.Create;
+    MYMedStore.PrintSendMedDetail(Fm_report.frxrprt1,dm.Q_SendMedDetail,Fsendno,RG_MedClass.ItemIndex,akind,ayfbm);
+    dm.Q_fybq.Close;
+end;
+
+
+procedure TFm_yffy_abq_level.RadioGroup1Click(Sender: TObject);
+var MYMedStore:IMedStore;
+begin
+  MYMedStore:=TMedStore.Create;
+  case RadioGroup1.ItemIndex of
+  0:begin
+     Dbgrd_nurseunit.Enabled:=false;
+     Dbgrd_nurseunit.Color:=clSkyBlue;
+     cmbx_dept.Enabled:=false;
+     cmbx_dept.ItemIndex:=-1;
+     RdGrp_house.Enabled:=true;
+     Edt_roomid.Clear;
+     edt_room.Clear;
+
+    end;
+  1:begin
+      Dbgrd_nurseunit.Enabled:=true;
+      Dbgrd_nurseunit.Color:=clInfoBk;
+      cmbx_dept.ItemIndex:=-1;
+      cmbx_dept.Enabled:=false;
+      RdGrp_house.Enabled:=false;
+      MYMedStore.SearchNurseUnit(dm.Q_comm1);
+    end;
+  2:begin
+      cmbx_dept.Enabled:=true;
+      Dbgrd_nurseunit.Enabled:=true;
+      Dbgrd_nurseunit.Color:=clSkyBlue;
+      Edt_roomid.Clear;
+      edt_room.Clear;
+      RdGrp_house.Enabled:=false;
+      RdGrp_yzlb.ItemIndex:=2;
+      MYMedStore.SearchDept(dm.Q_comm1);
+    end;
+  end;
+  dm.Q_fybq.Close;
+  btn_send.Enabled:=false;
+end;
+
+procedure TFm_yffy_abq_level.RdGrp_yzlbClick(Sender: TObject);
+begin
+  dm.Q_fybq.Close;
+  btn_search.Click;
+  btn_send.Enabled:=false;
+end;
+
+end.

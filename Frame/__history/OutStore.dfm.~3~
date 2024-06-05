@@ -1,0 +1,129 @@
+object Frame_OutStore: TFrame_OutStore
+  Left = 0
+  Top = 0
+  Width = 1348
+  Height = 687
+  TabOrder = 0
+  inline Frame_base1: TFrame_base
+    Left = 0
+    Top = 0
+    Width = 1348
+    Height = 687
+    Align = alClient
+    TabOrder = 0
+    inherited GroupBox3: TGroupBox
+      Height = 69
+      ExplicitHeight = 69
+      inherited Label15: TLabel
+        Left = 397
+        ExplicitLeft = 397
+      end
+      inherited Label7: TLabel
+        Left = 397
+        Top = 46
+        ExplicitLeft = 397
+        ExplicitTop = 46
+      end
+      inherited Label18: TLabel
+        Left = 523
+        Top = 34
+        ExplicitLeft = 523
+        ExplicitTop = 34
+      end
+      inherited lbl_MedName: TLabel
+        Left = 524
+        Top = 15
+        ExplicitLeft = 524
+        ExplicitTop = 15
+      end
+      inherited btn_Search: TBitBtn
+        Left = 647
+        Top = 24
+        OnClick = Frame_base1btn_SearchClick
+        ExplicitLeft = 647
+        ExplicitTop = 24
+      end
+      inherited DT_from: TDateTimePicker
+        Left = 413
+        Width = 101
+        ExplicitLeft = 413
+        ExplicitWidth = 101
+      end
+      inherited DT_to: TDateTimePicker
+        Left = 413
+        Top = 43
+        Width = 101
+        ExplicitLeft = 413
+        ExplicitTop = 43
+        ExplicitWidth = 101
+      end
+      inherited edt_SearchCondition: TEdit
+        Left = 554
+        Top = 31
+        Height = 23
+        ExplicitLeft = 554
+        ExplicitTop = 31
+        ExplicitHeight = 23
+      end
+      inherited btn_ExportXls: TBitBtn
+        Left = 802
+        Top = 23
+        ExplicitLeft = 802
+        ExplicitTop = 23
+      end
+      inherited BitBtn11: TBitBtn
+        Left = 880
+        Top = 23
+        ExplicitLeft = 880
+        ExplicitTop = 23
+      end
+      inherited rg1: TRadioGroup
+        Left = 225
+        Top = 7
+        Width = 170
+        Height = 57
+        Columns = 3
+        ExplicitLeft = 225
+        ExplicitTop = 7
+        ExplicitWidth = 170
+        ExplicitHeight = 57
+      end
+      inherited btn_SearchInStoreTotal: TBitBtn
+        Left = 724
+        Top = 23
+        Enabled = False
+        OnClick = Frame_base1btn_SearchInStoreTotalClick
+        ExplicitLeft = 724
+        ExplicitTop = 23
+      end
+    end
+    inherited cxgrd: TcxGrid
+      Top = 69
+      Height = 618
+      ExplicitTop = 69
+      ExplicitHeight = 618
+    end
+    inherited cxStyleRepository: TcxStyleRepository
+      PixelsPerInch = 96
+      inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+        BuiltIn = True
+      end
+      inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+        BuiltIn = True
+      end
+    end
+  end
+  object rg_StoreClass: TRadioGroup
+    Left = 143
+    Top = 7
+    Width = 82
+    Height = 57
+    Caption = #20986#24211#31867#22411
+    ItemIndex = 0
+    Items.Strings = (
+      #20840#37096
+      #20986#24211
+      #36864#24211)
+    TabOrder = 1
+  end
+end

@@ -1,0 +1,1101 @@
+object Fm_report: TFm_report
+  Left = 908
+  Top = 264
+  Caption = 'Fm_report'
+  ClientHeight = 508
+  ClientWidth = 711
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  TextHeight = 13
+  object frxrprt1: TfrxReport
+    Version = '2023.1.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45405.396352893500000000
+    ReportOptions.LastChange = 45430.274475567130000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    OnBeforePrint = frxrprt1BeforePrint
+    OnGetValue = frxrprt1GetValue
+    Left = 112
+    Top = 136
+    Datasets = <
+      item
+        DataSet = SendMed
+        DataSetName = 'SendMed'
+      end>
+    Variables = <>
+    Style = <
+      item
+        Name = 'Title'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -16
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        Fill.BackColor = clGray
+      end
+      item
+        Name = 'Header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMaroon
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+      end
+      item
+        Name = 'Group header'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMaroon
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+        Fill.BackColor = 16053492
+      end
+      item
+        Name = 'Data'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = []
+      end
+      item
+        Name = 'Group footer'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        Frame.Typ = []
+      end
+      item
+        Name = 'Header line'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        Frame.Typ = [ftBottom]
+        Frame.Width = 2.000000000000000000
+      end>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 26.456710000000000000
+        Top = 211.653680000000000000
+        Width = 718.110700000000000000
+        DataSet = SendMed
+        DataSetName = 'SendMed'
+        RowCount = 0
+        object Line1: TfrxLineView
+          AllowVectorExport = True
+          Left = 2.440940000000000000
+          Top = 21.236240000000000000
+          Width = 714.331170000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object SendMedym: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 7.559060000000000000
+          Width = 173.858380000000000000
+          Height = 18.897650000000000000
+          DataField = 'ym'
+          DataSet = SendMed
+          DataSetName = 'SendMed'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SendMed."ym"]')
+          ParentFont = False
+        end
+        object SendMedgg: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 188.976500000000000000
+          Width = 147.401670000000000000
+          Height = 18.897650000000000000
+          DataField = 'gg'
+          DataSet = SendMed
+          DataSetName = 'SendMed'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SendMed."gg"]')
+          ParentFont = False
+        end
+        object SendMedsl: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 336.378170000000000000
+          Width = 109.606370000000000000
+          Height = 18.897650000000000000
+          DataSet = SendMed
+          DataSetName = 'SendMed'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SendMed."mryl"] [SendMed."zxdw"]')
+          ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object SendMedylsj: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 453.543600000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          DataField = 'ylsj'
+          DataSet = SendMed
+          DataSetName = 'SendMed'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SendMed."ylsj"]')
+          ParentFont = False
+        end
+        object SendMedqe: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 532.913730000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'qe'
+          DataSet = SendMed
+          DataSetName = 'SendMed'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SendMed."qe"]')
+          ParentFont = False
+        end
+        object Memo24: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 616.063390000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          DataSet = SendMed
+          DataSetName = 'SendMed'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SendMed."inp_place"]')
+          ParentFont = False
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 3.779530000000000000
+        Top = 347.716760000000000000
+        Width = 718.110700000000000000
+      end
+      object ColumnHeader1: TfrxColumnHeader
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 133.283550000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object QRlab_date: TfrxMemoView
+          Align = baLeft
+          AllowVectorExport = True
+          Top = 79.047310000000000000
+          Width = 230.551330000000000000
+          Height = 18.897650000000000000
+          AutoWidth = True
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #176#218#210#169#202#177#188#228#163#186'[fyrq]')
+          ParentFont = False
+          VAlign = vaBottom
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 233.330860000000000000
+          Top = 76.826840000000000000
+          Width = 124.724490000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #181#247#188#193#200#203#163#186'[fyr]')
+          ParentFont = False
+          VAlign = vaBottom
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 4.637910000000000000
+          Top = 105.047310000000000000
+          Width = 188.976500000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = #23435#20307
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #210#169#195#251)
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 238.748300000000000000
+          Top = 105.047310000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = #23435#20307
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #185#230#184#241)
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 350.740570000000000000
+          Top = 105.047310000000000000
+          Width = 49.133890000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = #23435#20307
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #202#253#193#191)
+          ParentFont = False
+        end
+        object Line2: TfrxLineView
+          AllowVectorExport = True
+          Left = 3.338590000000000000
+          Top = 100.504020000000000000
+          Width = 710.551640000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line3: TfrxLineView
+          AllowVectorExport = True
+          Left = 2.338590000000000000
+          Top = 128.519790000000000000
+          Width = 714.331170000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo14: TfrxMemoView
+          AllowVectorExport = True
+          Left = 362.834880000000000000
+          Top = 77.708720000000000000
+          Width = 196.535560000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = #23435#20307
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #180#242#211#161#192#224#208#205#163#186'[printType]')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          AllowVectorExport = True
+          Left = 2.559060000000000000
+          Top = 3.543290000000000000
+          Width = 710.551640000000000000
+          Height = 18.897615830000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[hospital_name]')
+          ParentFont = False
+          VAlign = vaBottom
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 566.488560000000000000
+          Top = 79.370130000000000000
+          Width = 309.921460000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #21457#33647#24207#21495#65306'[sendno]')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 520.024120000000000000
+          Top = 105.047310000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = #23435#20307
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #189#240#182#238)
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          AllowVectorExport = True
+          Left = 431.945270000000000000
+          Top = 105.047310000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = #23435#20307
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            #181#165#188#219)
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Top = 34.015770000000000000
+          Width = 710.551640000000000000
+          Height = 18.897615830000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[hldy]'#25670#33647#27719#24635#21333)
+          ParentFont = False
+          VAlign = vaBottom
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object Memo20: TfrxMemoView
+          AllowVectorExport = True
+          Left = 616.063390000000000000
+          Top = 105.826840000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #36135#20301)
+          ParentFont = False
+        end
+      end
+      object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = '@'#23435#20307
+        Font.Style = []
+        Height = 26.456710000000000000
+        ParentFont = False
+        Top = 298.582870000000000000
+        Width = 718.110700000000000000
+        object Memo21: TfrxMemoView
+          AllowVectorExport = True
+          Left = 314.700990000000000000
+          Top = 3.779530000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #20849#65306'[COUNT(MasterData1)]'#26465)
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Left = 135.063080000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #201#243#186#203#200#203#163#186)
+          ParentFont = False
+          VAlign = vaBottom
+        end
+        object Memo16: TfrxMemoView
+          AllowVectorExport = True
+          Left = 68.031540000000000000
+          Top = 3.779530000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[fyr]')
+          ParentFont = False
+          VAlign = vaBottom
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 221.094620000000000000
+          Top = 3.779530000000000000
+          Width = 90.708720000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #199#169#215#214#187#164#202#191#163#186)
+          ParentFont = False
+          VAlign = vaBottom
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 478.559370000000000000
+          Top = 3.559060000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #37329#39069':[SUM(<SendMed."qe">,MasterData1)]')
+          ParentFont = False
+        end
+        object Memo22: TfrxMemoView
+          AllowVectorExport = True
+          Left = 8.338590000000000000
+          Top = 3.779530000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #21457#33647#20154':')
+          ParentFont = False
+        end
+        object Memo23: TfrxMemoView
+          AllowVectorExport = True
+          Left = 392.630180000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #21457#33647#20154#25968':[PatQty]')
+          ParentFont = False
+        end
+        object Memo25: TfrxMemoView
+          AllowVectorExport = True
+          Left = 566.709030000000000000
+          Top = 3.779530000000000000
+          Width = 336.378170000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -14
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            #25171#21360#26102#38388':[Now]')
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object frxdbdtst_tj: TfrxDBDataset
+    UserName = 'frxdbdtst_tj'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'flag=flag'
+      'ypbh=ypbh'
+      'ym=ym'
+      'gg=gg'
+      'produce=produce'
+      'pfj=pfj'
+      'rksl=rksl'
+      'jldw=jldw'
+      'inc_name=inc_name'
+      'createdate=createdate'
+      'opid=opid'
+      'auditdate=auditdate'
+      'auditopid=auditopid'
+      'inbankdate=inbankdate'
+      'inbankopid=inbankopid'
+      'num=num'
+      'days=days'
+      'cjbm=cjbm'
+      'ylsj=ylsj'
+      'jx=jx'
+      'rksl_1=rksl_1'
+      'qe=qe'
+      'lb=lb'
+      'zxdw=zxdw'
+      'hsb=hsb'
+      'pfj_1=pfj_1'
+      'inc_code=inc_code'
+      'kcl=kcl'
+      'zykcl=zykcl'
+      'mzkcl=mzkcl'
+      'pivaskcl=pivaskcl'
+      'planid=planid'
+      'pfjqe=pfjqe')
+    DataSet = dm.Q_tj
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 136
+    Top = 216
+  end
+  object frxdsgnr1: TfrxDesigner
+    DefaultScriptLanguage = 'PascalScript'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -13
+    DefaultFont.Name = 'Arial'
+    DefaultFont.Style = []
+    DefaultLeftMargin = 10.000000000000000000
+    DefaultRightMargin = 10.000000000000000000
+    DefaultTopMargin = 10.000000000000000000
+    DefaultBottomMargin = 10.000000000000000000
+    DefaultPaperSize = 9
+    DefaultOrientation = poPortrait
+    GradientEnd = 11982554
+    GradientStart = clWindow
+    TemplatesExt = 'fr3'
+    Restrictions = []
+    RTLLanguage = False
+    MemoParentFont = False
+    Left = 200
+    Top = 112
+  end
+  object RIP1: TfrxDBDataset
+    UserName = 'RIP1'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'cfdh=cfdh'
+      'use=use'
+      'yl=yl'
+      'zsldw=zsldw'
+      'XH=XH'
+      'yzdh=yzdh'
+      'ksbm=ksbm'
+      'mzh=mzh'
+      'yzlb=yzlb'
+      'yznr=yznr'
+      'ypbh=ypbh'
+      'gg=gg'
+      'xmbm=xmbm'
+      'xmmc=xmmc'
+      'groupid=groupid'
+      'grdchar=grdchar'
+      'mryl=mryl'
+      'ts=ts'
+      'zsl=zsl'
+      'ylsj=ylsj'
+      'QE=QE'
+      'ysbm=ysbm'
+      'OPID=OPID'
+      'cfdh_1=cfdh_1'
+      'yf=yf'
+      'rcs=rcs'
+      'usage=usage'
+      'cs=cs'
+      'cfzxdw=cfzxdw'
+      'frequency=frequency'
+      'speed=speed'
+      'zxdw=zxdw'
+      'mxbz=mxbz'
+      'usenum=usenum'
+      'useunit=useunit'
+      'remark=remark'
+      'yfbm=yfbm'
+      'time_start=time_start'
+      'zxhs_no=zxhs_no'
+      'zxtime=zxtime'
+      'fyrq=fyrq'
+      'Appoint_Id=Appoint_Id'
+      'no=no'
+      'no_zf=no_zf'
+      'cflb=cflb'
+      'CourseCode=CourseCode'
+      'CourseName=CourseName'
+      'freqCode=freqCode')
+    DataSet = dm.qrcfview1
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 224
+    Top = 256
+  end
+  object Rip2: TfrxDBDataset
+    UserName = 'Rip2'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'cfdh=cfdh'
+      'use=use'
+      'yl=yl'
+      'zsldw=zsldw'
+      'XH=XH'
+      'yzdh=yzdh'
+      'ksbm=ksbm'
+      'mzh=mzh'
+      'yzlb=yzlb'
+      'yznr=yznr'
+      'ypbh=ypbh'
+      'gg=gg'
+      'xmbm=xmbm'
+      'xmmc=xmmc'
+      'groupid=groupid'
+      'grdchar=grdchar'
+      'mryl=mryl'
+      'ts=ts'
+      'zsl=zsl'
+      'ylsj=ylsj'
+      'QE=QE'
+      'ysbm=ysbm'
+      'OPID=OPID'
+      'cfdh_1=cfdh_1'
+      'yf=yf'
+      'rcs=rcs'
+      'usage=usage'
+      'cs=cs'
+      'cfzxdw=cfzxdw'
+      'frequency=frequency'
+      'speed=speed'
+      'zxdw=zxdw'
+      'mxbz=mxbz'
+      'usenum=usenum'
+      'useunit=useunit'
+      'remark=remark'
+      'yfbm=yfbm'
+      'time_start=time_start'
+      'zxhs_no=zxhs_no'
+      'zxtime=zxtime'
+      'fyrq=fyrq'
+      'Appoint_Id=Appoint_Id'
+      'no=no'
+      'no_zf=no_zf'
+      'cflb=cflb'
+      'CourseCode=CourseCode'
+      'CourseName=CourseName'
+      'freqCode=freqCode')
+    DataSet = dm.qrcfview2
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 272
+    Top = 256
+  end
+  object Rip3: TfrxDBDataset
+    UserName = 'Rip3'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'cfdh=cfdh'
+      'use=use'
+      'yl=yl'
+      'zsldw=zsldw'
+      'XH=XH'
+      'yzdh=yzdh'
+      'ksbm=ksbm'
+      'mzh=mzh'
+      'yzlb=yzlb'
+      'yznr=yznr'
+      'ypbh=ypbh'
+      'gg=gg'
+      'xmbm=xmbm'
+      'xmmc=xmmc'
+      'groupid=groupid'
+      'grdchar=grdchar'
+      'mryl=mryl'
+      'ts=ts'
+      'zsl=zsl'
+      'ylsj=ylsj'
+      'QE=QE'
+      'ysbm=ysbm'
+      'OPID=OPID'
+      'cfdh_1=cfdh_1'
+      'yf=yf'
+      'rcs=rcs'
+      'usage=usage'
+      'cs=cs'
+      'cfzxdw=cfzxdw'
+      'frequency=frequency'
+      'speed=speed'
+      'zxdw=zxdw'
+      'mxbz=mxbz'
+      'usenum=usenum'
+      'useunit=useunit'
+      'remark=remark'
+      'yfbm=yfbm'
+      'time_start=time_start'
+      'zxhs_no=zxhs_no'
+      'zxtime=zxtime'
+      'fyrq=fyrq'
+      'Appoint_Id=Appoint_Id'
+      'no=no'
+      'no_zf=no_zf'
+      'cflb=cflb'
+      'CourseCode=CourseCode'
+      'CourseName=CourseName'
+      'freqCode=freqCode')
+    DataSet = dm.qrcfview3
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 312
+    Top = 256
+  end
+  object frxDBDataset2: TfrxDBDataset
+    UserName = 'RipTitle'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'mzh=mzh'
+      'name=name'
+      'sex=sex'
+      'sflb=sflb'
+      'ksmc=ksmc'
+      'ghrq=ghrq'
+      'age=age'
+      'address=address'
+      'ysbm=ysbm'
+      'ys_name=ys_name'
+      'med_clinical=med_clinical'
+      'med_history=med_history'
+      'med_lab=med_lab'
+      'med_advice=med_advice'
+      'Med_HistoryAllergy=Med_HistoryAllergy'
+      'telephone=telephone'
+      'bh=bh'
+      'Out_Patient_ID=Out_Patient_ID')
+    DataSet = dm.Q_RipTitle
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 344
+    Top = 176
+  end
+  object Result: TfrxDBDataset
+    UserName = 'Result'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'lsh=lsh'
+      'ypbh=ypbh'
+      'ym=ym'
+      'gg=gg'
+      'jldw=jldw'
+      'rksl=rksl'
+      'jhj=jhj'
+      'lsj=lsj'
+      'RPAmt=RPAmt'
+      'SPAmt=SPAmt'
+      'gre=gre'
+      'cgy=cgy'
+      'fhr=fhr'
+      'rkrq=rkrq'
+      'inc_name=inc_name'
+      'produce=produce'
+      'ypph=ypph'
+      'sxrq=sxrq'
+      'opidName=opidName')
+    DataSet = dm.Q_public
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 144
+    Top = 336
+  end
+  object OUT: TfrxDBDataset
+    UserName = 'OUT'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'qldh=qldh'
+      'ypbh=ypbh'
+      'sfl=sfl'
+      'type=type'
+      'ckh=ckh'
+      'lsj=lsj'
+      'ksmc=ksmc'
+      'supplyksmc=supplyksmc'
+      'fyr=fyr'
+      'ym=ym'
+      'gg=gg'
+      'jldw=jldw'
+      'qlrq=qlrq'
+      'fyrq=fyrq'
+      'je=je'
+      'produce=produce'
+      'ypph=ypph'
+      'sxrq=sxrq'
+      'pfj=pfj'
+      'pfjqe=pfjqe'
+      'abstract=abstract'
+      'rkxh=rkxh'
+      'rkxh_1=rkxh_1'
+      'ksbm=ksbm'
+      'ypbh_1=ypbh_1'
+      'bh=bh'
+      'rkxh_2=rkxh_2')
+    DataSet = dm.Q_OUT
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 304
+    Top = 376
+  end
+  object SendMed: TfrxDBDataset
+    UserName = 'SendMed'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'level=level'
+      'ksbm=ksbm'
+      'ksmc=ksmc'
+      'ypbh=ypbh'
+      'ym=ym'
+      'gg=gg'
+      'produce=produce'
+      'mryl=mryl'
+      'qe=qe'
+      'zxdw=zxdw'
+      'zlbm=zlbm'
+      'ylsj=ylsj'
+      'inp_place=inp_place'
+      'yzlb=yzlb')
+    DataSet = dm.Q_fybq
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 480
+    Top = 328
+  end
+  object SendMedDetail: TfrxDBDataset
+    UserName = 'SendMedDetail'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'zyh=zyh'
+      'byxm=byxm'
+      'ksmc=ksmc'
+      'xb=xb'
+      'nl=nl'
+      'ypbh=ypbh'
+      'ym=ym'
+      'gg=gg'
+      'mryl=mryl'
+      'zxdw=zxdw'
+      'produce=produce'
+      'ifcz=ifcz'
+      'room=room'
+      'mcsl=mcsl'
+      'rcs=rcs'
+      'frequency=frequency'
+      'yf=yf'
+      'cfzxdw=cfzxdw'
+      'cfdh=cfdh'
+      'id=id'
+      'cflb=cflb'
+      'Nurseunit=Nurseunit'
+      'usage=usage'
+      'qe=qe'
+      'ylsj=ylsj'
+      'Inp_Place=Inp_Place')
+    DataSet = dm.Q_SendMedDetail
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 584
+    Top = 352
+  end
+  object Rip4: TfrxDBDataset
+    UserName = 'Rip4'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'cfdh=cfdh'
+      'use=use'
+      'yl=yl'
+      'zsldw=zsldw'
+      'XH=XH'
+      'yzdh=yzdh'
+      'ksbm=ksbm'
+      'mzh=mzh'
+      'yzlb=yzlb'
+      'yznr=yznr'
+      'ypbh=ypbh'
+      'gg=gg'
+      'xmbm=xmbm'
+      'xmmc=xmmc'
+      'groupid=groupid'
+      'grdchar=grdchar'
+      'mryl=mryl'
+      'ts=ts'
+      'zsl=zsl'
+      'ylsj=ylsj'
+      'QE=QE'
+      'ysbm=ysbm'
+      'OPID=OPID'
+      'cfdh_1=cfdh_1'
+      'yf=yf'
+      'rcs=rcs'
+      'usage=usage'
+      'cs=cs'
+      'cfzxdw=cfzxdw'
+      'frequency=frequency'
+      'speed=speed'
+      'zxdw=zxdw'
+      'mxbz=mxbz'
+      'usenum=usenum'
+      'useunit=useunit'
+      'remark=remark'
+      'yfbm=yfbm'
+      'time_start=time_start'
+      'zxhs_no=zxhs_no'
+      'zxtime=zxtime'
+      'fyrq=fyrq'
+      'Appoint_Id=Appoint_Id'
+      'no=no'
+      'no_zf=no_zf'
+      'cflb=cflb'
+      'CourseCode=CourseCode'
+      'CourseName=CourseName'
+      'freqCode=freqCode')
+    DataSet = dm.qrcfview4
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 360
+    Top = 256
+  end
+end

@@ -1,0 +1,717 @@
+unit main;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Menus, Buttons, ToolWin, ComCtrls, jpeg, ExtCtrls, StdCtrls,mmsystem,
+  ShellApi,DateUtils,ykypgd,ypgd, auHTTP, auAutoUpgrader;
+
+type
+  TFrameClass  =  class    of    TFrame;
+
+type
+  TFm_main = class(TForm)
+    MainMenu1: TMainMenu;
+    MenuItem1: TMenuItem;
+    C1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem9: TMenuItem;
+    MenuItem10: TMenuItem;
+    MenuItem12: TMenuItem;
+    MenuItem14: TMenuItem;
+    J1: TMenuItem;
+    N23: TMenuItem;
+    N24: TMenuItem;
+    N26: TMenuItem;
+    N27: TMenuItem;
+    N28: TMenuItem;
+    M1: TMenuItem;
+    B1: TMenuItem;
+    Q1: TMenuItem;
+    M2: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
+    N6: TMenuItem;
+    N7: TMenuItem;
+    N8: TMenuItem;
+    N9: TMenuItem;
+    N11: TMenuItem;
+    N16: TMenuItem;
+    N17: TMenuItem;
+    N18: TMenuItem;
+    N30: TMenuItem;
+    N32: TMenuItem;
+    N33: TMenuItem;
+    N35: TMenuItem;
+    N36: TMenuItem;
+    N37: TMenuItem;
+    N39: TMenuItem;
+    N40: TMenuItem;
+    N41: TMenuItem;
+    N44: TMenuItem;
+    N22: TMenuItem;
+    N45: TMenuItem;
+    N46: TMenuItem;
+    N49: TMenuItem;
+    N19: TMenuItem;
+    N20: TMenuItem;
+    GroupBox1: TGroupBox;
+    SpdBut_rk: TSpeedButton;
+    SpdBut_login: TSpeedButton;
+    SpdBut_bmly: TSpeedButton;
+    SpdBut_tj: TSpeedButton;
+    SpdBut_lszcx: TSpeedButton;
+    SpdBut_quit: TSpeedButton;
+    N14: TMenuItem;
+    N25: TMenuItem;
+    SpdBut_update: TSpeedButton;
+    N13: TMenuItem;
+    N38: TMenuItem;
+    N42: TMenuItem;
+    N15: TMenuItem;
+    SpeedButton1: TSpeedButton;
+    R1: TMenuItem;
+    N21: TMenuItem;
+    StatusBar1: TStatusBar;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    N12: TMenuItem;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    N110: TMenuItem;
+    N210: TMenuItem;
+    N34: TMenuItem;
+    N401: TMenuItem;
+    N31: TMenuItem;
+    N43: TMenuItem;
+    Panel1: TPanel;
+    Image1: TImage;
+    Label_hospital: TLabel;
+    N29: TMenuItem;
+    SpeedButton7: TSpeedButton;
+    procedure FormShow(Sender: TObject);
+    procedure SpdBut_loginClick(Sender: TObject);
+    procedure SpdBut_quitClick(Sender: TObject);
+    procedure M2Click(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+    procedure MenuItem11Click(Sender: TObject);
+    procedure SpdBut_bmlyClick(Sender: TObject);
+    procedure N23Click(Sender: TObject);
+    procedure N27Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N28Click(Sender: TObject);
+    procedure Q1Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+    procedure N5Click(Sender: TObject);
+    procedure N6Click(Sender: TObject);
+    procedure MenuItem14Click(Sender: TObject);
+    procedure Label_hospitalClick(Sender: TObject);
+    procedure MenuItem7Click(Sender: TObject);
+    procedure N7Click(Sender: TObject);
+    procedure N8Click(Sender: TObject);
+    procedure SpdBut_tjClick(Sender: TObject);
+    procedure SpdBut_lszcxClick(Sender: TObject);
+    procedure N9Click(Sender: TObject);
+    procedure N16Click(Sender: TObject);
+    procedure N33Click(Sender: TObject);
+    procedure N35Click(Sender: TObject);
+    procedure N37Click(Sender: TObject);
+    procedure N40Click(Sender: TObject);
+    procedure N36Click(Sender: TObject);
+    procedure N41Click(Sender: TObject);
+    procedure N44Click(Sender: TObject);
+    procedure N45Click(Sender: TObject);
+    procedure N20Click(Sender: TObject);
+    procedure N49Click(Sender: TObject);
+    procedure N13Click(Sender: TObject);
+    procedure N14Click(Sender: TObject);
+    procedure N25Click(Sender: TObject);
+    procedure MenuItem12Click(Sender: TObject);
+    procedure SpdBut_updateClick(Sender: TObject);
+    procedure N38Click(Sender: TObject);
+    procedure N15Click(Sender: TObject);
+    procedure N21Click(Sender: TObject);
+    procedure R1Click(Sender: TObject);
+    procedure SpdBut_rkClick(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure N12Click(Sender: TObject);
+    procedure N210Click(Sender: TObject);
+    procedure N110Click(Sender: TObject);
+    procedure N34Click(Sender: TObject);
+    procedure N401Click(Sender: TObject);
+    procedure N31Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure N29Click(Sender: TObject);
+  private
+    { Private declarations }
+    FCurrentfrmClassName:  string;
+    FCurrentfrm:TFrame;
+    procedure  LoadFrameByClassName(theFrameClass:TFrameClass);
+  public
+    { Public declarations }
+     function system_sq(level:integer):boolean;
+     procedure memnu(temp:boolean);
+  end;
+
+var
+  Fm_main: TFm_main;
+  year,month:integer;
+
+implementation
+
+uses czydl, Factory, data, ChangePassWord, About, ypadd, yprk, bmly,
+  tjtj, kccx, ypcx, lsz, kccxdy, ypzhtj, crkxxtj, sccjwh,
+  tyygs, fkcl, ghdwkccx, sccjkccx, aqldcx, sxypcx,  ypbjtzd,
+  arkdcx, rkdcd, rkdzf, qldcd, zfddy, ykpd,tk,jyfcx,
+  yfsell, zzycx,ksly_back, medsend, reportform,
+  qlyp, ypdwwh, depqlyp, ypxg, zpckgl, ck, ypjc, qxwh,ParamSet,buyPlan,
+  qld_del,IntegratedQuery,InStore, PriceAdjustment,StoreTransfer;
+
+{$R *.DFM}
+{$R foo.res}
+
+procedure TFm_main.FormShow(Sender: TObject);
+const  Model='yyyy/mm/dd,hh:mm:ss'; { 设定时间格式 }
+var
+  Tp:TSearchRec; { 申明Tp为一个查找记录 }
+  Msg:string;
+  Tf,T2:string;
+  Y,M,D:word;
+  AMonthFirst,AMonthLast:TDateTime;
+begin
+  SpdBut_login.Click;
+  { 系统升级  }
+   Tf:=Application.ExeName;
+   FindFirst(Tf,faAnyFile,Tp);{ 查找目标文件 }
+   //T2:=FormatDateTime(Model,CovFileDate(Tp.FindData.ftLastWriteTime));{ 返回文件的修改时间 }
+   if CovFileDate(Tp.FindData.ftLastWriteTime)<factory.sys_updatetime then
+   begin
+     if application.MessageBox('管理系统检测到新版本，您需要升级吗？','提示信息',mb_yesno+mb_iconquestion+mb_defbutton1)=idyes then
+     begin
+       shellexecute(self.Handle,'open','UpdateSoftware.exe',nil,nil,sw_normal);
+       application.Terminate ;
+     end;
+   end;
+  FindClose(Tp);
+  GetMonthDay(date(),AMonthFirst,AMonthLast);
+ { If AMonthLast-date()<=3 Then
+  application.MessageBox('本月快到月底了，请注意进行药品结存','提示信息',mb_iconinformation);
+  decodedate(date(),Y,M,D);
+  If (D>0) and (D<9) Then
+     begin
+        With dm.q_comm do
+        begin
+           close;
+           sql.Clear;
+           sql.Add('select num=count(*) From pub_yphz where year(hzrq)=:Y and month(hzrq)=:M and ksbm=:ksbm ');
+           If M=1 Then
+             begin
+                 Y:=Y-1;
+                 M:=12;
+             end
+            Else
+                M:=M-1;
+           parambyname('M').asinteger:=M;
+           parambyname('Y').asinteger:=Y;
+           parambyname('ksbm').asinteger:=fm_czydl.Ed_ksmc.tag;
+           open;
+        end;
+        If dm.q_comm.fieldbyname('num').asinteger=0 Then
+        application.MessageBox('系统检测到上月尚未进行药品结存:'
+        +#13+'不能办理入库出库报损等业务,否则影响报表数据',
+        '提示信息',mb_yesno+mb_iconinformation);
+     end; }
+  year:=YearOf(Date);
+  month:=MonthOf(Date);
+  dm.Inital_SystemData;
+  self.Caption:='药库系统'+dm.FVer;
+end;
+
+
+procedure TFm_main.SpdBut_loginClick(Sender: TObject);
+var temp:boolean;
+begin
+  dataset_open(dm.q_comm,'select * from hospital_info');
+  Label_hospital.caption:=dm.q_comm.fieldbyname('name').asstring;
+  dm.SysInfo.hospitalName:=Label_hospital.caption;
+  dm.SysInfo.HospitalYBCode:=dm.q_comm.fieldbyname('bh_country').asstring;
+  self.Caption:=dm.SysInfo.HospitalYBCode+':'+dm.SysInfo.hospitalName+':'+'药库系统';
+  self.Tag:=500;
+  fm_czydl.showmodal;
+ 
+  if fm_czydl.Tag=0 then begin temp:=false; application.Terminate  end else temp:=true;
+  SpdBut_login.Down:=temp;
+  if temp then
+    begin
+     { if not dm.settime then
+        begin
+          application.messagebox('系统校时错误，请重新登陆系统！','错误提示',mb_iconstop);
+          temp:=false;
+        end;   }
+      SpdBut_login.caption:='挂起系统'
+    end
+  else SpdBut_login.caption:='登录系统';
+
+
+ if not fm_czydl.supperuser then
+   begin
+     if temp then
+       begin
+         if not system_sq(fm_czydl.level) then memnu(false)
+       end
+     else
+        memnu(temp)
+   end
+ else
+   memnu(temp);
+end;
+
+procedure TFm_main.SpdBut_quitClick(Sender: TObject);
+begin
+//fm_zzycx.showmodal;
+  close;
+end;
+
+procedure TFm_main.M2Click(Sender: TObject);
+var temp:TFmChangePassword;
+begin
+  temp:=TFmChangePassword.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.N1Click(Sender: TObject);
+var temp:TFmAbout;
+begin
+  temp:=TFmAbout.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.MenuItem11Click(Sender: TObject);
+begin
+  Fm_main.tag:=3;
+  Fm_ypadd.showmodal;
+end;
+
+procedure TFm_main.SpdBut_bmlyClick(Sender: TObject);
+var temp:TFm_buyPlan;
+begin
+  TEMP:=TFm_buyPlan.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.N23Click(Sender: TObject);
+var temp:TFrm_PriceAdjustment;
+begin
+  TEMP:=TFrm_PriceAdjustment.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.N27Click(Sender: TObject);
+var temp:TFm_kccx;
+begin
+  temp:=TFm_kccx.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.N2Click(Sender: TObject);
+var temp:TFm_ypcx;
+begin
+  temp:=TFm_ypcx.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.N28Click(Sender: TObject);
+begin
+  fm_lsz.lab_rkxh.visible:=False;
+  fm_lsz.Ed_rkxh.clear;
+  fm_lsz.Ed_rkxh.visible:=False;
+  fm_lsz.tag:=1;
+  fm_lsz.showmodal;
+end;
+
+procedure TFm_main.Q1Click(Sender: TObject);
+begin
+close;
+end;
+
+procedure TFm_main.N4Click(Sender: TObject);
+begin
+  fm_kccxdy.showmodal;
+end;
+
+procedure TFm_main.N5Click(Sender: TObject);
+var temp:Tfm_ypzhtj;
+begin
+  temp:=Tfm_ypzhtj.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.N6Click(Sender: TObject);
+var temp:Tfm_ypcrkxxtj;
+begin
+  temp:=Tfm_ypcrkxxtj.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.MenuItem14Click(Sender: TObject);
+begin
+  fm_sccjwh.showmodal;
+end;
+
+procedure TFm_main.Label_hospitalClick(Sender: TObject);
+begin
+//fm_fkcl.showmodal;
+end;
+
+procedure TFm_main.MenuItem7Click(Sender: TObject);
+var temp:Tfm_fkcl;
+begin
+  temp:=Tfm_fkcl.create(self);
+  temp.showmodal;
+  temp.free
+end;
+
+procedure TFm_main.N7Click(Sender: TObject);
+var temp:Tfm_ghdwkccx;
+begin
+  temp:=Tfm_ghdwkccx.create(self);
+  temp.showmodal;
+  temp.free
+end;
+
+procedure TFm_main.N8Click(Sender: TObject);
+var temp:Tfm_sccjkccx;
+begin
+  temp:=Tfm_sccjkccx.create(self);
+  temp.showmodal;
+  temp.free
+end;
+
+procedure TFm_main.SpdBut_tjClick(Sender: TObject);
+begin
+N23Click(Sender);
+end;
+
+procedure TFm_main.SpdBut_lszcxClick(Sender: TObject);
+begin
+  Fm_ypchange.showmodal;
+end;
+
+procedure TFm_main.N9Click(Sender: TObject);
+var temp:tfm_aqldcx;
+begin
+  temp:=tfm_aqldcx.create(self);
+  temp.showmodal;
+  temp.free
+end;
+
+procedure TFm_main.N16Click(Sender: TObject);
+var temp:tfm_ypbjtzd;
+begin
+  temp:=tfm_ypbjtzd.create(self);
+  temp.showmodal;
+  temp.free
+end;
+
+procedure TFm_main.N33Click(Sender: TObject);
+begin
+  fm_rkdcd.Tag:=1;
+  fm_rkdcd.showmodal;
+end;
+
+procedure TFm_main.N35Click(Sender: TObject);
+begin
+  fm_rkdzf.showmodal;
+end;
+
+procedure TFm_main.N37Click(Sender: TObject);
+begin
+fm_zfddy.showmodal;
+end;
+
+procedure TFm_main.N40Click(Sender: TObject);
+begin
+  fm_ykpd.showmodal;
+end;
+
+procedure TFm_main.N36Click(Sender: TObject);
+  var temp:tfm_qldcd;
+begin
+  temp:=tfm_qldcd.create(self);
+  temp.showmodal;
+  temp.free
+end;
+procedure TFm_main.N41Click(Sender: TObject);
+var temp:Tfm_jyfcx;
+begin
+  temp:=Tfm_jyfcx.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.N44Click(Sender: TObject);
+begin
+fm_arkdcx.showmodal;
+end;
+
+procedure TFm_main.N45Click(Sender: TObject);
+begin
+fm_yfsell.showmodal;
+end;
+
+procedure TFm_main.memnu(temp: boolean);
+begin
+  SpdBut_login.Down:=temp;
+  SpdBut_rk.Enabled:=temp;
+  SpdBut_bmly.Enabled:=temp;
+  SpdBut_tj.Enabled:=temp;
+  SpdBut_lszcx.Enabled:=temp;
+  MenuItem1.Enabled :=temp;
+  C1.Enabled :=temp;
+  J1.Enabled :=temp;
+  N26.Enabled :=temp;
+  B1.Enabled :=temp;
+  M1.Enabled :=temp;
+  Q1.Enabled:=temp;
+end;
+
+function TFm_main.system_sq(level: integer): boolean;
+var icount,j:integer;
+begin
+     with dm.Q_public do
+     begin
+       close;
+       sql.clear;
+       sql.add('select * from  permission where powerlevel=:powerlevel and PartID=:PartID');
+       parambyname('PartID').asinteger:=self.tag;
+       parambyname('powerlevel').assmallint:=level;
+       open;
+       if isempty then    exit;
+       for icount:=0 to self.ComponentCount-1 do
+       begin
+           if self.Components[icount] is TMenuItem then
+           begin
+                with dm.Q_comm do
+                  begin
+                    close;
+                    sql.clear;
+                    sql.add('select * from permission where ItemID=:ItemID and PartID=:PartID '
+                       +'    and Powerlevel=:Level and [select]=1');
+                    parambyname('ItemID').assmallint:=TMenuItem(self.Components[icount]).tag;
+                    parambyname('PartID').assmallint:=self.tag;
+                    parambyname('Level').assmallint:=level;
+                    open;
+                    if recordcount > 0 then
+                     TMenuItem(self.Components[icount]).enabled:=true
+                    else
+                     TMenuItem(self.Components[icount]).enabled:=false;
+                 end;
+           end;
+       end;
+
+       for j:=0 to self.ComponentCount-1 do
+       begin
+           if self.Components[j] is Tspeedbutton then
+           begin
+                with dm.Q_comm do
+                  begin
+                    close;
+                    sql.clear;
+                    sql.add('select * from permission where ItemID=:ItemID and PartID=:PartID '
+                       +'    and Powerlevel=:Level and [select]=1');
+                    parambyname('ItemID').assmallint:=(self.Components[j] as Tspeedbutton).tag;
+                    parambyname('PartID').assmallint:=self.tag;
+                    parambyname('Level').assmallint:=level;
+                    open;
+                    if recordcount > 0 then  (self.Components[j] as Tspeedbutton).enabled:=true
+                    else  (self.Components[j] as Tspeedbutton).enabled:=false;
+                 end;
+           end;
+       end;
+    end;
+end;
+
+procedure TFm_main.N20Click(Sender: TObject);
+begin
+
+ Fm_report.frReport1.DesignReport;
+end;
+
+procedure TFm_main.N49Click(Sender: TObject);
+begin
+  frm_wh.showmodal;
+end;
+
+procedure TFm_main.N13Click(Sender: TObject);
+begin
+  DeleteIECache('');
+  shellexecute(self.Handle,'open','UpdateSoftware.exe',nil,nil,sw_normal);
+  application.Terminate ;
+end;
+
+procedure TFm_main.N14Click(Sender: TObject);
+begin
+   Fm_ypdwwh.showmodal;
+end;
+
+procedure TFm_main.N25Click(Sender: TObject);
+begin
+   Fm_depqlyp.showmodal;
+end;
+
+procedure TFm_main.MenuItem12Click(Sender: TObject);
+begin
+  Fm_ypchange.showmodal;
+end;
+
+procedure TFm_main.SpdBut_updateClick(Sender: TObject);
+begin
+  DeleteIECache('');
+  shellexecute(self.Handle,'open','UpdateSoftware.exe',nil,nil,sw_normal);
+  application.Terminate ;
+  //application.Terminate ;
+  //ShellExecute(Application.handle,'open','PAutoUpate.exe',nil,'AutoUpdate',sw_normal);
+end;
+
+procedure TFm_main.N38Click(Sender: TObject);
+begin
+   fm_zpckgl.Tag:=200;
+   fm_zpckgl.showmodal;
+end;
+
+procedure TFm_main.N15Click(Sender: TObject);
+begin
+  fm_ck.tag:=100;
+  fm_ck.show;
+end;
+
+procedure TFm_main.N21Click(Sender: TObject);
+var temp:TFm_ypjc;
+begin
+  temp:=TFm_ypjc.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.R1Click(Sender: TObject);
+begin
+  fm_yprk.tag:=0;
+  Fm_yprk.showmodal;
+end;
+
+procedure TFm_main.SpdBut_rkClick(Sender: TObject);
+begin
+  fm_yprk.tag:=0;
+  Fm_yprk.showmodal;
+end;
+
+procedure TFm_main.SpeedButton2Click(Sender: TObject);
+begin
+  fm_ck.tag:=100;
+  fm_ck.show;
+end;
+
+procedure TFm_main.SpeedButton3Click(Sender: TObject);
+begin
+   fm_zpckgl.Tag:=200;
+   fm_zpckgl.showmodal;
+end;
+
+procedure TFm_main.N12Click(Sender: TObject);
+var temp:TFm_qlyp;
+begin
+  temp:=TFm_qlyp.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.N210Click(Sender: TObject);
+var temp:TFm_ykyppd;
+begin
+  temp:=TFm_ykyppd.Create(self);
+  temp.ShowModal;
+  temp.Free;
+end;
+
+procedure TFm_main.N110Click(Sender: TObject);
+var temp:TFm_yppd;
+begin
+  temp:=TFm_yppd.Create(self);
+  temp.ShowModal;
+  temp.Free;
+end;
+
+procedure TFm_main.N34Click(Sender: TObject);
+var temp:TFrm_ParamSet;
+begin
+  temp:=TFrm_ParamSet.Create(self);
+  temp.ShowModal;
+  temp.Free;
+end;
+
+procedure TFm_main.N401Click(Sender: TObject);
+begin
+ Fm_report.frxrprt1.DesignReport;
+end;
+
+procedure TFm_main.N31Click(Sender: TObject);
+var temp:TFm_qld_del;
+begin
+  temp:=TFm_qld_del.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.SpeedButton1Click(Sender: TObject);
+var temp:TFrm_IntegratedQuery;
+begin
+  temp:=TFrm_IntegratedQuery.create(self);
+  temp.showmodal;
+  temp.free;
+end;
+
+procedure TFm_main.LoadFrameByClassName(theFrameClass: TFrameClass);
+begin
+   if Assigned(FCurrentfrm)and( not SameText(theFrameClass.ClassName,FCurrentfrmClassName)) then
+       FreeAndNil(FCurrentfrm);
+
+   FCurrentfrm:=theFrameClass.Create(nil);
+   FCurrentfrm.Parent:=Panel1;
+   FCurrentfrm.Align:=alClient;
+   //FCurrentfrm.Left:=(Panel1.Width-FCurrentfrm.Width)div 2;
+   //FCurrentfrm.Top:=(Panel1.Height-FCurrentfrm.Height)div 2;
+   FCurrentfrmClassName:=theFrameClass.ClassName;
+end;
+
+procedure TFm_main.FormCreate(Sender: TObject);
+begin
+  FCurrentfrmClassName:='';
+  FCurrentfrm:=nil;
+end;
+
+procedure TFm_main.N29Click(Sender: TObject);
+var temp:TFm_StoreTransfer;
+begin
+  temp:=TFm_StoreTransfer.Create(self);
+  temp.ShowModal;
+  temp.Free;
+end;
+
+end.
+
+

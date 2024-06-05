@@ -1,0 +1,284 @@
+﻿unit ypxg;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Grids, DBGrids, StdCtrls, ExtCtrls, Buttons, DBCtrls, cxStyles,
+  cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage, cxEdit, DB,
+  cxDBData, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
+  cxGridBandedTableView, DBGridEh, cxGridDBBandedTableView, cxDropDownEdit,MemDS,
+  DBAccess, Uni, ComCtrls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
+  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
+  dxSkinXmas2008Blue, cxNavigator, dxDateRanges, dxScrollbarAnnotations;
+
+type
+  TFm_ypchange = class(TForm)
+    Panel1: TPanel;
+    Label1: TLabel;
+    Edt_pym: TEdit;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    RGrp_stop: TRadioGroup;
+    StyleRepository: TcxStyleRepository;
+    cxStyle1: TcxStyle;
+    cxStyle2: TcxStyle;
+    cxStyle3: TcxStyle;
+    cxStyle4: TcxStyle;
+    cxStyle5: TcxStyle;
+    cxStyle6: TcxStyle;
+    cxStyle7: TcxStyle;
+    cxStyle8: TcxStyle;
+    cxStyle9: TcxStyle;
+    cxStyle10: TcxStyle;
+    cxStyle11: TcxStyle;
+    cxStyle12: TcxStyle;
+    cxStyle13: TcxStyle;
+    cxStyle14: TcxStyle;
+    cxStyle15: TcxStyle;
+    cxStyle16: TcxStyle;
+    GridBandedTableViewStyleSheetDevExpress: TcxGridBandedTableViewStyleSheet;
+    btn_modify: TBitBtn;
+    RG_seek: TRadioGroup;
+    btn_add: TBitBtn;
+    btn_ExportXls: TBitBtn;
+   // FlexCelReport1: TFlexCelReport;
+    //XLSAdapter1: TXLSAdapter;
+    Q_Result: TUniQuery;
+    DS_Result: TDataSource;
+    RG_StoreClass: TRadioGroup;
+    cxgrd: TcxGrid;
+    cxgrdbtblvwGrid1DBTableView1: TcxGridDBTableView;
+    cxgrdbtblvw: TcxGridDBTableView;
+    cxgrdlvlGrid1Level1: TcxGridLevel;
+    cxStyle17: TcxStyle;
+    grp1: TGroupBox;
+    dtp_from: TDateTimePicker;
+    dtp_to: TDateTimePicker;
+    rg1: TRadioGroup;
+    procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure btn_modifyClick(Sender: TObject);
+    procedure cxGrid1DBBandedTableView1DblClick(Sender: TObject);
+    procedure Edt_pymKeyPress(Sender: TObject; var Key: Char);
+    procedure RG_seekClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btn_addClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure cxgrdbtblvwDblClick(Sender: TObject);
+    procedure btn_ExportXlsClick(Sender: TObject);
+    procedure cxgrdbtblvwStylesGetContentStyle(
+      Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+      AItem: TcxCustomGridTableItem; out AStyle: TcxStyle);
+  private
+    { Private declarations }
+    procedure SetModifyValue();
+  public
+    { Public declarations }
+  end;
+
+var
+  Fm_ypchange: TFm_ypchange;
+
+implementation
+
+uses data, Factory, ypadd, Medmodify,InterfaceMedStore;
+
+{$R *.DFM}
+
+procedure TFm_ypchange.BitBtn4Click(Sender: TObject);
+begin
+ close;
+end;
+
+
+procedure TFm_ypchange.BitBtn3Click(Sender: TObject);
+var  MYMedStore:IMedStore;
+     aStoreClass:integer;
+begin
+  aStoreClass:=strtoint(dm.GetRadioGroupValue(RG_StoreClass,':',true));
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.SearchMedinfo(Q_Result,RGrp_stop.ItemIndex,rg1.ItemIndex,aStoreClass,RG_seek.ItemIndex,Edt_pym.Text,dtp_from.Date,dtp_to.Date);
+end;
+
+procedure TFm_ypchange.SetModifyValue;
+begin
+   with Fm_Medmodify,Q_result do
+   begin
+     SetComboxList();
+     Edt_ypbh.Text:= FieldByName('ypbh').AsString;
+     Edt_ym.Text:= FieldByName('ym').AsString;
+     Edt_bm.Text:= FieldByName('bm').AsString;
+     Edt_ywm.Text:= FieldByName('ywm').AsString;
+     Edt_pym.Text:= FieldByName('pym').AsString;
+     Edt_lsm.Text:= FieldByName('lsm').AsString;
+     Edt_gg.Text:=  FieldByName('gg').AsString;
+     edt_cjbm.text:=    FieldByName('cjbm').AsString;
+     edt_produce.Text:= FieldByName('produce').AsString;
+     Edt_pfj.Text:= FieldByName('pfj').AsString;
+     Edt_ypjj.Text:= FieldByName('ypj').AsString;
+     Edt_lsj.Text:= FieldByName('ylsj').AsString;
+     Edt_mzlsj.Text:= FieldByName('mzylsj').AsString;
+     edt_xsj.Text:= currtostr(( FieldByName('ylsj').ascurrency/ FieldByName('hsb').asinteger));
+     edt_mzxsj.Text:= currtostr(( FieldByName('mzylsj').ascurrency/ FieldByName('hsb').asinteger));
+     Lbl_dw.Caption:=  FieldByName('jldw').AsString;
+     lbl2.Caption:=  FieldByName('jldw').AsString;
+     Label27.Caption:= FieldByName('zxdw').AsString;
+     lbl4.Caption:= FieldByName('zxdw').AsString;
+     Edt_ddd.Text:= FieldByName('ddd').AsString;
+     ComBox_jx.ItemIndex:=GetComboxIndex(ComBox_jx, FieldByName('jx').AsString);
+     cmbx_jxdw.ItemIndex:=ComBox_jx.ItemIndex;
+     ComBox_ypzl.ItemIndex:=GetComboxIndex(ComBox_ypzl, FieldByName('zlm').AsString);
+     Edt_lba.Text:= FieldByName('lba').AsString;
+     Edt_lbb.Text:= FieldByName('lbb').AsString;
+
+     if  FieldByName('skintry').AsString='0' then
+       com_skintry.ItemIndex:=0
+     else
+       com_skintry.ItemIndex:=1;
+
+     if  FieldByName('jjyp').AsBoolean then
+       ComBox_jjyp.ItemIndex:=0
+     else
+       ComBox_jjyp.ItemIndex:=1;
+
+     if  FieldByName('selfyp').AsBoolean then
+       CmbBx_selfyp.ItemIndex:=0
+     else
+       CmbBx_selfyp.ItemIndex:=1;
+     if  FieldByName('ifzy').AsBoolean then
+     begin
+       CmbBx_ifzy.ItemIndex:=0;
+       Image1.Visible:=false;
+     end else
+     begin
+       CmbBx_ifzy.ItemIndex:=1;
+       Image1.Visible:=true;
+     end;
+
+     if  FieldByName('basic').asboolean=true then
+        CmbBx_basic.ItemIndex:=0
+     else
+        CmbBx_basic.ItemIndex:=1;
+
+     if  FieldByName('basicProvince').asboolean=true then
+        Cmb_basicProvince.ItemIndex:=0
+     else
+        Cmb_basicProvince.ItemIndex:=1;
+
+     CmbBx_lb.ItemIndex:=GetComboxIndex(CmbBx_lb, FieldByName('lbm').Text);
+     Combox_yb.ItemIndex:=GetComboxIndex(Combox_yb, FieldByName('ybkind').Text);
+     edt_ybbm_country.Text:= FieldByName('ybbm_country').Text;
+     edt_ybmc_country.Text:= FieldByName('ybmc_country').Text;
+     edt_ybremark.Text:= FieldByName('ybremark').Text;
+
+     edt_bankplace.Text:= FieldByName('bank_place').Text;
+     edt_inplace.Text:= FieldByName('inp_place').Text;
+     edt_outplace.Text:= FieldByName('outp_place').Text;
+     Edt_hsb.text:=trim( FieldByName('hsb').Text);
+     Foldhsb:=trim( FieldByName('hsb').Text);
+     edt_cfhsb.text:=trim( FieldByName('cfhsb').Text);
+     ComBox_jldw.ItemIndex:=GetComboxIndex(ComBox_jldw, FieldByName('jldw').Text);
+     ComBox_zxdw.ItemIndex:=GetComboxIndex(ComBox_zxdw, FieldByName('zxdw').Text);
+     Combox_cfzxdw.ItemIndex:=GetComboxIndex(Combox_cfzxdw, FieldByName('cfzxdw').Text);
+     if  trim( FieldByName('type').Text)='0' then  ComBox_kind.ItemIndex:=0;
+     if  trim( FieldByName('type').Text)='98' then  ComBox_kind.ItemIndex:=1;
+     if  trim( FieldByName('type').Text)='99' then  ComBox_kind.ItemIndex:=2;
+     Cmbx_storetype.ItemIndex:=GetComboxIndex(Cmbx_storetype, FieldByName('storetype').Text);
+     Cmbx_fplb.ItemIndex:=FindString(Cmbx_fplb, FieldByName('checklb').Text);
+     edt_dosage.Text:=trim( FieldByName('dosage').Text);
+     edt_barcode.Text:=trim( FieldByName('barcode').Text);
+     edt_pwh.Text:=trim( FieldByName('pwh').Text);
+     cmb_StoreClass.ItemIndex:=GetComboxIndex(cmb_StoreClass, FieldByName('ypkindName').AsString);
+     if  FieldByName('groupbuy').asboolean=true then
+        cbb_groupbuy.ItemIndex:=0
+     else
+        cbb_groupbuy.ItemIndex:=1;
+   end;
+   Fm_Medmodify.ShowModal;
+end;
+
+procedure TFm_ypchange.btn_modifyClick(Sender: TObject);
+var str_ypbh:String ;
+begin
+   if  Q_result.IsEmpty then exit;
+   str_ypbh:= Q_result.FieldByName('ypbh').AsString;
+   SetModifyValue();
+   Q_result.Locate('ypbh',str_ypbh, []);
+end;
+
+procedure TFm_ypchange.cxGrid1DBBandedTableView1DblClick(Sender: TObject);
+begin
+   btn_modify.Click;
+end;
+
+procedure TFm_ypchange.Edt_pymKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then BitBtn3.Click;
+end;
+
+procedure TFm_ypchange.RG_seekClick(Sender: TObject);
+begin
+  Label1.Caption:=RG_seek.Items[RG_seek.ItemIndex];
+  Edt_pym.SetFocus;
+end;
+
+procedure TFm_ypchange.FormShow(Sender: TObject);
+begin
+  Edt_pym.SetFocus;
+end;
+
+procedure TFm_ypchange.btn_addClick(Sender: TObject);
+begin
+ Fm_ypadd.showmodal;
+end;
+
+procedure TFm_ypchange.FormCreate(Sender: TObject);
+var ayfbm:integer;
+    MYMedStore:IMedStore;
+begin
+  dm.InitGrid(1,'MedStore_MedInfo.xml', cxgrdbtblvw);
+  ayfbm:=strtoint(dm.sysinfo.yfbm);
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.GetStoreCLass(dm.Q_comm,ayfbm,RG_StoreClass);
+end;
+
+procedure TFm_ypchange.cxgrdbtblvwDblClick(Sender: TObject);
+begin
+ btn_modify.Click;
+end;
+
+procedure TFm_ypchange.btn_ExportXlsClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+begin
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.ExportXLS('Q_Result',Q_Result,date(),date(),'ҩƷĿ¼',1);
+end;
+
+
+procedure TFm_ypchange.cxgrdbtblvwStylesGetContentStyle(
+  Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord;
+  AItem: TcxCustomGridTableItem; out AStyle: TcxStyle);
+var  UseState:boolean;
+begin
+  UseState:= ARecord.Values[cxgrdbtblvw.GetColumnByFieldName('ifzy').Index];
+  if (UseState=false) and (AItem.Index=2) then  AStyle:=cxStyle17;
+end;
+
+end.

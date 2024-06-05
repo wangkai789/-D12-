@@ -1,0 +1,328 @@
+unit zpckgl;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, StdCtrls, Grids, DBGrids, Buttons,FR_E_HTM, FR_E_CSV,
+  FR_E_RTF, FR_Class, FR_E_TXT, FR_Shape, FR_DSet, FR_DBSet, ComCtrls,
+  DBGridEh, GridsEh;
+
+type
+  Tfm_zpckgl = class(TForm)
+    Panel1: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    ed_bh: TEdit;
+    Label5: TLabel;
+    ed_rkdh: TEdit;
+    ed_ckdh: TEdit;
+    lab_xm: TLabel;
+    DBGrid_ys: TDBGrid;
+    frReport1: TfrReport;
+    frShapeObject1: TfrShapeObject;
+    frTextExport1: TfrTextExport;
+    frRTFExport1: TfrRTFExport;
+    frCSVExport1: TfrCSVExport;
+    frHTMExport1: TfrHTMExport;
+    Label6: TLabel;
+    Ed_year: TEdit;
+    Label7: TLabel;
+    ed_month: TEdit;
+    UpDown2: TUpDown;
+    bbtn_zpck: TBitBtn;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    frDBDataSet1: TfrDBDataSet;
+    DBGrid1: TDBGridEh;
+    Label4: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure ed_bhEnter(Sender: TObject);
+    procedure DBGrid_ysExit(Sender: TObject);
+    procedure ed_rkdhKeyPress(Sender: TObject; var Key: Char);
+    procedure bbtn_zpckClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Com_ksKeyPress(Sender: TObject; var Key: Char);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure frReport1GetValue(const ParName: String;
+      var ParValue: Variant);
+    procedure frReport1BeforePrint(Memo: TStringList; View: TfrView);
+    procedure ed_rkdhChange(Sender: TObject);
+  private
+    { Private declarations }
+
+    function SearchInbank(lsh,Year,month:integer):boolean;
+    function CheckOutbank(lsh,Year,month:integer):boolean;
+  public
+    { Public declarations }
+       Flsh:integer;
+  end;
+
+var
+  fm_zpckgl: Tfm_zpckgl;
+  strrq:string;
+
+implementation
+
+uses data, factory, main, reportform,InterfaceMedStore;
+
+{$R *.DFM}
+
+procedure Tfm_zpckgl.FormShow(Sender: TObject);
+begin
+  ed_year.text:=inttostr(year);
+  ed_month.text:=inttostr(month);
+  ed_bh.clear;
+  lab_xm.Caption :='';
+  //ed_rkdh.clear;
+  ed_ckdh.clear;
+  DBGrid_ys.visible:=false;
+  ed_bh.Text:=dm.FopidName;
+  bbtn_zpck.Enabled :=false ;
+
+  ed_rkdh.text:=inttostr(Flsh);
+   ed_rkdh.SetFocus ;
+end;
+
+procedure Tfm_zpckgl.ed_bhEnter(Sender: TObject);
+begin
+   ed_bh.clear;
+   lab_xm.Caption:='';
+end;
+
+procedure Tfm_zpckgl.DBGrid_ysExit(Sender: TObject);
+begin
+  (sender as tdbgrid).Visible:=false;
+end;
+
+procedure Tfm_zpckgl.ed_rkdhKeyPress(Sender: TObject; var Key: Char);
+var  alsh,ayear,amonth:integer;
+     MYMedStore:IMedStore;
+begin
+  if key<>#13 then exit;
+  if trim(ed_rkdh.text)=' ' then
+  begin
+    MessageDlg('请输入入库单号！',mtWarning,[mbOK],0);
+    bbtn_zpck.enabled:=false;
+    exit;
+  end;
+  
+  try
+    strtoint(ed_rkdh.text);
+  except
+    MessageDlg('入库单号请输入整数！',mtWarning,[mbOK],0);
+    bbtn_zpck.enabled:=false;
+    exit;
+  end;
+
+  alsh:=strtoint(trim(ed_rkdh.text));
+  ayear:=strtoint(trim(ed_year.text));
+  amonth:=strtoint(trim(ed_month.text));
+
+  if  not SearchInbank(alsh,ayear,amonth) then
+  begin
+    MessageDlg('此入库号作废或不是本月入库号,请重新输入入库号',mtWarning,[mbOK],0);
+    exit;
+  end;
+
+ { MYMedStore:=TMedStore.Create;
+  case MYMedStore.SearchStoreClassRelations(dm.q_comm1,dm.Q_use.fieldbyname('ypkind').AsInteger) of
+  0:exit;
+  1:
+    begin
+      ed_ksbm.text:=dm.q_comm1['ksbm'];
+      lab_ks.Caption:=dm.q_comm1['ksmc'];
+    end
+  else
+    begin
+     DBGrid_ks.Visible:=true;
+     DBGrid_ks.SetFocus;
+    end;
+  end;}
+
+
+  if  CheckOutbank(alsh,ayear,amonth) then
+  begin
+    MessageDlg('此入库单号已经有药品出库，不能整批出库！',mtWarning,[mbOK],0);
+    bbtn_zpck.enabled:=false;
+    exit;
+  end else
+  begin
+    bbtn_zpck.enabled:=True;
+  end;
+
+end;
+
+procedure Tfm_zpckgl.bbtn_zpckClick(Sender: TObject);
+begin
+  if DBGrid1.FieldCount =0 then exit;
+  bbtn_zpck.enabled:=false;
+
+ // dm.Q_use.ApplyUpdates;
+  with dm.Q_comm do
+  begin
+    close;
+    sql.clear;
+    SQL.Add('exec get_new_bmly_ckh :lb ');
+    ParamByName('lb').asinteger:=1;
+    try
+      open;
+      ed_ckdh.text:=dm.Q_comm['ckh'];
+    except
+      MessageDlg('生成出库号出错，请重试！',  mtError, [mbOK], 0);
+      exit;
+    end;
+  end;
+
+
+  with dm.Q_comm do
+  begin
+    close;
+    sql.clear;
+    SQL.Add('exec pub_yp_zpck :lsh,:year,:month,:ckh,:ckr,:opid');
+    ParamByName('lsh').asinteger:=strtoint(trim(ed_rkdh.text));
+    parambyname('year').asinteger:=strtoint(trim(ed_year.text));
+    parambyname('month').asinteger:=strtoint(trim(ed_month.text));
+    ParamByName('ckh').asinteger:=strtoint(trim(ed_ckdh.text));
+    ParamByName('ckr').asinteger:=strtoint(dm.Fopid);
+    ParamByName('opid').asinteger:=strtoint(dm.Fopid);
+    //ParamByName('ksbm').asinteger:=StrToint(ed_ksbm.Text);
+    try
+      ExecSQL;
+      MessageDlg('整批出库成功！',mtInformation,[mbOK],0);
+      BitBtn1Click(sender);
+      ed_bh.clear;
+      lab_xm.Caption :='';
+      ed_rkdh.clear;
+      ed_ckdh.clear;
+    except
+       on E: Exception do
+       begin
+         MessageDlg('错误，请重试！',  mtError, [mbOK], 0);
+         exit;
+       end;
+    end;
+    end;
+end;
+
+procedure Tfm_zpckgl.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+   dbgrid1.DataSource :=Nil ;
+   dm.Q_use.CachedUpdates:=false;
+   dm.Q_use.UpdateObject:=nil;
+   dm.q_comm.close;
+   dm.q_use.close;
+end;
+
+procedure Tfm_zpckgl.Com_ksKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then ed_bh.SetFocus ;
+end;
+
+procedure Tfm_zpckgl.BitBtn1Click(Sender: TObject);
+var  year,month,day:word;
+begin
+ if DBGrid1.FieldCount =0 then exit;
+ try
+   with dm.Q_comm do
+    begin
+      close;
+      sql.Clear;
+      sql.Add('select a.qldh,b.ypbh,sfl=a.cksl,type=a.lb,a.ckh,a.lsj,c.ksmc,supplyksmc='''',fyr=e.xm,d.ym,d.gg,d.jldw,qlrq=null,fyrq=a.ckrq,je=a.lsj*a.cksl,f.produce,f.ypph,f.sxrq,a.pfj,pfjqe=a.pfj*a.cksl,abstract='''' ');
+      sql.Add('from xykchu a,xykcun b,jgxx c,xyzb d,zgzb e,xykr f');
+      sql.Add('where a.rkxh=b.rkxh');
+      sql.Add('and a.ksbm=c.ksbm ');
+      sql.Add('and b.ypbh=d.ypbh');
+      sql.Add('and a.ckr=e.bh');
+      sql.Add('and a.rkxh=f.rkxh');
+      sql.Add('and datediff(day,ckrq,getdate())=0 ');
+      sql.Add('and a.ckh=:ckh ');
+
+      sql.add('ORDER BY b.ypbh');
+      ParamByName('ckh').AsInteger:=strtoint(trim(Ed_ckdh.text));
+      open;
+     end;
+  frReport1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'ykreport\请领单.frf');
+  frReport1.ShowReport;
+  except
+    MessageDlg('报表缺少所需的数据！',  mtError, [mbOK], 0);
+    exit;
+  end;
+end;
+
+procedure Tfm_zpckgl.BitBtn2Click(Sender: TObject);
+begin
+  dm.Q_use.close;
+  close;
+end;
+
+procedure Tfm_zpckgl.frReport1GetValue(const ParName: String;
+  var ParValue: Variant);
+begin
+   if ParName='type' then
+   begin
+     case  dm.Q_comm.FieldByName('type').AsInteger of
+     1:ParValue:='西药 字';
+     2:ParValue:='中草药 字';
+     3:ParValue:='中成药 字';
+     end;
+   end;
+end;
+
+procedure Tfm_zpckgl.frReport1BeforePrint(Memo: TStringList;
+  View: TfrView);
+begin
+  if View.Name='Mem_title' then memo.Text:=Trim(fm_main.Label_hospital.Caption)+'药品出库单';
+end;
+
+procedure Tfm_zpckgl.ed_rkdhChange(Sender: TObject);
+begin
+  bbtn_zpck.Enabled :=false ;
+end;
+
+function Tfm_zpckgl.SearchInbank(lsh, Year, month: integer): boolean;
+begin
+ result:=false;
+// dm.q_use.UpdateObject:=dm.UpdateSQL_Outbank;
+// dm.UpdateSQL_Outbank.ModifySQL.Clear;
+// dm.UpdateSQL_Outbank.ModifySQL.Add('update xykr set sl=:sl where rkxh=:rkxh');
+// dm.Q_use.CachedUpdates:=true;
+ with dm.q_use do
+  begin
+    close;
+    sql.clear;
+    sql.add('select sl,a.rkxh,a.ypbh,b.ym,b.gg,a.jldw,a.rksl,a.lsj,a.rksl*a.lsj,jhje=a.rksl*a.jhj,rkje=a.rksl*a.lsj,a.rkrq,c.inc_name,a.jhj,a.ypph,a.sxrq,b.ypkind,b.ybbm_country,b.ybmc_country,d.ksbm,d.ksmc');
+    sql.add('from xykr a,xyzb b,ghdw c,jgxx d');
+    sql.add('where a.ypbh=b.ypbh and a.ghdw=c.inc_code and a.lsh=:lsh and year(a.rkrq)=:year and month(a.rkrq)=:month');
+    sql.add('and a.yfbm=d.ksbm');
+
+    parambyname('lsh').asinteger:=lsh;
+    parambyname('year').asinteger:=Year;
+    parambyname('month').asinteger:=month;
+    open;
+    if  isempty then exit;
+  end;
+  dbgrid1.DataSource :=dm.DS_use;
+  result:=true;
+end;
+
+function Tfm_zpckgl.CheckOutbank(lsh, Year, month: integer): boolean;
+begin
+ result:=false;
+ with dm.Q_comm do
+  begin
+    close;
+    sql.clear;
+    SQL.Add('select a.rkxh from  xykr a,xykchu b ');
+    SQL.Add('where a.rkxh=b.rkxh and a.lsh=:lsh and year(a.rkrq)=:year and month(a.rkrq)=:month');
+    ParamByName('lsh').asinteger:=lsh;
+    parambyname('year').asinteger:=Year;
+    parambyname('month').asinteger:=month;
+    open;
+    if isempty then exit;
+  end;
+   result:=true;
+end;
+
+end.

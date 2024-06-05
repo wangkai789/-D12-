@@ -1,0 +1,237 @@
+unit IntegratedQuery;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ChangeStore, ComCtrls, InStore, OutStore, frameMedbank,
+  PurchaseSaleStock, BalancesStore, ProfitStore, PriceChangeStore,
+  InStoreTotal, InStoreNew, OtherOutStore, MedStoreSale, Balance,
+  ReturnStore, OccupyStore, BoilMed, ExamRecord;
+
+type
+  TFrm_IntegratedQuery = class(TForm)
+    pgc1: TPageControl;
+    ts1: TTabSheet;
+    ts3: TTabSheet;
+    ts4: TTabSheet;
+    ts5: TTabSheet;
+    ts7: TTabSheet;
+    ts8: TTabSheet;
+    Frame_Medbank1: TFrame_Medbank;
+    Frame_BalancesStore1: TFrame_BalancesStore;
+    Frame_PriceChangeStore1: TFrame_PriceChangeStore;
+    ts2: TTabSheet;
+    ts10: TTabSheet;
+    Frame_OtherOutStore1: TFrame_OtherOutStore;
+    ts11: TTabSheet;
+    ts12: TTabSheet;
+    Frame_Balance1: TFrame_Balance;
+    Frame_InStoreNew1: TFrame_InStoreNew;
+    Frame_ProfitStore1: TFrame_ProfitStore;
+    Frame_ChangeStore1: TFrame_ChangeStore;
+    ts6: TTabSheet;
+    Frame_ReturnStore1: TFrame_ReturnStore;
+    ts9: TTabSheet;
+    Frame_OccupyStore1: TFrame_OccupyStore;
+    ts13: TTabSheet;
+    Frame_BoilMed1: TFrame_BoilMed;
+    Frame_OutStore1: TFrame_OutStore;
+    Frame_MedStoreSale1: TFrame_MedStoreSale;
+    ts14: TTabSheet;
+    Frame_ExamRecord1: TFrame_ExamRecord;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    procedure   SetCmbxRklbValue();
+    procedure   SetCmbxGhdwValue();
+    procedure   SetCmbxDeptValue();
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_IntegratedQuery: TFrm_IntegratedQuery;
+
+implementation
+
+uses data,InterfaceMedStore;
+
+{$R *.dfm}
+
+procedure TFrm_IntegratedQuery.FormCreate(Sender: TObject);
+var  aSqlStr:string;
+     MYMedStore:IMedStore;
+begin
+  //--2023.12.06 wk 库房类别
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_changeStore1.Frame_base1.cbb_yfbm,true);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_ProfitStore1.Frame_base1.cbb_yfbm,true);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_PriceChangeStore1.Frame_base1.cbb_yfbm,true);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_MedStoreSale1.Frame_base1.cbb_yfbm,true);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_BalancesStore1.Frame_base1.cbb_yfbm,true);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_outStore1.Frame_base1.cbb_yfbm,true);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_InStoreNew1.cbb_yfbm,true);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_Balance1.cbb_yfbm,false);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_ReturnStore1.Frame_base1.cbb_yfbm,false);
+  MYMedStore.GetYfbm(dm.Q_comm,Frame_OccupyStore1.cbb_yfbm,false);
+  //--
+  pgc1.ActivePageIndex:=0;
+  Frame_ChangeStore1.Frame_base1.DT_from.Date:=date();
+  Frame_ChangeStore1.Frame_base1.DT_to.Date:=date();
+
+
+  //Frame_InStore1.Frame_base1.DT_from.Date:=date();
+  //Frame_InStore1.Frame_base1.DT_to.Date:=date();
+
+  //Frame_InStoreTotal1.Frame_base1.DT_from.Date:=date();
+  //Frame_InStoreTotal1.Frame_base1.DT_to.Date:=date();
+
+  Frame_OutStore1.Frame_base1.DT_from.Date:=date();
+  Frame_OutStore1.Frame_base1.DT_to.Date:=date();
+
+  Frame_ProfitStore1.Frame_base1.DT_from.Date:=date();
+  Frame_ProfitStore1.Frame_base1.DT_to.Date:=date();
+
+  Frame_PriceChangeStore1.Frame_base1.DT_from.Date:=date();
+  Frame_PriceChangeStore1.Frame_base1.DT_to.Date:=date();
+
+  Frame_BalancesStore1.Frame_base1.DT_from.Date:=date();
+  Frame_BalancesStore1.Frame_base1.DT_to.Date:=date();
+
+  //Frame_PurchaseSaleStock1.Frame_base1.DT_from.Date:=date();
+  //Frame_PurchaseSaleStock1.Frame_base1.DT_to.Date:=date();
+
+  Frame_InStoreNew1.DT_from.Date:=date();
+  Frame_InStoreNew1.DT_to.Date:=date();
+
+  Frame_OtherOutStore1.DT_from.Date:=date();
+  Frame_OtherOutStore1.DT_to.Date:=date();
+
+  Frame_MedStoreSale1.Frame_base1.DT_from.Date:=date();
+  Frame_MedStoreSale1.Frame_base1.DT_to.Date:=date();
+  Frame_MedStoreSale1.dtpDT_from.Time:=strtotime('00:01:01');
+  Frame_MedStoreSale1.dtpDT_to.Time:=strtotime('23:59:59') ;
+  Frame_MedStoreSale1.RG_PatientClass.ItemIndex:=1;
+
+  Frame_Balance1.DT_from.Date:=date();
+  Frame_Balance1.DT_to.Date:=date();
+
+  Frame_ReturnStore1.Frame_base1.DT_from.Date:=date();
+  Frame_ReturnStore1.Frame_base1.DT_to.Date:=date();
+
+  Frame_BoilMed1.DT_from.Date:=date();
+  Frame_BoilMed1.DT_to.Date:=date();
+  
+  Frame_ExamRecord1.Frame_base1.DT_from.Date:=date();
+  Frame_ExamRecord1.Frame_base1.DT_to.Date:=date();
+
+  SetCmbxRklbValue;
+  SetCmbxGhdwValue;
+  SetCmbxDeptValue;
+  //Frame_ReturnStore1.Frame_base1.DT_from.Date:=date();
+  //Frame_ReturnStore1.Frame_base1.DT_to.Date:=date();
+  dm.InitGrid(1,'MedStore_PdChange.xml',Frame_ChangeStore1.Frame_base1.cxgrdbtblvw);
+  //dm.InitGrid(1,'MedStore_InStore.xml', Frame_InStore1.Frame_base1.cxgrdbtblvw);
+  //dm.InitGrid(1,'MedStore_InStoreTotal.xml', Frame_InStoreTotal1.Frame_base1.cxgrdbtblvw);
+
+   dm.InitGrid(1,'MedStore_OutStore.xml',Frame_OutStore1.Frame_base1.cxgrdbtblvw);
+   dm.InitGrid(1,'MedStore_ProfitStore.xml',Frame_ProfitStore1.Frame_base1.cxgrdbtblvw);
+   dm.InitGrid(1,'MedStore_BalancesStore.xml',Frame_BalancesStore1.Frame_base1.cxgrdbtblvw);
+   //dm.InitGrid(1,'MedStore_PurchaseSaleStock.xml',Frame_PurchaseSaleStock1.Frame_base1.cxgrdbtblvw);
+   //2024.05.09 使用调价明细查询xml格式
+   dm.InitGrid(1,'PriceAdjustment.xml',Frame_PriceChangeStore1.Frame_base1.cxgrdbtblvw);
+   //dm.InitGrid(1,'MedStore_PriceChangeStore.xml',Frame_PriceChangeStore1.Frame_base1.cxgrdbtblvw);
+
+
+   dm.InitGrid(1,'MedStore_Balancedetail.xml',Frame_Balance1.cxGridDBTableView4);
+   dm.InitGrid(1,'MedStore_BalanceMaster.xml',Frame_Balance1.cxgrdbtblvw);
+  //dm.InitGrid(1,'MedStore_ReturnStore.xml',Frame_ReturnStore1.Frame_base1.cxgrdbtblvw);
+  //dm.InitGrid(1,'MedStore_Kcl.xml',frm_mdstr1.cxGrd_viewbank);
+   //2023.11.20 wk新入库
+   dm.InitGrid(1,'MedStore_InStoreMaster.xml',Frame_InStoreNew1.cxgrdbtblvw);
+   dm.InitGrid(1,'MedStore_InStoreDetail.xml',Frame_InStoreNew1.cxGridDBTableView4);
+   dm.InitGrid(1,'MedStore_InStoreDetailALL.xml',Frame_InStoreNew1.cxgrdbtblvw3);
+   //2023.11.20 wk其他出库
+   dm.InitGrid(1,'MedStore_OtherOutStorMaster.xml',Frame_OtherOutStore1.cxgrdbtblvw);
+   dm.InitGrid(1,'MedStore_OtherOutStorDetail.xml',Frame_OtherOutStore1.cxGridDBTableView4);
+   dm.InitGrid(1,'MedStore_OtherOutStoreDetailALL.xml',Frame_OtherOutStore1.cxgrdbtblvw3);
+  //2023.12.08 wk 药房退药
+   dm.InitGrid(1,'MedStore_ReturnStore.xml',Frame_ReturnStore1.Frame_base1.cxgrdbtblvw);
+   //2023.12.26 wk  药房占用
+   dm.InitGrid(1,'MedStore_OccupyMaster.xml',Frame_OccupyStore1.cxgrdbtblvw);
+   dm.InitGrid(1,'MedStore_OccupyDetail.xml',Frame_OccupyStore1.cxgrdbtblvwdetail);
+   //2024.01.04 wk 煎药费
+   dm.InitGrid(1,'MedStore_BoilMedFee.xml',Frame_BoilMed1.cxgrdbtblvw);
+   //2024.05.07 wk 药库库存
+   dm.InitGrid(1,'MedBank_Store.xml',Frame_Medbank1.cxgrdbtblvw);
+end;
+
+procedure TFrm_IntegratedQuery.SetCmbxDeptValue;
+var  astr:string;
+begin
+  Frame_OtherOutStore1.cbb_Reqdept.Clear;
+  with dm.q_use do
+  begin
+    close;
+    Sql.clear;
+    SQL.add('select ksbm,ksmc from jgxx where ifzy=1 and lbd<>5 order by ksbm ');
+    open;
+    first;
+    Frame_OtherOutStore1.cbb_Reqdept.Items.Add('0:全部');
+    while not Eof do
+    begin
+      astr:=Fields[0].AsString+':'+Fields[1].AsString;
+      Frame_OtherOutStore1.cbb_Reqdept.Items.Add(astr);
+      Next;
+    end;
+  end;
+   Frame_OtherOutStore1.cbb_Reqdept.ItemIndex:=0;
+end;
+
+procedure TFrm_IntegratedQuery.SetCmbxGhdwValue;
+var astr:string;
+begin
+  Frame_InStoreNew1.cbb_ghdw.Clear;
+  with dm.q_use do
+  begin
+    close;
+    Sql.clear;
+    SQL.add('select inc_code,inc_name from ghdw order by inc_code');
+    open;
+    first;
+    Frame_InStoreNew1.cbb_ghdw.Items.Add('0:全部');
+    while not Eof do
+    begin
+      astr:=Fields[0].AsString+':'+Fields[1].AsString;
+      Frame_InStoreNew1.cbb_ghdw.Items.Add(astr);
+      Next;
+    end;
+  end;
+   Frame_InStoreNew1.cbb_ghdw.ItemIndex:=0;
+end;
+
+procedure TFrm_IntegratedQuery.SetCmbxRklbValue;
+var astr:string;
+begin
+  Frame_InStoreNew1.cbb_rklb.Clear;
+  with dm.q_use do
+  begin
+    close;
+    Sql.clear;
+    SQL.add('select bh,mc from pub_constant where kind=70');
+    open;
+    first;
+    Frame_InStoreNew1.cbb_rklb.Items.Add('0:全部');
+    while not Eof do
+    begin
+      astr:=Fields[0].AsString+':'+Fields[1].AsString;
+      Frame_InStoreNew1.cbb_rklb.Items.Add(astr);
+      Next;
+    end;
+  end;
+   Frame_InStoreNew1.cbb_rklb.ItemIndex:=0;
+end;
+
+
+end.

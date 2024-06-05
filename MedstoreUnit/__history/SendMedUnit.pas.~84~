@@ -1,0 +1,440 @@
+unit SendMedUnit;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Buttons, Mask, Grids, DBGrids, ExtCtrls,ComCtrls,Data.DB,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore,
+  dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
+  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
+  dxSkinXmas2008Blue, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
+  cxEdit, cxNavigator, dxDateRanges, dxScrollbarAnnotations, cxDBData,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGrid, cxGridCardView;
+
+
+type
+  TFrm_SendMed = class(TForm)
+    Panel2: TPanel;
+    edt_name: TEdit;
+    RG_SendClass: TRadioGroup;
+    BitBtn2: TBitBtn;
+    btn_send: TBitBtn;
+    btn_search: TBitBtn;
+    btn_print: TBitBtn;
+    StatusBar1: TStatusBar;
+    RdGrp_yzlb: TRadioGroup;
+    RdGrp_house: TRadioGroup;
+    Label4: TLabel;
+    RG_MedClass: TRadioGroup;
+    Panel1: TPanel;
+    Panel3: TPanel;
+    Splitter1: TSplitter;
+    cbb_yfbm: TComboBox;
+    edt_sendno: TEdit;
+    Edt_code: TEdit;
+    Label1: TLabel;
+    cxStyleRepository: TcxStyleRepository;
+    cxStyle1: TcxStyle;
+    cxStyle2: TcxStyle;
+    cxStyle3: TcxStyle;
+    cxStyle4: TcxStyle;
+    cxStyle5: TcxStyle;
+    cxStyle6: TcxStyle;
+    cxStyle7: TcxStyle;
+    cxStyle8: TcxStyle;
+    cxStyle9: TcxStyle;
+    cxStyle10: TcxStyle;
+    cxStyle11: TcxStyle;
+    cxStyle12: TcxStyle;
+    cxStyle13: TcxStyle;
+    cxStyle14: TcxStyle;
+    cxStyle15: TcxStyle;
+    cxStyle16: TcxStyle;
+    cxStyle17: TcxStyle;
+    cxStyle18: TcxStyle;
+    cxStyle19: TcxStyle;
+    cxStyle20: TcxStyle;
+    cxStyle21: TcxStyle;
+    cxStyle22: TcxStyle;
+    cxStyle23: TcxStyle;
+    cxStyle24: TcxStyle;
+    cxStyle25: TcxStyle;
+    cxstyl1: TcxStyle;
+    GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet;
+    GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet;
+    cxGrid1: TcxGrid;
+    cxGrid1btblvwGrid1DBTableView1: TcxGridDBTableView;
+    cxgrdbtblvw: TcxGridDBTableView;
+    cxGrid1lvlGrid1Level1: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    procedure BitBtn2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btn_searchClick(Sender: TObject);
+    procedure btn_sendClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_printClick(Sender: TObject);
+    procedure RG_SendClassClick(Sender: TObject);
+    procedure RdGrp_yzlbClick(Sender: TObject);
+    procedure cbb_yfbmChange(Sender: TObject);
+    procedure cxgrdbtblvwCellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+  private
+    { Private declarations }
+    Fsendno:string;
+    Frecount:integer;
+    Fsendsucess:integer;
+    Fyfbm:integer;
+    procedure ListSickBuilding();
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_SendMed: TFrm_SendMed;
+implementation
+
+uses data,czydl,factory, main,InterfaceMedStore, reportform;
+{$R *.DFM}
+procedure TFrm_SendMed.ListSickBuilding();
+begin
+   RdGrp_house.Items.Clear ;
+   with dm.q_comm do
+   begin
+     close;
+     sql.clear;
+     sql.add('select roomid,room From zy_sickroom where LEN(roomid)=2');
+     sql.add('order by roomid');
+     try
+       open;
+       first;
+       while not eof do
+       begin
+         RdGrp_house.Items.Add(fieldbyname('roomid').AsString+':'+fieldbyname('room').AsString);
+         next;
+       end;
+     except
+         exit;
+     end;
+   end;
+end;
+
+
+procedure TFrm_SendMed.BitBtn2Click(Sender: TObject);
+begin
+ close;
+end;
+
+procedure TFrm_SendMed.FormShow(Sender: TObject);
+var machinename:string;
+    MYMedStore:IMedStore;
+begin
+   //--2024.04.22 wk 库房类别
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.GetYfbm(dm.Q_comm,cbb_yfbm,false);
+  cbb_yfbm.ItemIndex:=dm.GetComboxIndex(cbb_yfbm,dm.sysinfo.yfmc);//设置默认药房
+  Fyfbm:=strtoint(dm.GetComboxValue(cbb_yfbm,':',true));
+  //---
+
+   cxGridDBTableView2.DataController.DataSource:=dm.DS_fybq;
+   ListSickBuilding();
+   RdGrp_house.ItemIndex :=0;
+   RG_SendClass.ItemIndex :=2;
+   edt_sendno.Clear ;
+   StatusBar1.Panels[0].text:=dm.Fopid+':'+dm.FopidName;
+   RG_SendClass.OnClick(sender);
+
+end;
+
+procedure TFrm_SendMed.btn_searchClick(Sender: TObject);
+var  adeptid,ayzlb,acfdh:integer;
+     aroomid,arecount,Asendtype,Amsg:string;
+     MYMedStore:IMedStore;
+begin
+  MYMedStore:=TMedStore.Create;
+  if RdGrp_yzlb.ItemIndex=2 then
+    ayzlb:=999
+  else
+    ayzlb:=RdGrp_yzlb.ItemIndex;
+  case RG_SendClass.ItemIndex of
+  0:begin
+     Asendtype:='3';
+     acfdh:=0;
+     adeptid:=0;
+     aroomid:=copy(RdGrp_house.Items[RdGrp_house.ItemIndex],1,2);
+   end;
+  1:begin
+    if trim(Edt_code.Text)='' then
+    begin
+        messagedlg('请选择准备发药的楼层！', mtWarning,[mbok],0);
+        exit;
+    end;
+     Asendtype:='3';
+     acfdh:=0;
+     adeptid:=0;
+     aroomid:=trim(Edt_code.Text);
+   end;
+   //科室
+  2:begin
+    if trim(Edt_code.Text)='' then
+    begin
+        messagedlg('请选择准备发药的科室！', mtWarning,[mbok],0);
+        exit;
+     end;
+       Asendtype:='4';
+       acfdh:=0;
+       aroomid:='0000';
+       adeptid:=strtoint(Edt_code.Text);
+   end;
+   //处方
+   3:begin
+      if trim(Edt_code.Text)='' then
+      begin
+        messagedlg('请选择处方！', mtWarning,[mbok],0);
+        exit;
+     end;
+       Asendtype:='5';
+       acfdh:=strtoint(Edt_code.Text);
+       aroomid:='0000';
+       adeptid:=0;
+   end;
+ end;
+   case RG_SendClass.ItemIndex of
+   0,1,2:dm.InitGrid(1,'MedStore_WLock.xml',cxgrdbtblvw);
+   3:begin
+     if dm.Q_comm1.fieldbyname('cflbName').AsString='西药' then
+       dm.InitGrid(1,'MedStore_WLock.xml',cxgrdbtblvw)
+     else
+       dm.InitGrid(1,'MedStore_CLock.xml',cxgrdbtblvw);
+   end;
+
+   end;
+
+  if MYMedStore.ClearMedstoreTemp(dm.Q_public,adeptid,ayzlb,strtoint(dm.Fopid),aroomid,asendtype,'1',Fyfbm) then
+  begin
+    Amsg:=dm.Q_public.FieldByName('msg').AsString;
+    if application.MessageBox(pchar(Amsg),'提示',mb_yesno+MB_ICONQUESTION)=IDYES  then
+    MYMedStore.ClearMedstoreTemp(dm.Q_public,adeptid,ayzlb,strtoint(dm.Fopid),aroomid,asendtype,'2',Fyfbm)
+  end;
+  if  MYMedStore.LockMedinfo(dm.Q_fybq,aroomid,1,ayzlb,strtoint(dm.Fopid),adeptid,acfdh,Asendtype,Fyfbm)=true then
+      btn_send.Enabled:=true
+  else
+      btn_send.Enabled:=false;
+  try
+    arecount:=inttostr(dm.Q_fybq.recordcount); //记录数
+  except
+    exit;
+  end;
+  StatusBar1.Panels[1].Text:=edt_name.text+'记录数：'+arecount;
+end;
+
+procedure TFrm_SendMed.btn_sendClick(Sender: TObject);
+var ayzlb,arecount,acfclass,atimeout,aksbm,acflb:integer;
+    aroomid,Asendtype,Amessage:string;
+    MYMedStore:IMedStore;
+begin
+  try
+    MYMedStore:=TMedStore.Create;
+    arecount:=DBGrid_yp.DataSource.DataSet.RecordCount;
+    acfclass:=999;
+    if RdGrp_yzlb.ItemIndex=2  then
+      ayzlb:=999
+    else
+      ayzlb:=RdGrp_yzlb.ItemIndex;
+    case  RG_SendClass.ItemIndex of
+    0:begin
+        Asendtype:='3';
+        aroomid:=copy(RdGrp_house.Items[RdGrp_house.ItemIndex],1,2);
+        acflb:=1;
+      end;
+    1:begin
+        Asendtype:='3';    //楼层
+        aksbm:=0;
+        aroomid:=trim(Edt_code.Text);
+        acflb:=1;
+      end;
+    2:begin
+        Asendtype:='4';        //科室
+        aksbm:=strtoint(Edt_code.Text);
+        aroomid:='0000';
+        acflb:=1;
+      end;
+    3:begin
+        Asendtype:='5';        //科室
+        aksbm:=0;
+        aroomid:='0000';
+        acflb:=dm.Q_comm1.FieldByName('cflb').AsInteger;
+      end;
+    end;
+     //产生发药序号
+     edt_sendno.Text:=MYMedStore.GetSendno(dm.Q_public1);
+     //发药序号传递给窗体全局变量
+     //---------软件测试--------------------
+      //application.MessageBox(pchar(edt_sendno.Text),'信息',mb_iconerror);
+      //exit;
+     //--------------------------------
+     Fsendno:=trim(edt_sendno.Text);
+     if trim(edt_sendno.Text)='' then
+     begin
+       application.MessageBox('产生发药序号出错，请联系信息中心！','错误信息',mb_iconerror);
+       exit;
+     end;
+
+    if MYMedStore.SendMedinfo(dm.Q_public,strtoint(dm.Fopid),arecount,ayzlb,acfclass,aroomid,Asendtype,trim(edt_sendno.Text),'',Fyfbm,aksbm,acflb) then
+    begin
+        //发药后取回发药记录数 ，记录数传递给窗体全局变量
+        Frecount:=MYMedStore.CheckSend(dm.Q_public1,Asendtype,trim(edt_sendno.Text),Fyfbm);
+         //比较返回的记录与锁定记录是否一致，如果一致打印报表
+        if Frecount=arecount then
+        begin
+         // dm.PrintMedinfo(0,strtointdef(copy(cmbx_dept.text,1,3),0),aroomid,ayplb,ayzlb,trim(edt_sendno.Text),Asendtype);
+          Fsendsucess:=255;
+          atimeout:=0;
+          btn_print.Click;
+          btn_send.Enabled:=false;
+        end else
+        begin
+          application.MessageBox(pchar('锁定记录与发药记录不同，请联系信息中心！'
+           +#13+'发药序号：'+Fsendno+'锁定记录：'+inttostr(arecount)+' 发药记录：'+inttostr(Frecount)),'错误信息',mb_iconerror);
+          //flog.AddLog('发药', '-------', '发药结束！','锁定记录与发药记录不同，请联系信息中心!','',flogtype);
+          Exit;
+        end;
+        if RG_SendClass.ItemIndex=3 then  MYMedStore.SearchNOSendRIPinfo(DM.Q_comm1,Fyfbm);
+    end else
+    begin
+       DBGrid_yp.DataSource.DataSet.Close;
+       btn_send.Enabled:=false;
+       Exit;
+    end;
+  except
+     Exit;
+  end;
+end;
+
+procedure TFrm_SendMed.cbb_yfbmChange(Sender: TObject);
+begin
+  Fyfbm:=strtoint(dm.GetComboxValue(cbb_yfbm,':',true));
+end;
+
+procedure TFrm_SendMed.cxgrdbtblvwCellClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  if   dm.Q_comm1.IsEmpty then exit;
+  case RG_SendClass.ItemIndex of
+    0,1,2:begin
+      Edt_code.Text:=dm.Q_comm1.fieldbyname('CODE').AsString;
+      edt_name.Text:=dm.Q_comm1.fieldbyname('NAME').AsString;
+    end;
+    3:begin
+        Edt_code.Text:=dm.Q_comm1.fieldbyname('cfdh').AsString;
+        edt_name.Text:=dm.Q_comm1.fieldbyname('patname').AsString;
+    end;
+  end;
+  edt_sendno.Clear ;
+  btn_search.Click;
+end;
+
+procedure TFrm_SendMed.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+var    MYMedStore:IMedStore;
+
+begin
+   MYMedStore:=TMedStore.Create;
+   MYMedStore.ClearlockMedinfo(dm.Q_public,fyfbm,strtoint(dm.Fopid));
+   cxgrdbtblvw.DataController.DataSource:=nil;
+   DBGrid_yp.DataSource:=nil;
+   dm.Q_comm.Close;
+   dm.q_fybq.close;
+end;
+
+procedure TFrm_SendMed.btn_printClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+     amedclass,akind:integer;
+begin
+    Fm_report.Fyf:='';
+    Fm_report.Fhospital_name:=dm.sysinfo.hospitalName;
+    Fm_report.Ffyrq:=datetimetostr(now);
+    Fm_report.FHLDY:=edt_name.Text;
+    Fm_report.Ffyr:=dm.FopidName;
+    Fm_report.Fsendno:=Fsendno;
+   // Frecount:=inttostr(Frecount);
+    case RdGrp_yzlb.ItemIndex of
+    0:Fm_report.FprintType:='发药打印【临】';
+    1:Fm_report.FprintType:='发药打印【长】';
+    2:Fm_report.FprintType:='发药打印【全】';
+    end;
+    akind:=dm.sysinfo.InPatSendkind;
+    MYMedStore:=TMedStore.Create;
+   // MYMedStore.PrintSendMedTotal (Fm_report.frxrprt1,dm.Q_fybq,Fsendno,RG_MedClass.ItemIndex,akind,Fyfbm);
+    MYMedStore.PrintSendMedDetail(Fm_report.frxrprt1,dm.Q_SendMedDetail,Fsendno,RG_MedClass.ItemIndex,akind,Fyfbm);
+    dm.Q_fybq.Close;
+end;
+
+
+procedure TFrm_SendMed.RG_SendClassClick(Sender: TObject);
+var MYMedStore:IMedStore;
+begin
+  MYMedStore:=TMedStore.Create;
+  case RG_SendClass.ItemIndex of
+  0:begin
+     cxGrid1.Enabled:=false;
+     cxGrid1.Color:=clSkyBlue;
+     RdGrp_house.Enabled:=true;
+     Edt_code.Clear;
+     edt_name.Clear;
+    end;
+  1:begin
+      cxGrid1.Enabled:=true;
+      cxGrid1.Color:=clInfoBk;
+      RdGrp_house.Enabled:=false;
+      dm.InitGrid(1,'MedStore_NOSendMedJGXX.xml',cxgrdbtblvw);
+      MYMedStore.SearchNurseUnit(dm.Q_comm1);
+    end;
+  2:begin
+      cxGrid1.Enabled:=true;
+      cxGrid1.Color:=clSkyBlue;
+      Edt_code.Clear;
+      edt_name.Clear;
+      RdGrp_house.Enabled:=false;
+      RdGrp_yzlb.ItemIndex:=2;
+      dm.InitGrid(1,'MedStore_NOSendMedJGXX.xml',cxgrdbtblvw);
+      MYMedStore.SearchDept(dm.Q_comm1);
+    end;
+   3:begin
+      Edt_code.Clear;
+      edt_name.Clear;
+      RdGrp_yzlb.ItemIndex:=2;
+      dm.InitGrid(1,'MedStore_NOSendMedRip.xml',cxgrdbtblvw);
+      MYMedStore.SearchNOSendRIPinfo(DM.Q_comm1,Fyfbm);
+   end;
+  end;
+  dm.Q_fybq.Close;
+  btn_send.Enabled:=false;
+end;
+
+procedure TFrm_SendMed.RdGrp_yzlbClick(Sender: TObject);
+begin
+  btn_search.Click;
+end;
+
+end.

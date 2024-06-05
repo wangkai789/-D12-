@@ -1,0 +1,129 @@
+object fm_kccxdy: Tfm_kccxdy
+  Left = 351
+  Top = 191
+  Width = 396
+  Height = 194
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object TPanel
+    Left = 0
+    Top = 0
+    Width = 388
+    Height = 40
+    Align = alTop
+    Color = clTeal
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 122
+      Top = 8
+      Width = 126
+      Height = 20
+      Caption = '库存查询打印'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clYellow
+      Font.Height = -20
+      Font.Name = '宋体'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  object panel1: TPanel
+    Left = 0
+    Top = 40
+    Width = 388
+    Height = 127
+    Align = alClient
+    BevelInner = bvLowered
+    TabOrder = 1
+    object btn_aym: TBitBtn
+      Left = 45
+      Top = 29
+      Width = 87
+      Height = 26
+      Caption = '按药品'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = '宋体'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnClick = btn_aymClick
+    end
+    object btn_acj: TBitBtn
+      Left = 148
+      Top = 29
+      Width = 87
+      Height = 26
+      Caption = '按厂家'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = '宋体'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btn_acjClick
+    end
+    object btn_aghdw: TBitBtn
+      Left = 252
+      Top = 29
+      Width = 87
+      Height = 26
+      Caption = '按供货单位'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = '宋体'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      OnClick = btn_aghdwClick
+    end
+    object btn_exit: TBitBtn
+      Left = 252
+      Top = 79
+      Width = 87
+      Height = 26
+      Caption = '退出'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = '宋体'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btn_exitClick
+    end
+    object btn_ayxq: TBitBtn
+      Left = 46
+      Top = 79
+      Width = 87
+      Height = 26
+      Caption = '按失效日期'
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = '宋体'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+      OnClick = btn_ayxqClick
+    end
+    object panel3: TPanel
+      Left = 0
+      Top = -1
+      Width = 414
+      Height = 4
+      TabOrder = 5
+    end
+  end
+end

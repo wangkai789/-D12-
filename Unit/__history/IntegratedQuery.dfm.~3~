@@ -1,0 +1,806 @@
+object Frm_IntegratedQuery: TFrm_IntegratedQuery
+  Left = -7
+  Top = 3
+  Caption = #32508#21512#26597#35810
+  ClientHeight = 606
+  ClientWidth = 1004
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Position = poMainFormCenter
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  TextHeight = 13
+  object pgc1: TPageControl
+    Left = 0
+    Top = 0
+    Width = 1004
+    Height = 606
+    ActivePage = ts8
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 1008
+    ExplicitHeight = 607
+    object ts1: TTabSheet
+      Caption = #30424#28857#21464#21270
+      inline Frame_ChangeStore1: TFrame_ChangeStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 1000
+          ExplicitHeight = 579
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 1000
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 1354
+            ExplicitHeight = 607
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts2: TTabSheet
+      Caption = #20837#24211
+      inline Frame_InStoreNew1: TFrame_InStoreNew
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 1000
+        end
+        inherited PageControl1: TPageControl
+          Width = 996
+          Height = 514
+          ExplicitWidth = 1000
+          ExplicitHeight = 515
+          inherited TabSheet1: TTabSheet
+            ExplicitWidth = 992
+            ExplicitHeight = 486
+            inherited Splitter1: TSplitter
+              Width = 1346
+              ExplicitWidth = 1346
+            end
+            inherited cxgrd: TcxGrid
+              Width = 1346
+              ExplicitWidth = 1346
+            end
+            inherited cxGrid2: TcxGrid
+              Width = 1346
+              Height = 166
+              ExplicitWidth = 1346
+              ExplicitHeight = 166
+            end
+          end
+          inherited TabSheet2: TTabSheet
+            inherited cxGrid1: TcxGrid
+              Width = 1332
+              Height = 579
+              ExplicitWidth = 1332
+              ExplicitHeight = 579
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts3: TTabSheet
+      Caption = #20986#24211
+      ImageIndex = 2
+      inline Frame_OutStore1: TFrame_OutStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 1000
+          ExplicitHeight = 579
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 1000
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 509
+            ExplicitWidth = 1354
+            ExplicitHeight = 597
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts10: TTabSheet
+      Caption = #20854#20182#20986#24211
+      ImageIndex = 9
+      inline Frame_OtherOutStore1: TFrame_OtherOutStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 1000
+          inherited Label18: TLabel
+            Left = 1663
+            Top = 19
+            ExplicitLeft = 1663
+            ExplicitTop = 19
+          end
+          inherited lbl_MedName: TLabel
+            Left = 1552
+            Top = 27
+            ExplicitLeft = 1552
+            ExplicitTop = 27
+          end
+          inherited Label2: TLabel
+            Width = 48
+            Height = 13
+            ExplicitWidth = 48
+            ExplicitHeight = 13
+          end
+          inherited edt_SearchCondition: TEdit
+            Left = 1264
+            Top = 23
+            ExplicitLeft = 1264
+            ExplicitTop = 23
+          end
+          inherited cbb_Reqdept: TComboBox
+            Height = 21
+            ExplicitHeight = 21
+          end
+        end
+        inherited PageControl1: TPageControl
+          Width = 996
+          Height = 526
+          ExplicitWidth = 1000
+          ExplicitHeight = 527
+          inherited TabSheet1: TTabSheet
+            ExplicitTop = 24
+            ExplicitHeight = 539
+            inherited Splitter1: TSplitter
+              Width = 1346
+              ExplicitWidth = 1346
+            end
+            inherited cxgrd: TcxGrid
+              Width = 1346
+              ExplicitWidth = 1346
+            end
+            inherited cxGrid2: TcxGrid
+              Width = 1346
+              Height = 58
+              ExplicitWidth = 1346
+              ExplicitHeight = 58
+            end
+          end
+          inherited TabSheet2: TTabSheet
+            ExplicitTop = 24
+            ExplicitWidth = 992
+            ExplicitHeight = 499
+            inherited cxGrid1: TcxGrid
+              Width = 1346
+              Height = 586
+              ExplicitWidth = 1346
+              ExplicitHeight = 586
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts11: TTabSheet
+      Caption = #33647#25151#38144#21806
+      ImageIndex = 10
+      inline Frame_MedStoreSale1: TFrame_MedStoreSale
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 1000
+          ExplicitHeight = 579
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 1000
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 511
+            ExplicitWidth = 1354
+            ExplicitHeight = 599
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts6: TTabSheet
+      Caption = #33647#25151#36864#33647
+      ImageIndex = 10
+      inline Frame_ReturnStore1: TFrame_ReturnStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 1000
+          ExplicitHeight = 579
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 1000
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 1354
+            ExplicitHeight = 607
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts4: TTabSheet
+      Caption = #24211#23384
+      ImageIndex = 3
+      inline Frame_Medbank1: TFrame_Medbank
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited GroupBox8: TGroupBox
+          Width = 996
+          ExplicitWidth = 1000
+        end
+        inherited cxGrd_plan: TcxGrid
+          Width = 996
+          Height = 529
+          ExplicitWidth = 1354
+          ExplicitHeight = 617
+          inherited cxGrd_viewbank: TcxGridDBTableView
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skCount
+                Column = Frame_Medbank1.cxGrd_viewbankbh
+              end
+              item
+                Kind = skSum
+                Column = Frame_Medbank1.cxGrd_viewbankje
+              end
+              item
+                Format = #35760#24405#25968':0'
+                Kind = skCount
+                Column = Frame_Medbank1.cxGrd_viewbankplace
+              end
+              item
+                Kind = skSum
+                Column = Frame_Medbank1.cxgrdbclmnGrd_viewbankpfjqe
+              end>
+            inherited cxGrd_viewbankplace: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankbh: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankym: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankDBColumn1: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankDBColumn2: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankgg: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankproduce: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankkcl: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankzykcl: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankmzkcl: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankDBColumn4: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankdw: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankbjl: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankoutnum: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_yfkcl: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankzxdw: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankpfj: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankdj: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankzxdw_ylsj: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankyfbjl: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankDBckl: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankpfjqe: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankje: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankjx: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxgrdbclmnGrd_viewbankph: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+            inherited cxGrd_viewbankghdw: TcxGridDBColumn
+              DataBinding.IsNullValueType = True
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts12: TTabSheet
+      Caption = #36827#38144#23384
+      ImageIndex = 11
+      inline Frame_Balance1: TFrame_Balance
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Splitter1: TSplitter
+          Width = 996
+          ExplicitWidth = 1354
+        end
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 1000
+          inherited Label2: TLabel
+            Width = 48
+            Height = 13
+            ExplicitWidth = 48
+            ExplicitHeight = 13
+          end
+          inherited cbb_yfbm: TComboBox
+            Height = 21
+            ExplicitHeight = 21
+          end
+        end
+        inherited cxgrd: TcxGrid
+          Width = 996
+          ExplicitWidth = 1354
+        end
+        inherited cxGrid2: TcxGrid
+          Width = 996
+          Height = 165
+          ExplicitWidth = 1354
+          ExplicitHeight = 253
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts5: TTabSheet
+      Caption = #35843#20215
+      ImageIndex = 4
+      inline Frame_PriceChangeStore1: TFrame_PriceChangeStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 1000
+          ExplicitHeight = 579
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 1000
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 1354
+            ExplicitHeight = 607
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts7: TTabSheet
+      Caption = #21442#32771#24211#23384
+      ImageIndex = 6
+      inline Frame_BalancesStore1: TFrame_BalancesStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 1000
+          ExplicitHeight = 579
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 1000
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 1354
+            ExplicitHeight = 607
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts8: TTabSheet
+      Caption = #38144#21806#21033#28070
+      ImageIndex = 7
+      inline Frame_ProfitStore1: TFrame_ProfitStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 1000
+          ExplicitHeight = 579
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 996
+            ExplicitHeight = 519
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts9: TTabSheet
+      Caption = #21344#29992#24211#23384
+      ImageIndex = 11
+      inline Frame_OccupyStore1: TFrame_OccupyStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 1000
+          inherited cbb_yfbm: TComboBox
+            Height = 21
+            ExplicitHeight = 21
+          end
+        end
+        inherited PageControl1: TPageControl
+          Width = 996
+          Height = 514
+          ExplicitWidth = 1000
+          ExplicitHeight = 515
+          inherited TabSheet1: TTabSheet
+            ExplicitTop = 24
+            ExplicitWidth = 992
+            ExplicitHeight = 487
+            inherited Splitter1: TSplitter
+              Width = 1332
+              ExplicitWidth = 1332
+            end
+            inherited cxgrd: TcxGrid
+              Width = 1332
+              ExplicitWidth = 1332
+            end
+            inherited cxGrid2: TcxGrid
+              Width = 1332
+              Height = 247
+              ExplicitWidth = 1332
+              ExplicitHeight = 247
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts13: TTabSheet
+      Caption = #29006#33647#36153
+      ImageIndex = 12
+      inline Frame_BoilMed1: TFrame_BoilMed
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 1354
+        end
+        inherited cxgrd: TcxGrid
+          Width = 996
+          Height = 516
+          ExplicitWidth = 1354
+          ExplicitHeight = 604
+        end
+      end
+    end
+    object ts14: TTabSheet
+      Caption = #39564#25910#35760#24405
+      ImageIndex = 13
+      inline Frame_ExamRecord1: TFrame_ExamRecord
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 1000
+        ExplicitHeight = 579
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 1000
+          ExplicitHeight = 579
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 1000
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 1354
+            ExplicitHeight = 607
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,7 @@
+﻿site: http://221.13.145.100:10141
+path: /药库系统
+dist: ../
+exclude: []
+withVer: false
+autoRun: false
+saveInfo: false

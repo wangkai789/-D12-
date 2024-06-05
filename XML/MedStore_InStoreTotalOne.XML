@@ -1,0 +1,59 @@
+﻿ <!-- 
+    设置 cxGrid1DBTableView1  OptionsView footer=true
+    V1: Integer;    //    宽度
+    V2: Integer;    //    只读
+    V3: Integer;    //    排序
+    V4: Integer;    //    过滤
+    V5: Integer;    //    合计 0 skNone, 1 skSum, 2 skMin, 3 skMax, 4 skCount, 5 skAverage
+    V6: Integer;    //    自定义颜色
+    Name1: String;  //    字段名
+    Name2: String;  //    备注名
+    VAL1: String;    //   格式
+-->
+<xml xmlns:s='uuid:BDC6E3F0-6DA3-11d1-A2A3-00AA00C14882'
+	xmlns:dt='uuid:C2F41010-65B3-11d1-A29F-00AA00C14882'
+	xmlns:rs='urn:schemas-microsoft-com:rowset'
+	xmlns:z='#RowsetSchema'>
+<s:Schema id='RowsetSchema'>
+	<s:ElementType name='row' content='eltOnly' rs:updatable='true'>
+		<s:AttributeType name='IDX' rs:number='1' rs:writeunknown='true'>
+			<s:datatype dt:type='int' dt:maxLength='4' rs:precision='10' rs:fixedlength='true' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='V1' rs:number='2' rs:writeunknown='true'>
+			<s:datatype dt:type='int' dt:maxLength='4' rs:precision='10' rs:fixedlength='true' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='V2' rs:number='3' rs:writeunknown='true'>
+			<s:datatype dt:type='int' dt:maxLength='4' rs:precision='10' rs:fixedlength='true' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='V3' rs:number='4' rs:writeunknown='true'>
+			<s:datatype dt:type='int' dt:maxLength='4' rs:precision='10' rs:fixedlength='true' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='V4' rs:number='5' rs:writeunknown='true'>
+			<s:datatype dt:type='int' dt:maxLength='4' rs:precision='10' rs:fixedlength='true' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='V5' rs:number='6' rs:writeunknown='true'>
+			<s:datatype dt:type='int' dt:maxLength='4' rs:precision='10' rs:fixedlength='true' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='V6' rs:number='7' rs:writeunknown='true'>
+			<s:datatype dt:type='int' dt:maxLength='4' rs:precision='10' rs:fixedlength='true' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='FIELDNAME1' rs:number='8' rs:writeunknown='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='FIELDNAME2' rs:number='9' rs:writeunknown='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='MEMO' rs:number='10' rs:writeunknown='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:extends type='rs:rowbase'/>
+	</s:ElementType>
+</s:Schema>
+<rs:data>
+	<z:row IDX='0' V1='60' V2='0' V3='0' V4='500' V5='0' V6='0' FIELDNAME1='' FIELDNAME2='' MEMO='B004'/>
+    <z:row IDX='1' V1='100' V2='0' V3='0' V4='0' V5='0' V6='0' FIELDNAME1='lbm' FIELDNAME2='药品分类' MEMO=''/>
+    <z:row IDX='2' V1='100' V2='0' V3='0' V4='0' V5='0' V6='0' FIELDNAME1='Price' FIELDNAME2='零售价' MEMO=''/>
+	<z:row IDX='2' V1='100' V2='0' V3='0' V4='0' V5='1' V6='0' FIELDNAME1='PurchasePrice' FIELDNAME2='进货价' MEMO=''/>
+	<z:row IDX='2' V1='100' V2='0' V3='0' V4='0' V5='1' V6='0' FIELDNAME1='PriceSpread' FIELDNAME2='差价' MEMO=''/>
+</rs:data>
+</xml>

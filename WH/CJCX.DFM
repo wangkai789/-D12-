@@ -1,0 +1,53 @@
+object fm_cjcx: Tfm_cjcx
+  Left = 50
+  Top = 74
+  Width = 683
+  Height = 466
+  Caption = '查询生产厂家'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 16
+    Top = 32
+    Width = 641
+    Height = 361
+    DataSource = dm.DS_public
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = '宋体'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    TitleFont.Charset = GB2312_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -16
+    TitleFont.Name = '宋体'
+    TitleFont.Style = []
+  end
+  object btn_exit: TBitBtn
+    Left = 513
+    Top = 405
+    Width = 75
+    Height = 25
+    Caption = '退出'
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = '宋体'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = btn_exitClick
+  end
+end

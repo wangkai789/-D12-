@@ -1,0 +1,15 @@
+[DBServer]
+HOST=127.0.0.1
+PORT=1433
+DataBase=yiyuandb_ym
+USERNAME=founder
+PASSWORD=fd
+
+[NVOICE]
+HOST=127.0.0.1
+PORT=18888
+
+[HttpServer]
+HOST=192.168.0.8
+PORT=65535
+Path=

@@ -1,0 +1,159 @@
+unit MedStoreSale;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, BaseFrame, StdCtrls, Buttons, ExtCtrls, ComCtrls;
+
+type
+  TFrame_MedStoreSale = class(TFrame)
+    Frame_base1: TFrame_base;
+    btn_cfdprint: TBitBtn;
+    btn_print: TBitBtn;
+    rg_SearchClass: TRadioGroup;
+    RG_PatientClass: TRadioGroup;
+    RG_TotalClass: TRadioGroup;
+    RG_SearchClass1: TRadioGroup;
+    RG_MedClass: TRadioGroup;
+    dtpDT_from: TDateTimePicker;
+    dtpDT_to: TDateTimePicker;
+    procedure Frame_base1btn_SearchClick(Sender: TObject);
+    procedure rg_SearchClassClick(Sender: TObject);
+    procedure btn_printClick(Sender: TObject);
+    procedure btn_cfdprintClick(Sender: TObject);
+    procedure Frame_base1edt_SearchConditionKeyPress(Sender: TObject;
+      var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+implementation
+
+uses InterfaceMedStore,data, reportform;
+
+{$R *.dfm}
+
+procedure TFrame_MedStoreSale.Frame_base1btn_SearchClick(Sender: TObject);
+var  MYMedStore:IMedStore;
+     aPatientClass:byte;
+     adatefrom,adateto:tdatetime;
+     ayfbm:integer;
+begin
+  ayfbm:=strtoint(dm.GetComboxValue(Frame_base1.cbb_yfbm,':',true));
+  Frame_base1.DT_from.Time:=dtpDT_from.Time;
+  Frame_base1.DT_to.Time:=dtpDT_to.Time;
+  adatefrom:=Frame_base1.DT_from.DateTime;
+  adateto:=Frame_base1.DT_to.datetime;
+
+
+  MYMedStore:=TMedStore.Create;
+  case RG_PatientClass.ItemIndex of
+  0:aPatientClass:=ALLPatient;
+  1:
+    begin
+    aPatientClass:=OutPatient;
+    dm.InitGrid(1,'MedStore_Sale.xml',Frame_base1.cxgrdbtblvw);
+    end;
+  2:
+    begin
+    aPatientClass:=InPatient;
+    dm.InitGrid(1,'MedStore_InpatientSale.xml',Frame_base1.cxgrdbtblvw);
+    end;
+  end;
+
+  case RG_SearchClass1.ItemIndex of
+  0://明细
+    begin
+      case aPatientClass of
+      OutPatient:Frame_base1.FTemplateName:='门诊销售明细表';
+      InPatient:Frame_base1.FTemplateName:='住院销售明细表';
+      end;
+
+      MYMedStore.SearchMedStoreSaleDetail(Frame_base1.Q_Result,ayfbm,aPatientClass,
+      RG_MedClass.ItemIndex,Frame_base1.rg1.itemindex,rg_SearchClass.ItemIndex,
+      Frame_base1.edt_SearchCondition.Text,adatefrom,adateto);
+    end;
+  1://汇总
+    begin
+      dm.InitGrid(1,'MedStore_SaleTotal.xml',Frame_base1.cxgrdbtblvw);
+      Frame_base1.FTemplateName:='销售汇总表';
+      MYMedStore.SearchMedStoreSaleTotal(Frame_base1.Q_Result,ayfbm,aPatientClass,RG_MedClass.ItemIndex,
+      Frame_base1.rg1.itemindex,RG_TotalClass.ItemIndex,adatefrom,adateto);
+    end;
+   2:begin
+      dm.InitGrid(1,'MedStore_SaleDoctor.xml',Frame_base1.cxgrdbtblvw);
+      Frame_base1.FTemplateName:='销售医师工作量汇总';
+      MYMedStore.SearchMedStoreSaleDoctor(Frame_base1.Q_Result,ayfbm,aPatientClass,Frame_base1.rg1.itemindex,adatefrom,adateto);
+   end;
+   3:begin
+      dm.InitGrid(1,'MedStore_SaleAntibiotics.xml',Frame_base1.cxgrdbtblvw);
+      Frame_base1.FTemplateName:='销售医师工作量汇总';
+      MYMedStore.SearchMedStoreSaleAntibiotics(Frame_base1.Q_Result,ayfbm,aPatientClass,Frame_base1.rg1.itemindex,adatefrom,adateto);
+   end;
+  end;
+end;
+
+procedure TFrame_MedStoreSale.rg_SearchClassClick(Sender: TObject);
+begin
+  case rg_SearchClass.ItemIndex of
+  0:begin
+    Frame_base1.Label18.Caption:='药品';
+    Frame_base1.lbl_MedName.Caption:='药品名称';
+    end;
+  1:begin
+    Frame_base1.Label18.Caption:='患者姓名';
+    Frame_base1.lbl_MedName.Caption:='';
+    end;
+  2:Frame_base1.Label18.Caption:='科室代码';
+  end;
+end;
+
+procedure TFrame_MedStoreSale.btn_printClick(Sender: TObject);
+var acfdh,aMedClass:integer;
+    MYMedStore:IMedStore;
+begin
+ if Frame_base1.Q_Result.IsEmpty then exit;
+  MYMedStore:=TMedStore.Create;
+  acfdh:=Frame_base1.Q_Result.fieldbyname('cfdh').AsInteger;
+  case Frame_base1.Q_Result.fieldbyname('yplb').AsInteger of
+  1,3:aMedClass:=WesternMed;
+  2:aMedClass:=ChineseMed;
+  end;
+  if MYMedStore.SearchSendMedInfo(dm.Q_use,OutPatient,acfdh) then
+  MYMedStore.PrintSendMedInfo(Fm_report.frxrprt1,OutPatient,aMedClass);
+
+end;
+
+procedure TFrame_MedStoreSale.btn_cfdprintClick(Sender: TObject);
+var amzh,acfdh,aMedClass:integer;
+    MYMedStore:IMedStore;
+begin
+  if Frame_base1.Q_Result.IsEmpty then exit;
+  amzh:=Frame_base1.Q_Result.fieldbyname('mzh').AsInteger;
+  acfdh:=Frame_base1.Q_Result.fieldbyname('cfdh').AsInteger;
+  case Frame_base1.Q_Result.fieldbyname('yplb').AsInteger of
+  1,3:aMedClass:=WesternMed;
+  2:aMedClass:=ChineseMed;
+  end;
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.PrintRipInfo(Fm_report.frxrprt1,dm.Q_RipTitle,dm.qrcfview1,dm.qrcfview2,dm.qrcfview3,dm.Q_temp,amzh,acfdh,aMedClass);
+
+end;
+
+procedure TFrame_MedStoreSale.Frame_base1edt_SearchConditionKeyPress(
+  Sender: TObject; var Key: Char);
+begin
+  if key=#13 then
+  begin
+   case rg_SearchClass.ItemIndex of
+   0:Frame_base1.edt_SearchConditionKeyPress(Sender, Key);
+   1:Frame_base1.btn_Search.SetFocus;
+  end;
+end;
+
+end;
+
+end.

@@ -1,0 +1,175 @@
+unit arkdcx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Buttons, ExtCtrls, Grids, DBGrids, ComCtrls, Data.DB;
+
+type
+  TFm_arkdcx = class(TForm)
+    DBGrid1: TDBGrid;
+    GroupBox1: TGroupBox;
+    Label4: TLabel;
+    Label3: TLabel;
+    datefrom: TDateTimePicker;
+    dateto: TDateTimePicker;
+    btn_cx: TBitBtn;
+    btn_print: TBitBtn;
+    RadioGroup1: TRadioGroup;
+    procedure BBtn_quitClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_cxClick(Sender: TObject);
+    procedure ed_monthKeyPress(Sender: TObject; var Key: Char);
+    procedure datefromKeyPress(Sender: TObject; var Key: Char);
+    procedure datetoKeyPress(Sender: TObject; var Key: Char);
+    procedure btn_printClick(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+  private
+    { Private declarations }
+    procedure  SeekMaster;
+    procedure  SeekDetail(lb:smallint);
+
+
+  public
+    { Public declarations }
+  end;
+
+var
+  Fm_arkdcx: TFm_arkdcx;
+
+implementation
+
+uses data,main,  reportform;
+
+{$R *.DFM}
+
+procedure TFm_arkdcx.BBtn_quitClick(Sender: TObject);
+begin
+close;
+end;
+
+procedure TFm_arkdcx.FormShow(Sender: TObject);
+begin
+dm.Q_comm.close;
+datefrom.date:=date();
+dateto.date:=date();
+datefrom.SetFocus;
+end;
+
+procedure TFm_arkdcx.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+dm.Q_comm.close;
+end;
+
+procedure TFm_arkdcx.btn_cxClick(Sender: TObject);
+begin
+  case  RadioGroup1.ItemIndex of
+  0..3:SeekDetail(RadioGroup1.ItemIndex);
+  4:SeekMaster;
+  end;
+end;
+
+procedure TFm_arkdcx.ed_monthKeyPress(Sender: TObject; var Key: Char);
+begin
+if key=#13 then btn_cx.setfocus;
+end;
+
+procedure TFm_arkdcx.datefromKeyPress(Sender: TObject; var Key: Char);
+begin
+if key=#13 then dateto.setfocus;
+end;
+
+procedure TFm_arkdcx.datetoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then
+end;
+
+procedure TFm_arkdcx.btn_printClick(Sender: TObject);
+begin
+  Fm_arkdcx.btn_cxClick(Sender);
+  case RadioGroup1.ItemIndex of
+   0:Fm_report.Flb:='西药';
+   1:Fm_report.Flb:='中药';
+   2:Fm_report.Flb:='草药';
+   3:Fm_report.Flb:='合计';
+   4:Fm_report.Flb:='合计';
+  end;
+  Fm_report.frReport1.LoadFromFile(ExtractFilePath(Application.ExeName) + 'ykreport\入库单统计.frf');
+  Fm_report.Fdatefrom:=datetostr(datefrom.date);
+  Fm_report.Fdateto:=datetostr(dateto.date);
+  Fm_report.frReport1.ShowReport;
+
+  {qr_rkdtj.QRLabel2.caption:=datetostr(datefrom.date);
+  qr_rkdtj.QRLabel3.caption:=datetostr(dateto.date);
+  qr_rkdtj.preview;}
+end;
+
+procedure TFm_arkdcx.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+var i:integer;
+begin
+   for i:=0 to DBGrid1.Columns.Count -1 do
+   begin
+     DBGrid1.Columns[i].Title.Alignment :=tacenter;
+   end;
+end;
+
+procedure TFm_arkdcx.SeekDetail(lb:smallint);
+begin
+   with dm.q_comm do
+   begin
+    close;
+    sql.clear;
+    case lb of
+    0:sql.add('select 入库单号=lsh,供货单位=inc_name,入库金额=xy_j_je,应付金额=ze,差价=plce');
+    1:sql.add('select 入库单号=lsh,供货单位=inc_name,入库金额=zcy_j_je,应付金额=ze,差价=plce');
+    2:sql.add('select 入库单号=lsh,供货单位=inc_name,入库金额=cy_je,应付金额=ze,差价=plce');
+    3:sql.add('select 入库单号=lsh,供货单位=inc_name,入库金额=xy_j_je+cy_je+zcy_j_je,应付金额=ze,差价=plce');
+    end;
+    sql.add('from xykr_tzd a,ghdw b');
+    sql.add('where a.ghdw=b.inc_code ');
+    case lb of
+    0:sql.add('and xy_j_je<>0 ');
+    1:sql.add('and zcy_j_je<>0 ');
+    2:sql.add('and cy_je<>0 ');
+    end;
+    sql.add('and datediff(day,rkdate,:datefrom)<=0 and datediff(day,rkdate,:dateto)>=0 order by lsh');
+    parambyname('datefrom').asdate:=datefrom.date;
+    parambyname('dateto').asdate:=dateto.date;
+    open;
+    if RecordCount=0 then
+    begin
+      application.messagebox('范围内无入库记录，请再试！','提示',48);
+      datefrom.SetFocus;
+    end;
+  end;
+end;
+
+procedure TFm_arkdcx.SeekMaster;
+begin
+  with dm.q_comm do
+  begin
+    close;
+    sql.clear;
+    sql.add('select  药品种类=case b.lb when 1 then ''西药''  when 2 then ''中草药'' when 3 then ''中成药'' end,零售价=sum(rksl*lsj),进货价=sum(rksl*jhj),差价=sum(rksl*(lsj-jhj)) from xykr a,xyzb b where');
+    sql.add('a.ypbh=b.ypbh   and datediff(day,rkrq,:datefrom)<=0 and datediff(day,rkrq,:dateto)>=0 group by b.lb');
+    parambyname('datefrom').asdate:=datefrom.date;
+    parambyname('dateto').asdate:=dateto.date;
+    open;
+    dbgrid1.Columns[0].width:=120;
+    dbgrid1.Columns[1].width:=120;
+    dbgrid1.Columns[2].width:=120;
+    dbgrid1.Columns[3].width:=120;
+    if RecordCount=0 then
+    begin
+      application.messagebox('不是本月入库单号或此范围内无入库记录，请再试！','提示',48);
+      datefrom.SetFocus;
+    end;
+  end;
+end;
+
+end.

@@ -1,0 +1,746 @@
+object Frm_IntegratedQuery: TFrm_IntegratedQuery
+  Left = 565
+  Top = 433
+  Width = 1378
+  Height = 733
+  Caption = #32508#21512#26597#35810
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pgc1: TPageControl
+    Left = 0
+    Top = 0
+    Width = 1362
+    Height = 694
+    ActivePage = ts14
+    Align = alClient
+    TabOrder = 0
+    object ts1: TTabSheet
+      Caption = #30424#28857#21464#21270
+      inline Frame_ChangeStore1: TFrame_ChangeStore
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Frame_base1: TFrame_base
+          Width = 1354
+          Height = 666
+          inherited GroupBox3: TGroupBox
+            Width = 1354
+          end
+          inherited cxgrd: TcxGrid
+            Width = 1354
+            Height = 607
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+          inherited FlexCelReport1: TFlexCelReport
+            DataModule = Frame_ChangeStore1.Frame_base1
+          end
+        end
+      end
+    end
+    object ts2: TTabSheet
+      Caption = #20837#24211
+      inline Frame_InStoreNew1: TFrame_InStoreNew
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        inherited GroupBox3: TGroupBox
+          Width = 1354
+        end
+        inherited PageControl1: TPageControl
+          Width = 1354
+          Height = 602
+          inherited TabSheet1: TTabSheet
+            inherited Splitter1: TSplitter
+              Width = 1332
+            end
+            inherited cxgrd: TcxGrid
+              Width = 1332
+            end
+            inherited cxGrid2: TcxGrid
+              Width = 1332
+              Height = 159
+            end
+          end
+          inherited TabSheet2: TTabSheet
+            inherited cxGrid1: TcxGrid
+              Width = 1332
+              Height = 579
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+        inherited FlexCelReport1: TFlexCelReport
+          DataModule = Frame_InStoreNew1
+        end
+      end
+    end
+    object ts3: TTabSheet
+      Caption = #20986#24211
+      ImageIndex = 2
+      inline Frame_OutStore1: TFrame_OutStore
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Frame_base1: TFrame_base
+          Width = 1354
+          Height = 666
+          inherited GroupBox3: TGroupBox
+            Width = 1354
+          end
+          inherited cxgrd: TcxGrid
+            Width = 1354
+            Height = 597
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+          inherited FlexCelReport1: TFlexCelReport
+            DataModule = Frame_OutStore1.Frame_base1
+          end
+        end
+      end
+    end
+    object ts10: TTabSheet
+      Caption = #20854#20182#20986#24211
+      ImageIndex = 9
+      inline Frame_OtherOutStore1: TFrame_OtherOutStore
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited GroupBox3: TGroupBox
+          Width = 1354
+          inherited Label18: TLabel
+            Left = 1663
+            Top = 19
+          end
+          inherited lbl_MedName: TLabel
+            Left = 1552
+            Top = 27
+          end
+          inherited edt_SearchCondition: TEdit
+            Left = 1264
+            Top = 23
+          end
+        end
+        inherited PageControl1: TPageControl
+          Width = 1354
+          Height = 614
+          inherited TabSheet1: TTabSheet
+            inherited Splitter1: TSplitter
+              Width = 1346
+            end
+            inherited cxgrd: TcxGrid
+              Width = 1346
+            end
+            inherited cxGrid2: TcxGrid
+              Width = 1346
+              Height = 58
+            end
+          end
+          inherited TabSheet2: TTabSheet
+            inherited cxGrid1: TcxGrid
+              Width = 1332
+              Height = 579
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+        inherited FlexCelReport1: TFlexCelReport
+          DataModule = Frame_OtherOutStore1
+        end
+        inherited frReport1: TfrReport
+          ReportForm = {
+            190000009D140000190000FFFF01000100FFFFFFFFFF0001000034080000C003
+            00000000000000000000000000000000000000FFFF00000000FFFF0000000000
+            000000000500506167653100030400466F726D000F0000FFDC00000078000000
+            7C0100002C010000040000000200C90000000500D2B3CDB73100020100000000
+            12000000F6020000440000003000020001000000000000000000FFFFFF1F0000
+            0000000000000000000000FFFF00000000000200000001000000000000000100
+            0000C8000000140000000100000000000002002E0100000500D2B3BDC5310002
+            01000000000F010000F6020000370000003000030001000000000000000000FF
+            FFFF1F00000000000000000000000000FFFF0000000000020000000100000000
+            00000001000000C800000014000000010000000000000200950100000700D6F7
+            CFEECDB731000201000000006C000000F60200001E0000003000040001000000
+            000000000000FFFFFF1F00000000000000000000000000FFFF00000000000200
+            0000010000000000000001000000C8000000140000000100000000000002000A
+            0200000900D6F7CFEECAFDBEDD3100020100000000AA000000F60200001E0000
+            003000050001000000000000000000FFFFFF1F000000000C0066724442446174
+            615365743100000000000000FFFF000000000002000000010000000000000001
+            000000C800000014000000010000000000000A0C005466725368617065566965
+            7700006A020000060053686170653200020013000000AC000000CF0200001A00
+            00000100000001000000000000000000FFFFFF1F2E0200000000000000000000
+            00FFFF0000000000020000000100000000000A0C005466725368617065566965
+            770000CA0200000600536861706531000200130000006D000000CF0200001D00
+            00000100000001000000000000000000FFFFFF1F2E0200000000000000000000
+            00FFFF00000000000200000001000000000000004F03000005004D656D6F3100
+            020022000000740000003A000000100000000300000001000000000000000000
+            FFFFFF1F2E02000000000001000800D2A9C6B7B1E0BAC500000000FFFF000000
+            00000200000001000000000400CBCECCE5000A00000000000000000000000000
+            0100020000000000FFFFFF0000000002000000000000000000D003000005004D
+            656D6F32000200A400000076000000210000000E000000030000000100000000
+            0000000000FFFFFF1F2E02000000000001000400D2A9C3FB00000000FFFF0000
+            0000000200000001000000000400CBCECCE5000A000000000000000000000000
+            000100020000000000FFFFFF0000000002000000000000000000510400000500
+            4D656D6F330002003D010000740000002C000000100000000300000001000000
+            000000000000FFFFFF1F2E02000000000001000400B9E6B8F100000000FFFF00
+            000000000200000001000000000400CBCECCE5000A0000000000000000000000
+            00000100020000000000FFFFFF0000000002000000000000000000D204000005
+            004D656D6F34000200AA01000076000000240000000E00000003000000010000
+            00000000000000FFFFFF1F2E02000000000001000400B5A5CEBB00000000FFFF
+            00000000000200000001000000000400CBCECCE5000A00000000000000000000
+            0000000100020000000000FFFFFF000000000200000000000000000055050000
+            05004D656D6F35000200F5010000760000003C0000000E000000030000000100
+            0000000000000000FFFFFF1F2E02000000000001000600CAB5B7A2C1BF000000
+            00FFFF00000000000200000001000000000400CBCECCE5000A00000000000000
+            0000000000000100020000000000FFFFFF0000000002000000000000000000D8
+            05000005004D656D6F3600020056020000750000002C0000000F000000030000
+            0001000000000000000000FFFFFF1F2E02000000000001000600C1E3CADBBCDB
+            00000000FFFF00000000000200000001000000000400CBCECCE5000A00000000
+            0000000000000000000100020000000000FFFFFF000000000200000000000000
+            00005906000005004D656D6F37000200A2020000740000002300000010000000
+            0300000001000000000000000000FFFFFF1F2E02000000000001000400BDF0B6
+            EE00000000FFFF00000000000200000001000000000400CBCECCE5000A000000
+            000000000000000000000100020000000000FFFFFF0000000002000000000000
+            000000E806000005004D656D6F3800020017000000B10000004C0000000F0000
+            000300000001000000000000000000FFFFFF1F2E020000000000010012005B64
+            6D2E515F636F6D6D2E2279706268225D00000000FFFF00000000000200000001
+            000000000400CBCECCE5000A0000000000000000000000000001000200000000
+            00FFFFFF00000000020000000000000000007507000005004D656D6F39000200
+            6C000000B1000000A40000000F0000000300000001000000000000000000FFFF
+            FF1F2E020000000000010010005B646D2E515F636F6D6D2E22796D225D000000
+            00FFFF00000000000200000001000000000400CBCECCE5000A00000000000000
+            0000000000000100020000000000FFFFFF000000000200000000000000000003
+            08000006004D656D6F313000020018010000B1000000800000000F0000000300
+            000001000000000000000000FFFFFF1F2E020000000000010010005B646D2E51
+            5F636F6D6D2E226767225D00000000FFFF000000000002000000010000000004
+            00CBCECCE5000A000000000000000000000000000100020000000000FFFFFF00
+            000000020000000000000000009308000006004D656D6F3131000200A0010000
+            B1000000380000000F0000000300000001000000000000000000FFFFFF1F2E02
+            0000000000010012005B646D2E515F636F6D6D2E226A6C6477225D00000000FF
+            FF00000000000200000001000000000400CBCECCE5000A000000000000000000
+            000000000100020000000000FFFFFF0000000002000000000000000000220900
+            0006004D656D6F3132000200EA010000B1000000540000000F00000003000000
+            01000000000000000000FFFFFF1F2E020000000000010011005B646D2E515F63
+            6F6D6D2E2273666C225D00000000FFFF00000000000200000001000000000400
+            CBCECCE5000A000000000000000000000000000100020000000000FFFFFF0000
+            000002000000000000000000B109000006004D656D6F313300020044020000B1
+            000000480000000F0000000300000001000000000000000000FFFFFF1F2E0201
+            01000000010011005B646D2E515F636F6D6D2E226C736A225D00000000FFFF00
+            000000000200000001000000000400CBCECCE5000A0000000000000000000000
+            00000100020000000000FFFFFF0000000002000000000000000000420A000006
+            004D656D6F313400020095020000B1000000430000000F000000030000000100
+            0000000000000000FFFFFF1F2E020101000000020010005B646D2E515F636F6D
+            6D2E226A65225D0D000000000000FFFF00000000000200000001000000000400
+            CBCECCE5000A000000000000000000000000000100020000000000FFFFFF0000
+            000002000000000000000400910A000005004C696E6531000200650000006D00
+            0000000000001D0000000100040001000000000000000000FFFFFF002E020000
+            000000000000000000FFFF00000000000200000001000000000400E00A000005
+            004C696E6532000200150100006E000000000000001C00000001000400010000
+            00000000000000FFFFFF002E020000000000000000000000FFFF000000000002
+            000000010000000004002F0B000005004C696E65330002009A0100006D000000
+            000000001E0000000100040001000000000000000000FFFFFF002E0200000000
+            00000000000000FFFF000000000002000000010000000004007E0B000005004C
+            696E6534000200E40100006D000000000000001D000000010004000100000000
+            0000000000FFFFFF002E020000000000000000000000FFFF0000000000020000
+            0001000000000400CD0B000005004C696E6535000200400200006D0000000000
+            00001D0000000100040001000000000000000000FFFFFF002E02000000000000
+            0000000000FFFF000000000002000000010000000004001C0C000005004C696E
+            6536000200900200006E000000000000001C0000000100040001000000000000
+            000000FFFFFF002E020000000000000000000000FFFF00000000000200000001
+            0000000004006B0C000005004C696E653700020066000000AE00000000000000
+            190000000100040001000000000000000000FFFFFF002E020000000000000000
+            000000FFFF00000000000200000001000000000400BA0C000005004C696E6538
+            00020015010000AD000000000000001A00000001000400010000000000000000
+            00FFFFFF002E020000000000000000000000FFFF000000000002000000010000
+            00000400090D000005004C696E65390002009A010000AD000000000000001A00
+            00000100040001000000000000000000FFFFFF002E0200000000000000000000
+            00FFFF00000000000200000001000000000400590D000006004C696E65313000
+            0200E5010000AD000000000000001A0000000100040001000000000000000000
+            FFFFFF002E020000000000000000000000FFFF00000000000200000001000000
+            000400A90D000006004C696E65313100020040020000AD000000000000001A00
+            00000100040001000000000000000000FFFFFF002E0200000000000000000000
+            00FFFF00000000000200000001000000000400F90D000006004C696E65313200
+            020091020000AD000000000000001A0000000100040001000000000000000000
+            FFFFFF002E020000000000000000000000FFFF00000000000200000001000000
+            000000930E000006004D656D6F31360002000E00000042000000760000001200
+            00000300000001000000000000000000FFFFFF1F2E02000000000001001C00C7
+            EBC1ECB5A5BAC5A3BA5B646D2E515F636F6D6D2E22716C6468225D00000000FF
+            FF00000000000200000001000000000400CBCECCE5000A000000000000000000
+            000000000100020000000000FFFFFF00000000020000000000000000002D0F00
+            0006004D656D6F31370002008600000042000000C60000001200000003000000
+            01000000000000000000FFFFFF1F2E02000000000001001C00B7A2D2A9C8D5C6
+            DAA3BA5B646D2E515F636F6D6D2E2266797271225D00000000FFFF0000000000
+            0200000001000000000400CBCECCE5000A000000000000000000000000000100
+            020000000000FFFFFF0000000002000000000000000000B20F000006004D656D
+            6F3138000200ED010000420000005D0000001300000003000000010000000000
+            00000000FFFFFF1F2E020000000000010006005B747970655D00000000FFFF00
+            000000000200000001000000000500417269616C000A00000000000000000000
+            0000000100020000000000FFFFFF000000000200000000000000000049100000
+            06004D656D6F31390002001D00000017010000C4000000140000000300000001
+            000000000000000000FFFFFF1F2E02000000000001001900B7A2D2A9C8CBA3BA
+            5B646D2E515F636F6D6D2E22667972225D00000000FFFF000000000002000000
+            01000000000400CBCECCE5000A00000000000000000000000000010002000000
+            0000FFFFFF0000000002000000000000000000D310000006004D656D6F323000
+            0200400100001701000060000000140000000300000001000000000000000000
+            FFFFFF1F2E02000000000001000C00C7EBC1ECC8CBC7A9D7D6A3BA00000000FF
+            FF00000000000200000001000000000400CBCECCE5000A000000000000000000
+            000000000100020000000000FFFFFF00000000020000000000000000006E1100
+            0006004D656D6F32310002000402000017010000CC0000001400000003000000
+            01000000000000000000FFFFFF1F2E02010100000001001D00BACFBCC6A3BA5B
+            73756D285B646D2E515F636F6D6D2E226A65225D295D00000000FFFF00000000
+            000200000001000000000400CBCECCE5000A0000000000000000000000000001
+            00020000000000FFFFFF00000000020000000000000000000B12000006004D65
+            6D6F32320002002801000030010000D800000014000000030000000100000000
+            0000000000FFFFFF1F2E02000000000001001F00B5DA5B50414745235DD2B3A3
+            A8B9B25B544F54414C50414745535DD2B3A3A900000000FFFF00000000000200
+            000001000000000400CBCECCE5000A0000000000000000000000000001000200
+            00000000FFFFFF00000000020000000000000000009F12000006004D656D6F32
+            34000200680200004200000074000000140000000B0000000100000000000000
+            0000FFFFFF1F2E02000000000001001500B5DA5B646D2E515F636F6D6D2E2263
+            6B68225DBAC500000000FFFF0000000000020000000100000000050041726961
+            6C000A000000000000000000080000000100020000000000FFFFFF0000000002
+            0000000000000000003A13000009004D656D5F7469746C65000200150000001A
+            000000CC020000190000000300000001000000000000000000FFFFFF1F2E0200
+            0000000001001A00D0C5D1F4CDACBCC3B8BEB2FAD2BDD4BAD2A9C6B7B3F6BFE2
+            B5A500000000FFFF00000000000200000001000000000400BADACCE5000F0000
+            000000000000000A0000000100020000000000FFFFFF00000000020000000000
+            00000000D113000006004D656D6F32330002000002000030010000E000000014
+            0000000300000001000000000000000000FFFFFF1F2E02000000000001001800
+            B4F2D3A1CAB1BCE4A3BA5B444154455D20205B54494D455D00000000FFFF0000
+            0000000200000001000000000500417269616C000A0000000000000000000000
+            00000100020000000000FFFFFF00000000020000000000000000006B14000006
+            004D656D6F32350002004E010000420000009A00000012000000030000000100
+            0000000000000000FFFFFF1F2E02000000000001001C00C7EBC1ECBFC6CAD2A3
+            BA5B646D2E715F636F6D6D2E226B736D63225D00000000FFFF00000000000200
+            000001000000000400CBCECCE5000A0000000000000000000000000001000200
+            00000000FFFFFF000000000200000000000000FEFEFF00000000000000000000
+            0000FC000000000000000000000000000000005800009C1847EB0BE340B6F652
+            206F25E640}
+        end
+      end
+    end
+    object ts11: TTabSheet
+      Caption = #33647#25151#38144#21806
+      ImageIndex = 10
+      inline Frame_MedStoreSale1: TFrame_MedStoreSale
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Frame_base1: TFrame_base
+          Width = 1354
+          Height = 666
+          inherited GroupBox3: TGroupBox
+            Width = 1354
+          end
+          inherited cxgrd: TcxGrid
+            Width = 1354
+            Height = 599
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+          inherited FlexCelReport1: TFlexCelReport
+            DataModule = Frame_MedStoreSale1.Frame_base1
+          end
+        end
+      end
+    end
+    object ts6: TTabSheet
+      Caption = #33647#25151#36864#33647
+      ImageIndex = 10
+      inline Frame_ReturnStore1: TFrame_ReturnStore
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Frame_base1: TFrame_base
+          Width = 1354
+          Height = 666
+          inherited GroupBox3: TGroupBox
+            Width = 1354
+          end
+          inherited cxgrd: TcxGrid
+            Width = 1354
+            Height = 607
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+          inherited FlexCelReport1: TFlexCelReport
+            DataModule = Frame_ReturnStore1.Frame_base1
+          end
+        end
+      end
+    end
+    object ts4: TTabSheet
+      Caption = #24211#23384
+      ImageIndex = 3
+      inline Frame_Medbank1: TFrame_Medbank
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited GroupBox8: TGroupBox
+          Width = 1354
+        end
+        inherited cxGrd_plan: TcxGrid
+          Width = 1354
+          Height = 617
+          inherited cxGrd_viewbank: TcxGridDBTableView
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skCount
+                Column = Frame_Medbank1.cxGrd_viewbankbh
+              end
+              item
+                Kind = skSum
+                Column = Frame_Medbank1.cxGrd_viewbankje
+              end
+              item
+                Format = #35760#24405#25968':0'
+                Kind = skCount
+                Column = Frame_Medbank1.cxGrd_viewbankplace
+              end
+              item
+                Kind = skSum
+                Column = Frame_Medbank1.cxgrdbclmnGrd_viewbankpfjqe
+              end>
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+        inherited FlexCelReport1: TFlexCelReport
+          DataModule = Frame_Medbank1
+        end
+      end
+    end
+    object ts12: TTabSheet
+      Caption = #36827#38144#23384
+      ImageIndex = 11
+      inline Frame_Balance1: TFrame_Balance
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Splitter1: TSplitter
+          Width = 1354
+        end
+        inherited GroupBox3: TGroupBox
+          Width = 1354
+        end
+        inherited cxgrd: TcxGrid
+          Width = 1354
+        end
+        inherited cxGrid2: TcxGrid
+          Width = 1354
+          Height = 253
+        end
+        inherited FlexCelReport1: TFlexCelReport
+          DataModule = Frame_Balance1
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts5: TTabSheet
+      Caption = #35843#20215
+      ImageIndex = 4
+      inline Frame_PriceChangeStore1: TFrame_PriceChangeStore
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Frame_base1: TFrame_base
+          Width = 1354
+          Height = 666
+          inherited GroupBox3: TGroupBox
+            Width = 1354
+          end
+          inherited cxgrd: TcxGrid
+            Width = 1354
+            Height = 607
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+          inherited FlexCelReport1: TFlexCelReport
+            DataModule = Frame_PriceChangeStore1.Frame_base1
+          end
+        end
+      end
+    end
+    object ts7: TTabSheet
+      Caption = #21442#32771#24211#23384
+      ImageIndex = 6
+      inline Frame_BalancesStore1: TFrame_BalancesStore
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Frame_base1: TFrame_base
+          Width = 1354
+          Height = 666
+          inherited GroupBox3: TGroupBox
+            Width = 1354
+          end
+          inherited cxgrd: TcxGrid
+            Width = 1354
+            Height = 607
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+          inherited FlexCelReport1: TFlexCelReport
+            DataModule = Frame_BalancesStore1.Frame_base1
+          end
+        end
+      end
+    end
+    object ts8: TTabSheet
+      Caption = #38144#21806#21033#28070
+      ImageIndex = 7
+      inline Frame_ProfitStore1: TFrame_ProfitStore
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Frame_base1: TFrame_base
+          Width = 1354
+          Height = 666
+          inherited GroupBox3: TGroupBox
+            Width = 1354
+          end
+          inherited cxgrd: TcxGrid
+            Width = 1354
+            Height = 607
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+          inherited FlexCelReport1: TFlexCelReport
+            DataModule = Frame_ProfitStore1.Frame_base1
+          end
+        end
+      end
+    end
+    object ts9: TTabSheet
+      Caption = #21344#29992#24211#23384
+      ImageIndex = 11
+      inline Frame_OccupyStore1: TFrame_OccupyStore
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited GroupBox3: TGroupBox
+          Width = 1354
+        end
+        inherited PageControl1: TPageControl
+          Width = 1354
+          Height = 602
+          inherited TabSheet1: TTabSheet
+            inherited Splitter1: TSplitter
+              Width = 1332
+            end
+            inherited cxgrd: TcxGrid
+              Width = 1332
+            end
+            inherited cxGrid2: TcxGrid
+              Width = 1332
+              Height = 247
+            end
+          end
+        end
+        inherited FlexCelReport1: TFlexCelReport
+          DataModule = Frame_OccupyStore1
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts13: TTabSheet
+      Caption = #29006#33647#36153
+      ImageIndex = 12
+      inline Frame_BoilMed1: TFrame_BoilMed
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited GroupBox3: TGroupBox
+          Width = 1354
+        end
+        inherited cxgrd: TcxGrid
+          Width = 1354
+          Height = 604
+        end
+        inherited FlexCelReport1: TFlexCelReport
+          DataModule = Frame_BoilMed1
+        end
+      end
+    end
+    object ts14: TTabSheet
+      Caption = #39564#25910#35760#24405
+      ImageIndex = 13
+      inline Frame_ExamRecord1: TFrame_ExamRecord
+        Left = 0
+        Top = 0
+        Width = 1354
+        Height = 666
+        Align = alClient
+        TabOrder = 0
+        inherited Frame_base1: TFrame_base
+          Width = 1354
+          Height = 666
+          inherited GroupBox3: TGroupBox
+            Width = 1354
+          end
+          inherited cxgrd: TcxGrid
+            Width = 1354
+            Height = 607
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+          inherited FlexCelReport1: TFlexCelReport
+            DataModule = Frame_ExamRecord1.Frame_base1
+          end
+        end
+      end
+    end
+  end
+end

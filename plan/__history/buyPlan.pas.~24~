@@ -1,0 +1,494 @@
+unit buyPlan;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ImgList, ComCtrls, ToolWin, cxStyles, cxCustomData,
+  cxGraphics, cxFilter, cxData, cxDataStorage, cxEdit, DB, cxDBData,
+  cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxControls, cxGridCustomView, cxGrid, cxGridCardView, cxClasses, ExtCtrls,
+  frameMedbank, cxLabel,ComObj, MemDS, DBAccess, Uni,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
+  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinWXI, dxSkinXmas2008Blue, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, System.ImageList;
+
+type
+  TFm_buyPlan = class(TForm)
+    ToolBar1: TToolBar;
+    tbtn_add: TToolButton;
+    tbtn_update: TToolButton;
+    tbtn_del: TToolButton;
+    tbtn_save: TToolButton;
+    tbtn_Search: TToolButton;
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    edt_ypbh: TEdit;
+    Label2: TLabel;
+    edt_ym: TEdit;
+    ImageList1: TImageList;
+    Label4: TLabel;
+    edt_jldw: TEdit;
+    Label3: TLabel;
+    edt_rksl: TEdit;
+    GroupBox2: TGroupBox;
+    dt_datefrom: TDateTimePicker;
+    dt_dateto: TDateTimePicker;
+    Label5: TLabel;
+    edt_id: TEdit;
+    tbtn_audit: TToolButton;
+    RG_FLAG: TRadioGroup;
+    tbtn_medbank: TToolButton;
+    Panel1: TPanel;
+    ToolButton2: TToolButton;
+    Label6: TLabel;
+    edt_num: TEdit;
+    edt_days: TEdit;
+    Label7: TLabel;
+    ToolButton3: TToolButton;
+    SaveDialog1: TSaveDialog;
+    RG_medtype: TRadioGroup;
+    lbl_kcl: TLabel;
+    lbl_zykcl: TLabel;
+    lbl_mzkcl: TLabel;
+    lbl_pivaskcl: TLabel;
+    Frame_Medbank1: TFrame_Medbank;
+    btn_print: TToolButton;
+    Q_Result: TUniQuery;
+    DS_Result: TDataSource;
+    btn_close: TToolButton;
+    GroupBox3: TGroupBox;
+    Cbb_yfbm: TComboBox;
+    cxStyleRepository: TcxStyleRepository;
+    cxStyle1: TcxStyle;
+    cxStyle2: TcxStyle;
+    cxStyle3: TcxStyle;
+    cxStyle4: TcxStyle;
+    cxStyle5: TcxStyle;
+    cxStyle6: TcxStyle;
+    cxStyle7: TcxStyle;
+    cxStyle8: TcxStyle;
+    cxStyle9: TcxStyle;
+    cxStyle10: TcxStyle;
+    cxStyle11: TcxStyle;
+    cxStyle12: TcxStyle;
+    cxStyle13: TcxStyle;
+    cxStyle14: TcxStyle;
+    cxStyle15: TcxStyle;
+    cxStyle16: TcxStyle;
+    cxStyle17: TcxStyle;
+    cxStyle18: TcxStyle;
+    cxStyle19: TcxStyle;
+    cxStyle20: TcxStyle;
+    cxStyle21: TcxStyle;
+    cxStyle22: TcxStyle;
+    cxStyle23: TcxStyle;
+    cxStyle24: TcxStyle;
+    cxStyle25: TcxStyle;
+    GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet;
+    GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet;
+    cxGrd_bank: TcxGrid;
+    cxGrd_bankbtblvwGrid1DBTableView1: TcxGridDBTableView;
+    cxGrd_viewplan: TcxGridDBTableView;
+    cxGrd_banklvlGrid1Level1: TcxGridLevel;
+    procedure tbtn_SearchClick(Sender: TObject);
+    procedure tbtn_saveClick(Sender: TObject);
+    procedure tbtn_updateClick(Sender: TObject);
+    procedure tbtn_addClick(Sender: TObject);
+    procedure tbtn_delClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure cxGrd_viewplanDblClick(Sender: TObject);
+    procedure edt_rkslKeyPress(Sender: TObject; var Key: Char);
+    procedure cxGrd_viewplanKeyPress(Sender: TObject; var Key: Char);
+    procedure tbtn_auditClick(Sender: TObject);
+    procedure RG_FLAGClick(Sender: TObject);
+    procedure tbtn_medbankClick(Sender: TObject);
+    procedure Panel1Exit(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ToolButton2Click(Sender: TObject);
+    procedure edt_numKeyPress(Sender: TObject; var Key: Char);
+    procedure edt_daysKeyPress(Sender: TObject; var Key: Char);
+    procedure ToolButton1Click(Sender: TObject);
+    procedure ToolButton3Click(Sender: TObject);
+    procedure Frame_Medbank1bbtn_kcClick(Sender: TObject);
+    procedure Frame_Medbank1btn_outnumClick(Sender: TObject);
+    procedure btn_printClick(Sender: TObject);
+    procedure btn_closeClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Frame_Medbank1cxgrdbtblvwDblClick(Sender: TObject);
+    procedure Frame_Medbank1cxgrdbtblvwKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    procedure ClearScreen();
+
+  public
+    { Public declarations }
+  end;
+
+var
+  Fm_buyPlan: TFm_buyPlan;
+  year,month,day:word;
+  year1,month1,day1:word;
+
+
+
+implementation
+
+uses ClassFactory, data, reportform,InterfaceMedStore;
+{$R *.dfm}
+
+procedure TFm_buyPlan.tbtn_SearchClick(Sender: TObject);
+begin
+
+  Medbank_Plan.Fdatefrom:=dt_datefrom.DateTime;
+  Medbank_Plan.Fdateto:=dt_dateto.DateTime;
+  Medbank_Plan.Fflag:=RG_FLAG.ItemIndex;
+  case RG_medtype.ItemIndex of
+  0:Medbank_Plan.Fmedtype:=999;
+  1:Medbank_Plan.Fmedtype:=1;
+  2:Medbank_Plan.Fmedtype:=3;
+  3:Medbank_Plan.Fmedtype:=2;
+  end;
+
+
+  if Medbank_Plan.Search(Q_Result) then
+  begin
+    //cxGrd_viewplan.DataController.DataSource:=dm.ds_tj;
+    cxGrd_viewplan.DataController.Groups.FullExpand;
+  end;
+  //else cxGrd_viewplan.DataController.DataSource:=nil;
+
+end;
+
+procedure TFm_buyPlan.tbtn_saveClick(Sender: TObject);
+begin
+
+  if  strtocurr(edt_rksl.Text)<=0 then
+  begin
+    Application.MessageBox('计划量必须大于零！！！','错误提示',0+mb_iconstop);
+    exit;
+  end;
+
+  Medbank_Plan.FID:=strtoint(trim(edt_id.Text));
+  Medbank_Plan.Fypbh:=trim(edt_ypbh.Text);
+  Medbank_Plan.Frksl:=strtocurr(edt_rksl.Text);
+  Medbank_Plan.Fcreatedate:=now();
+  Medbank_Plan.Fflag:=0;
+  Medbank_Plan.Fopid:=strtoint(dm.Fopid);
+  Medbank_Plan.FDays:=strtointdef(edt_days.text,0);
+  Medbank_Plan.Fnum:=strtocurrdef(edt_num.text,0);
+  Medbank_Plan.Fkcl:=strtocurrdef(lbl_kcl.caption,0);
+  Medbank_Plan.Fzykcl:=strtocurrdef(lbl_zykcl.caption,0);
+  Medbank_Plan.Fmzkcl:=strtocurrdef(lbl_mzkcl.caption,0);
+  Medbank_Plan.Fpivascl:=strtocurrdef(lbl_pivaskcl.caption,0);
+   case tbtn_save.Tag of
+   Save_ADD:
+     begin
+       if application.messagebox(pchar('是否增加【'+trim(edt_ym.text)+'】的信息？'),'信息',mb_yesno+MB_DEFBUTTON2+MB_ICONQUESTION)=idno  then exit;
+       Medbank_Plan.Add();
+       tbtn_Search.Click();
+       ClearScreen();
+       tbtn_medbank.Click();
+     end;
+   Save_update:
+    begin
+     if application.messagebox(pchar('是否修改【'+trim(edt_ym.text)+'】的信息？'),'信息',mb_yesno+MB_DEFBUTTON2+MB_ICONQUESTION)=idno  then exit;
+      Medbank_Plan.Update();
+      tbtn_Search.Click();
+      ClearScreen();
+    end;
+   END;
+
+
+end;
+
+procedure TFm_buyPlan.tbtn_updateClick(Sender: TObject);
+begin
+   if cxGrd_viewplan.DataController.DataSet.IsEmpty then exit;
+   tbtn_save.Tag:=Save_update;
+   edt_id.Text:=cxGrd_viewplan.DataController.DataSet.fieldbyname('planid').asstring;
+   edt_ypbh.Text:=cxGrd_viewplan.DataController.DataSet.fieldbyname('ypbh').asstring;
+   edt_ym.Text:=cxGrd_viewplan.DataController.DataSet.fieldbyname('ym').asstring;
+   edt_jldw.Text:=cxGrd_viewplan.DataController.DataSet.fieldbyname('jldw').asstring;
+   edt_num.Text:=cxGrd_viewplan.DataController.DataSet.fieldbyname('num').asstring;
+   edt_days.Text:=cxGrd_viewplan.DataController.DataSet.fieldbyname('days').asstring;
+   edt_rksl.Text:=cxGrd_viewplan.DataController.DataSet.fieldbyname('rksl').asstring;
+   edt_num.SetFocus;
+end;
+
+procedure TFm_buyPlan.tbtn_addClick(Sender: TObject);
+begin
+  tbtn_save.Tag:=Save_ADD;
+  edt_id.Text:='0';
+end;
+
+procedure TFm_buyPlan.tbtn_delClick(Sender: TObject);
+var icount:integer;
+begin
+
+ if cxGrd_viewplan.DataController.DataSet.IsEmpty then exit;
+ if application.messagebox('是否删除？','信息',mb_yesno+MB_DEFBUTTON2+MB_ICONQUESTION)=idno  then exit;
+
+ For icount:= 0 To cxGrd_viewplan.Controller.SelectedRowCount -1 DO
+ Begin
+//   Medbank_Plan.FID:=cxGrd_viewplan.DataController.DataSet.fieldbyname('planid').AsInteger;
+   Medbank_Plan.FID:=cxGrd_viewplan.Controller.SelectedRows[icount].Values[1];
+   Medbank_Plan.Del();
+ end;
+ tbtn_Search.Click();
+end;
+
+procedure TFm_buyPlan.FormShow(Sender: TObject);
+begin
+  //2024.05.07 wk 药库库存
+   dm.InitGrid(1,'MedBank_Store.xml',Frame_Medbank1.cxgrdbtblvw);
+   dm.InitGrid(1,'MedStore_BuyPlan.xml',cxGrd_viewplan);
+
+   dm.System_sq(Fm_buyPlan,dm.FSq,dm.Flevel);
+   dm.Q_tj.Close;
+   dt_datefrom.DateTime:=now();
+   dt_dateto.DateTime:=now();
+   edt_rksl.SetFocus;
+   tbtn_Search.Click;
+   ClearScreen();
+end;
+
+procedure TFm_buyPlan.cxGrd_viewplanDblClick(Sender: TObject);
+begin
+   tbtn_update.Click;
+end;
+
+procedure TFm_buyPlan.edt_rkslKeyPress(Sender: TObject; var Key: Char);
+begin
+if (key=#13) and (strtocurr(edt_rksl.text)>0) then  tbtn_save.Click;
+end;
+
+procedure TFm_buyPlan.cxGrd_viewplanKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+if key=#13 then   cxGrd_viewplanDblClick(sender);
+end;
+
+procedure TFm_buyPlan.tbtn_auditClick(Sender: TObject);
+var aym,agg:string;
+    icount:integer;
+begin
+   {if cxGrd_viewplan.DataController.DataSet.IsEmpty then exit;
+
+   cxGrd_viewplan.DataController.DataSet.fieldbyname('planid').AsInteger;
+
+   aym:=cxGrd_viewplan.DataController.DataSet.fieldbyname('ym').asstring;
+   agg:=cxGrd_viewplan.DataController.DataSet.fieldbyname('gg').asstring;
+
+   if application.messagebox(pchar('是否通过【'+aym+'】'+#13+'【'+agg+'】审核？'),'信息',mb_yesno+MB_DEFBUTTON2+MB_ICONQUESTION)=idno  then exit;
+
+   Medbank_Plan.FID:=cxGrd_viewplan.DataController.DataSet.fieldbyname('planid').AsInteger;
+   Medbank_Plan.Fflag:=1;
+   Medbank_Plan.Fauditopid:=strtoint(dm.Fopid);
+   Medbank_Plan.FauditDate:=now();
+   Medbank_Plan.SetFlag;
+   tbtn_Search.Click;   }
+
+ if cxGrd_viewplan.DataController.DataSet.IsEmpty then exit;
+ if cxGrd_viewplan.Controller.SelectedRowCount=0 then
+ begin
+   Messagedlg('没有需要审核的记录！', mtInformation,[mbok],0);
+   exit;
+ end;
+
+ if Application.MessageBox('是否审核选择的记录？','提示',mb_yesno+MB_ICONQUESTION+MB_DEFBUTTON2)=IDNO  then exit;
+
+  For   icount:=0   To   cxGrd_viewplan.Controller.SelectedRowCount-1   Do
+  begin
+
+   cxGrd_viewplan.Controller.FocusedRow:=cxGrd_viewplan.Controller.SelectedRows[icount];
+   Medbank_Plan.FID:=cxGrd_viewplan.DataController.DataSet.fieldbyname('planid').AsInteger;
+   Medbank_Plan.Fflag:=1;
+   Medbank_Plan.Fauditopid:=strtoint(dm.Fopid);
+   Medbank_Plan.FauditDate:=now();
+   Medbank_Plan.SetFlag;
+  end;
+
+    if  icount=cxGrd_viewplan.Controller.SelectedRowCount then      Messagedlg('审核成功！', mtInformation,[mbok],0)
+    else Messagedlg('审核错误！', mtWarning,[mbok],0);
+    if  icount>0 then  tbtn_Search.Click;
+
+
+end;
+
+procedure TFm_buyPlan.RG_FLAGClick(Sender: TObject);
+begin
+  tbtn_Search.Click;
+ if RG_FLAG.ItemIndex=0 then
+ begin
+   tbtn_add.Enabled:=true;
+   tbtn_update.Enabled:=true;
+   tbtn_del.Enabled:=true;
+   tbtn_save.Enabled:=true;
+   tbtn_audit.Enabled:=true;
+ end else
+ begin
+   tbtn_add.Enabled:=false;
+   tbtn_update.Enabled:=false;
+   tbtn_del.Enabled:=false;
+   tbtn_save.Enabled:=false;
+   tbtn_audit.Enabled:=false;
+
+ end;
+
+end;
+
+procedure TFm_buyPlan.ClearScreen;
+begin
+   edt_id.Clear;
+   edt_ypbh.Clear;
+   edt_ym.Clear;
+   edt_jldw.Clear;
+   edt_rksl.Clear;
+   edt_days.Clear;
+   edt_num.Clear;
+   lbl_kcl.Caption:='';
+   lbl_zykcl.Caption:='';
+   lbl_mzkcl.Caption:='';
+   Panel1.Visible:=false;
+   cxGrd_bank.SetFocus;
+   tbtn_save.Tag:=0;
+end;
+
+procedure TFm_buyPlan.tbtn_medbankClick(Sender: TObject);
+begin
+    Panel1.Visible:=true;
+    Frame_Medbank1.cxgrd.SetFocus
+end;
+
+procedure TFm_buyPlan.Panel1Exit(Sender: TObject);
+begin
+    Panel1.Visible:=false;
+end;
+
+procedure TFm_buyPlan.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+   dm.Q_tj.Close;
+end;
+
+procedure TFm_buyPlan.ToolButton2Click(Sender: TObject);
+begin
+  ClearScreen();
+end;
+
+procedure TFm_buyPlan.edt_numKeyPress(Sender: TObject; var Key: Char);
+begin
+  if (key=#13) and (strtocurr(edt_num.text)>0) then  edt_days.SetFocus;
+end;
+
+procedure TFm_buyPlan.edt_daysKeyPress(Sender: TObject; var Key: Char);
+begin
+ if (key=#13) then
+ begin
+  edt_rksl.Text:=currtostr(strtocurr(edt_num.text)*strtointdef(edt_days.Text,0));
+  edt_rksl.SetFocus;
+ end;
+end;
+
+procedure TFm_buyPlan.ToolButton1Click(Sender: TObject);
+begin
+self.close;
+end;
+
+procedure TFm_buyPlan.ToolButton3Click(Sender: TObject);
+var  AFormat:TFormatSettings;
+     MYMedStore:IMedStore;
+     aTemplateName:string;
+begin
+  if not Q_Result.IsEmpty then
+  begin
+    aTemplateName:='采购计划';
+    MYMedStore:=TMedStore.Create;
+    //MYMedStore.ExportXLS(FlexCelReport1,XLSAdapter1,DT_datefrom.date,DT_dateto.Date,aTemplateName);
+    MYMedStore.ExportXLS('Q_Result',Q_Result,dt_datefrom.date,dt_dateto.Date,FTemplateName);
+  end  else
+  begin
+    MessageDlg('没有数据不能导出XLS！',mtInformation,[mbOK],0);
+    exit;
+  end;
+end;
+
+
+procedure TFm_buyPlan.Frame_Medbank1bbtn_kcClick(Sender: TObject);
+begin
+  Frame_Medbank1.bbtn_kcClick(Sender);
+end;
+
+procedure TFm_buyPlan.Frame_Medbank1btn_outnumClick(Sender: TObject);
+begin
+  Frame_Medbank1.btn_outnumClick(Sender);
+end;
+
+procedure TFm_buyPlan.Frame_Medbank1cxgrdbtblvwDblClick(Sender: TObject);
+begin
+  with  Frame_Medbank1.cxgrdbtblvw.DataController.DataSet do
+  begin
+   if isempty then exit;
+   edt_ypbh.text:=fieldbyname('ypbh').AsString;
+   edt_ym.text:=fieldbyname('ym').AsString;
+   edt_jldw.text:=fieldbyname('jldw').AsString;
+   edt_num.Text:=fieldbyname('num').AsString;
+   lbl_kcl.caption:='药库:'+fieldbyname('ykkcl').AsString+' '+fieldbyname('jldw').AsString;
+   lbl_zykcl.caption:='药房:'+fieldbyname('zxdw_yfkcl').AsString+' '+fieldbyname('zxdw').AsString;
+   lbl_pivaskcl.caption:='';
+   lbl_mzkcl.caption:='';
+   edt_rksl.Text:='0';
+   edt_days.Text:='0';
+   edt_rksl.SetFocus;
+   tbtn_add.Click;
+  end;
+end;
+
+procedure TFm_buyPlan.Frame_Medbank1cxgrdbtblvwKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+if key=#13 then Frame_Medbank1cxgrdbtblvwDblClick(Sender);
+end;
+
+procedure TFm_buyPlan.btn_printClick(Sender: TObject);
+begin
+  if cxGrd_viewplan.DataController.DataSet.IsEmpty  then Exit;
+  Fm_report.frxdbdtst_tj.DataSet:=Q_Result;
+  Fm_report.frxrprt1.clear;
+  Fm_report.frxrprt1.LoadFromFile(dm.FMainPath+ 'ykreport\采购计划单.fr3');
+  Fm_report.fdatefrom:=datetostr(dt_datefrom.Date) ;
+  Fm_report.fdateto:=datetostr(dt_dateto.Date) ;
+  Fm_report.Fhospital_NAME:=dm.SysInfo.hospitalName;
+  Fm_report.frxrprt1.ShowReport;
+end;
+
+procedure TFm_buyPlan.btn_closeClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
+procedure TFm_buyPlan.FormCreate(Sender: TObject);
+var MYMedStore:IMedStore;
+begin
+  //--2023.12.06 wk 库房类别
+  MYMedStore:=TMedStore.Create;
+  MYMedStore.GetYfbm(dm.Q_comm,cbb_yfbm,false);
+  //---
+end;
+
+end.

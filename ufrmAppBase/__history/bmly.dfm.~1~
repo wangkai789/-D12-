@@ -1,0 +1,1090 @@
+object Fm_bmly: TFm_bmly
+  Left = -4
+  Top = -4
+  Width = 1374
+  Height = 732
+  Caption = #31185#23460#39046#33647
+  Color = clBtnFace
+  Font.Charset = GB2312_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = #23435#20307
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 12
+  object BitBtn1: TBitBtn
+    Left = 49
+    Top = 511
+    Width = 87
+    Height = 31
+    Caption = #21333#31508'[&A]'
+    Enabled = False
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = #23435#20307
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    Visible = False
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000120B0000120B00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333300000000
+      0000333377777777777733330FFFFFFFFFF033337F3FFF3F3FF733330F000F0F
+      00F033337F777373773733330FFFFFFFFFF033337F3FF3FF3FF733330F00F00F
+      00F033337F773773773733330FFFFFFFFFF033337FF3333FF3F7333300FFFF00
+      F0F03333773FF377F7373330FB00F0F0FFF0333733773737F3F7330FB0BF0FB0
+      F0F0337337337337373730FBFBF0FB0FFFF037F333373373333730BFBF0FB0FF
+      FFF037F3337337333FF700FBFBFB0FFF000077F333337FF37777E0BFBFB000FF
+      0FF077FF3337773F7F37EE0BFB0BFB0F0F03777FF3733F737F73EEE0BFBF00FF
+      00337777FFFF77FF7733EEEE0000000003337777777777777333}
+    NumGlyphs = 2
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 233
+    Height = 705
+    Align = alLeft
+    Caption = 'Panel1'
+    TabOrder = 1
+    object DBGrid_qld: TDBGrid
+      Left = 1
+      Top = 102
+      Width = 231
+      Height = 602
+      Align = alClient
+      DataSource = dm.DS_song
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = #23435#20307
+      Font.Style = []
+      ImeMode = imClose
+      ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+      ParentFont = False
+      TabOrder = 0
+      TitleFont.Charset = GB2312_CHARSET
+      TitleFont.Color = clBlack
+      TitleFont.Height = -12
+      TitleFont.Name = #23435#20307
+      TitleFont.Style = []
+      OnCellClick = DBGrid_qldCellClick
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'qldh'
+          Title.Alignment = taCenter
+          Title.Caption = #35831#39046#21333#21495
+          Width = 40
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'qlrq'
+          Title.Alignment = taCenter
+          Title.Caption = #35831#39046#26085#26399
+          Width = 100
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ksmc'
+          Title.Alignment = taCenter
+          Title.Caption = #31185#23460#21517#31216
+          Width = 80
+          Visible = True
+        end>
+    end
+    object RadioGroup1: TRadioGroup
+      Left = 1
+      Top = 1
+      Width = 231
+      Height = 101
+      Align = alTop
+      Caption = #31867#22411
+      Columns = 2
+      ItemIndex = 1
+      Items.Strings = (
+        #26242#19981#29992
+        #33647#25151#36864#33647
+        #31185#23460#39046#33647
+        #31185#23460#36864#33647)
+      TabOrder = 1
+      OnClick = RadioGroup1Click
+    end
+  end
+  object Panel2: TPanel
+    Left = 233
+    Top = 0
+    Width = 1133
+    Height = 705
+    Align = alClient
+    Caption = 'Panel1'
+    TabOrder = 2
+    object GroupBox1: TGroupBox
+      Left = 1
+      Top = 1
+      Width = 1131
+      Height = 100
+      Align = alTop
+      TabOrder = 0
+      object Label2: TLabel
+        Left = 20
+        Top = 25
+        Width = 48
+        Height = 12
+        Caption = #25805' '#20316' '#21592
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 182
+        Top = 25
+        Width = 48
+        Height = 12
+        Caption = #20986#24211#26085#26399
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 603
+        Top = 47
+        Width = 48
+        Height = 12
+        Caption = #39046' '#29992' '#20154
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 182
+        Top = 50
+        Width = 48
+        Height = 12
+        Caption = #31185#23460#32534#30721
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 380
+        Top = 47
+        Width = 48
+        Height = 12
+        Caption = #31185' '#23460' '#21517
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 20
+        Top = 50
+        Width = 48
+        Height = 12
+        Caption = #35831#39046#21333#21495
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 20
+        Top = 75
+        Width = 48
+        Height = 12
+        Caption = #33647#21697#32534#21495
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 182
+        Top = 73
+        Width = 48
+        Height = 12
+        Caption = #33647'    '#21517
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label10: TLabel
+        Left = 380
+        Top = 75
+        Width = 48
+        Height = 12
+        Caption = #35268'    '#26684
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label11: TLabel
+        Left = 603
+        Top = 72
+        Width = 48
+        Height = 12
+        Caption = #21058'    '#22411
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label12: TLabel
+        Left = 380
+        Top = 25
+        Width = 48
+        Height = 12
+        Caption = #23454' '#21457' '#37327
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label21: TLabel
+        Left = 603
+        Top = 25
+        Width = 48
+        Height = 12
+        Caption = #33647#21697#25209#21495
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Edit1: TEdit
+        Left = 78
+        Top = 22
+        Width = 78
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 0
+      end
+      object Edit2: TEdit
+        Left = 245
+        Top = 22
+        Width = 108
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 1
+      end
+      object Ed_lyr: TEdit
+        Left = 667
+        Top = 47
+        Width = 63
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 2
+      end
+      object Ed_ksbm: TEdit
+        Left = 245
+        Top = 47
+        Width = 107
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 3
+      end
+      object Edit5: TEdit
+        Left = 443
+        Top = 47
+        Width = 120
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 4
+      end
+      object Edit6: TEdit
+        Left = 78
+        Top = 47
+        Width = 78
+        Height = 20
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 5
+      end
+      object Edit7: TEdit
+        Left = 78
+        Top = 72
+        Width = 78
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 6
+      end
+      object Edit8: TEdit
+        Left = 245
+        Top = 72
+        Width = 108
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 7
+      end
+      object Edit9: TEdit
+        Left = 443
+        Top = 72
+        Width = 120
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 8
+      end
+      object Edit10: TEdit
+        Left = 667
+        Top = 72
+        Width = 63
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 9
+      end
+      object Ed_sfl: TEdit
+        Left = 443
+        Top = 22
+        Width = 83
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Enabled = False
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 10
+        OnExit = Ed_sflExit
+        OnKeyPress = Ed_sflKeyPress
+      end
+      object Edit15: TEdit
+        Left = 531
+        Top = 22
+        Width = 32
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 11
+      end
+      object Edit16: TEdit
+        Left = 667
+        Top = 22
+        Width = 63
+        Height = 20
+        TabStop = False
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 12
+        OnChange = Edit16Change
+      end
+      object Edit17: TEdit
+        Left = 736
+        Top = 16
+        Width = 120
+        Height = 20
+        TabStop = False
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 13
+        Text = 'Edit17'
+        Visible = False
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 1
+      Top = 101
+      Width = 1131
+      Height = 556
+      Align = alClient
+      TabOrder = 1
+      object Splitter1: TSplitter
+        Left = 2
+        Top = 365
+        Width = 1127
+        Height = 3
+        Cursor = crVSplit
+        Align = alTop
+      end
+      object DBGrid_qlyp: TDBGrid
+        Left = 2
+        Top = 14
+        Width = 1127
+        Height = 351
+        Align = alTop
+        Color = clWhite
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        ParentFont = False
+        TabOrder = 0
+        TitleFont.Charset = GB2312_CHARSET
+        TitleFont.Color = clBlack
+        TitleFont.Height = -12
+        TitleFont.Name = #23435#20307
+        TitleFont.Style = []
+        OnCellClick = DBGrid_qlypCellClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ypbh'
+            Title.Alignment = taCenter
+            Title.Caption = #33647#21697#32534#21495
+            Width = 80
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ym'
+            Title.Alignment = taCenter
+            Title.Caption = #33647#21517
+            Width = 140
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'gg'
+            Title.Alignment = taCenter
+            Title.Caption = #35268#26684
+            Width = 140
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'jx'
+            Title.Alignment = taCenter
+            Title.Caption = #21058#22411
+            Width = 50
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'qll'
+            Title.Alignment = taCenter
+            Title.Caption = #35831#39046#37327
+            Width = 55
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'jldw'
+            Title.Alignment = taCenter
+            Title.Caption = #21333#20301
+            Width = 40
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'sfl'
+            Title.Alignment = taCenter
+            Title.Caption = #23454#21457#37327
+            Width = 55
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'lb'
+            Title.Alignment = taCenter
+            Title.Caption = #31867#21035
+            Visible = True
+          end>
+      end
+      object DBGrid_dbyp: TDBGrid
+        Left = 2
+        Top = 368
+        Width = 1127
+        Height = 186
+        Align = alClient
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentFont = False
+        TabOrder = 1
+        TitleFont.Charset = GB2312_CHARSET
+        TitleFont.Color = clBlack
+        TitleFont.Height = -12
+        TitleFont.Name = #23435#20307
+        TitleFont.Style = []
+        OnDblClick = DBGrid_dbypDblClick
+        OnKeyPress = DBGrid_dbypKeyPress
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'rkxh'
+            Title.Alignment = taCenter
+            Title.Caption = #20837#24211#24207#21495
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ym'
+            Title.Alignment = taCenter
+            Title.Caption = #33647#21517
+            Width = 110
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'cm'
+            Title.Alignment = taCenter
+            Title.Caption = #21378#23478
+            Width = 130
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ypph'
+            Title.Alignment = taCenter
+            Title.Caption = #33647#21697#25209#21495
+            Width = 50
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'sxrq'
+            Title.Alignment = taCenter
+            Title.Caption = #22833#25928#26085#26399
+            Width = 99
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'kcl'
+            Title.Alignment = taCenter
+            Title.Caption = #24211#23384#37327
+            Width = 80
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'jldw'
+            Title.Alignment = taCenter
+            Title.Caption = #21333#20301
+            Width = 40
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ypbh'
+            Title.Alignment = taCenter
+            Title.Caption = #33647#21697#32534#21495
+            Visible = True
+          end>
+      end
+    end
+    object Panel3: TPanel
+      Left = 1
+      Top = 657
+      Width = 1131
+      Height = 47
+      Align = alBottom
+      TabOrder = 2
+      object BBtn_bmly_db: TBitBtn
+        Left = 137
+        Top = 6
+        Width = 87
+        Height = 31
+        Caption = #20840#21457'[&V]'
+        Enabled = False
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        OnClick = BBtn_bmly_dbClick
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000120B0000120B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00500000000055
+          555557777777775F55550FFFFFFFFF0555557F5555555F7FFF5F0FEEEEEE0000
+          05007F555555777775770FFFFFF0BFBFB00E7F5F5557FFF557770F0EEEE000FB
+          FB0E7F75FF57775555770FF00F0FBFBFBF0E7F57757FFFF555770FE0B00000FB
+          FB0E7F575777775555770FFF0FBFBFBFBF0E7F5575FFFFFFF5770FEEE0000000
+          FB0E7F555777777755770FFFFF0B00BFB0007F55557577FFF7770FEEEEE0B000
+          05557F555557577775550FFFFFFF0B0555557FF5F5F57575F55500F0F0F0F0B0
+          555577F7F7F7F7F75F5550707070700B055557F7F7F7F7757FF5507070707050
+          9055575757575757775505050505055505557575757575557555}
+        NumGlyphs = 2
+      end
+      object BitBtn2: TBitBtn
+        Left = 226
+        Top = 6
+        Width = 87
+        Height = 31
+        Caption = #25171#21360'[&P]'
+        Enabled = False
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        OnClick = BitBtn2Click
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000130B0000130B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00300000000000
+          00033FFFFFFFFFFFFFFF0888888888888880777777777777777F088888888888
+          8880777777777777777F0000000000000000FFFFFFFFFFFFFFFF0F8F8F8F8F8F
+          8F80777777777777777F08F8F8F8F8F8F9F0777777777777777F0F8F8F8F8F8F
+          8F807777777777777F7F0000000000000000777777777777777F3330FFFFFFFF
+          03333337F3FFFF3F7F333330F0000F0F03333337F77773737F333330FFFFFFFF
+          03333337F3FF3FFF7F333330F00F000003333337F773777773333330FFFF0FF0
+          33333337F3FF7F3733333330F08F0F0333333337F7737F7333333330FFFF0033
+          33333337FFFF7733333333300000033333333337777773333333}
+        NumGlyphs = 2
+      end
+      object BitBtn4: TBitBtn
+        Left = 315
+        Top = 6
+        Width = 87
+        Height = 31
+        Caption = #25253#34920#35774#35745
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+        OnClick = BitBtn4Click
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000120B0000120B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+          33333FFFFFFFFFFFFFFF000000000000000077777777777777770FFFFFFFFFFF
+          FFF07F3FF3FF3FF3FFF70F00F00F00F000F07F773773773777370FFFFFFFFFFF
+          FFF07F3FF3FF3FF3FFF70F00F00F00F000F07F773773773777370FFFFFFFFFFF
+          FFF07F3FF3FF3FF3FFF70F00F00F00F000F07F773773773777370FFFFFFFFFFF
+          FFF07F3FF3FF3FF3FFF70F00F00F00F000F07F773773773777370FFFFFFFFFFF
+          FFF07FFFFFFFFFFFFFF70CCCCCCCCCCCCCC07777777777777777088CCCCCCCCC
+          C8807FF7777777777FF700000000000000007777777777777777333333333333
+          3333333333333333333333333333333333333333333333333333}
+        NumGlyphs = 2
+      end
+      object BBtn_new: TBitBtn
+        Left = 404
+        Top = 6
+        Width = 87
+        Height = 31
+        Caption = #21047#26032
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 3
+        OnClick = BBtn_newClick
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000120B0000120B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+          333333333333333FFF3333333333333707333333333333F777F3333333333370
+          9033333333F33F7737F33333373337090733333337F3F7737733333330037090
+          73333333377F7737733333333090090733333333373773773333333309999073
+          333333337F333773333333330999903333333333733337F33333333099999903
+          33333337F3333F7FF33333309999900733333337333FF7773333330999900333
+          3333337F3FF7733333333309900333333333337FF77333333333309003333333
+          333337F773333333333330033333333333333773333333333333333333333333
+          3333333333333333333333333333333333333333333333333333}
+        NumGlyphs = 2
+      end
+      object BitBtn3: TBitBtn
+        Left = 493
+        Top = 6
+        Width = 87
+        Height = 31
+        Caption = #36864#20986'[&X]'
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        OnClick = BitBtn3Click
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000120B0000120B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00330000000000
+          03333377777777777F333301BBBBBBBB033333773F3333337F3333011BBBBBBB
+          0333337F73F333337F33330111BBBBBB0333337F373F33337F333301110BBBBB
+          0333337F337F33337F333301110BBBBB0333337F337F33337F333301110BBBBB
+          0333337F337F33337F333301110BBBBB0333337F337F33337F333301110BBBBB
+          0333337F337F33337F333301110BBBBB0333337F337FF3337F33330111B0BBBB
+          0333337F337733337F333301110BBBBB0333337F337F33337F333301110BBBBB
+          0333337F3F7F33337F333301E10BBBBB0333337F7F7F33337F333301EE0BBBBB
+          0333337F777FFFFF7F3333000000000003333377777777777333}
+        NumGlyphs = 2
+      end
+    end
+  end
+  object frReport1: TfrReport
+    InitialZoom = pzDefault
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbPageSetup]
+    ReportType = rtMultiple
+    ShowPrintDialog = False
+    StoreInDFM = True
+    RebuildPrinter = False
+    OnGetValue = frReport1GetValue
+    OnBeforePrint = frReport1BeforePrint
+    Left = 432
+    Top = 200
+    ReportForm = {
+      1900000074130000190000FFFF01000100FFFFFFFFFF0001000034080000C003
+      00000000000000000000000000000000000000FFFF00000000FFFF0000000000
+      000000000500506167653100030400466F726D000F0000FFDC00000078000000
+      7C0100002C010000040000000200C90000000500D2B3CDB73100020100000000
+      12000000F6020000440000003000020001000000000000000000FFFFFF1F0000
+      0000000000000000000000FFFF00000000000200000001000000000000000100
+      0000C8000000140000000100000000000002002E0100000500D2B3BDC5310002
+      01000000000F010000F6020000370000003000030001000000000000000000FF
+      FFFF1F00000000000000000000000000FFFF0000000000020000000100000000
+      00000001000000C800000014000000010000000000000200950100000700D6F7
+      CFEECDB731000201000000006C000000F60200001F0000003000040001000000
+      000000000000FFFFFF1F00000000000000000000000000FFFF00000000000200
+      0000010000000000000001000000C8000000140000000100000000000002000A
+      0200000900D6F7CFEECAFDBEDD31000201000000009E000000F60200001B0000
+      003000050001000000000000000000FFFFFF1F000000000C0066724442446174
+      615365743100000000000000FFFF000000000002000000010000000000000001
+      000000C800000014000000010000000000000A0C005466725368617065566965
+      7700006A0200000600536861706532000200130000009E000000CF0200001A00
+      00000100000001000000000000000000FFFFFF1F2E0200000000000000000000
+      00FFFF0000000000020000000100000000000A0C005466725368617065566965
+      770000CA0200000600536861706531000200130000006D000000CF0200001D00
+      00000100000001000000000000000000FFFFFF1F2E0200000000000000000000
+      00FFFF00000000000200000001000000000000004F03000005004D656D6F3100
+      020022000000740000003A000000100000000300000001000000000000000000
+      FFFFFF1F2E02000000000001000800D2A9C6B7B1E0BAC500000000FFFF000000
+      00000200000001000000000400CBCECCE5000A00000000000000000000000000
+      0100020000000000FFFFFF0000000002000000000000000000D003000005004D
+      656D6F32000200A400000076000000210000000E000000030000000100000000
+      0000000000FFFFFF1F2E02000000000001000400D2A9C3FB00000000FFFF0000
+      0000000200000001000000000400CBCECCE5000A000000000000000000000000
+      000100020000000000FFFFFF0000000002000000000000000000510400000500
+      4D656D6F330002003D010000740000002C000000100000000300000001000000
+      000000000000FFFFFF1F2E02000000000001000400B9E6B8F100000000FFFF00
+      000000000200000001000000000400CBCECCE5000A0000000000000000000000
+      00000100020000000000FFFFFF0000000002000000000000000000D204000005
+      004D656D6F34000200AB01000076000000240000000E00000003000000010000
+      00000000000000FFFFFF1F2E02000000000001000400B5A5CEBB00000000FFFF
+      00000000000200000001000000000400CBCECCE5000A00000000000000000000
+      0000000100020000000000FFFFFF000000000200000000000000000055050000
+      05004D656D6F35000200F5010000760000003C0000000E000000030000000100
+      0000000000000000FFFFFF1F2E02000000000001000600CAB5B7A2C1BF000000
+      00FFFF00000000000200000001000000000400CBCECCE5000A00000000000000
+      0000000000000100020000000000FFFFFF0000000002000000000000000000D8
+      05000005004D656D6F3600020056020000750000002C0000000F000000030000
+      0001000000000000000000FFFFFF1F2E02000000000001000600C1E3CADBBCDB
+      00000000FFFF00000000000200000001000000000400CBCECCE5000A00000000
+      0000000000000000000100020000000000FFFFFF000000000200000000000000
+      00005906000005004D656D6F37000200A2020000740000002300000010000000
+      0300000001000000000000000000FFFFFF1F2E02000000000001000400BDF0B6
+      EE00000000FFFF00000000000200000001000000000400CBCECCE5000A000000
+      000000000000000000000100020000000000FFFFFF0000000002000000000000
+      000000E806000005004D656D6F3800020017000000A20000004C0000000F0000
+      000300000001000000000000000000FFFFFF1F2E020000000000010012005B64
+      6D2E515F636F6D6D2E2279706268225D00000000FFFF00000000000200000001
+      000000000400CBCECCE5000A0000000000000000000000000001000200000000
+      00FFFFFF00000000020000000000000000007507000005004D656D6F39000200
+      6C000000A2000000A40000000F0000000300000001000000000000000000FFFF
+      FF1F2E020000000000010010005B646D2E515F636F6D6D2E22796D225D000000
+      00FFFF00000000000200000001000000000400CBCECCE5000A00000000000000
+      0000000000000100020000000000FFFFFF000000000200000000000000000003
+      08000006004D656D6F313000020018010000A2000000800000000F0000000300
+      000001000000000000000000FFFFFF1F2E020000000000010010005B646D2E51
+      5F636F6D6D2E226767225D00000000FFFF000000000002000000010000000004
+      00CBCECCE5000A000000000000000000000000000100020000000000FFFFFF00
+      000000020000000000000000009308000006004D656D6F3131000200A0010000
+      A2000000440000000F0000000300000001000000000000000000FFFFFF1F2E02
+      0000000000010012005B646D2E515F636F6D6D2E226A6C6477225D00000000FF
+      FF00000000000200000001000000000400CBCECCE5000A000000000000000000
+      000000000100020000000000FFFFFF0000000002000000000000000000220900
+      0006004D656D6F3132000200EA010000A2000000540000000F00000003000000
+      01000000000000000000FFFFFF1F2E020000000000010011005B646D2E515F63
+      6F6D6D2E2273666C225D00000000FFFF00000000000200000001000000000400
+      CBCECCE5000A000000000000000000000000000100020000000000FFFFFF0000
+      000002000000000000000000B109000006004D656D6F313300020044020000A2
+      0000004C0000000F0000000300000001000000000000000000FFFFFF1F2E0201
+      01000000010011005B646D2E515F636F6D6D2E226C736A225D00000000FFFF00
+      000000000200000001000000000400CBCECCE5000A0000000000000000000000
+      00000100020000000000FFFFFF00000000020000000000000000003F0A000006
+      004D656D6F313400020095020000A20000004B0000000F000000030000000100
+      0000000000000000FFFFFF1F2E020101000000010010005B646D2E515F636F6D
+      6D2E226A65225D00000000FFFF00000000000200000001000000000400CBCECC
+      E5000A000000000000000000000000000100020000000000FFFFFF0000000002
+      0000000000000004008E0A000005004C696E6531000200650000006D00000000
+      0000001D0000000100040001000000000000000000FFFFFF002E020000000000
+      000000000000FFFF00000000000200000001000000000400DD0A000005004C69
+      6E6532000200150100006E000000000000001C00000001000400010000000000
+      00000000FFFFFF002E020000000000000000000000FFFF000000000002000000
+      010000000004002C0B000005004C696E65330002009A0100006D000000000000
+      001E0000000100040001000000000000000000FFFFFF002E0200000000000000
+      00000000FFFF000000000002000000010000000004007B0B000005004C696E65
+      34000200E40100006D000000000000001D000000010004000100000000000000
+      0000FFFFFF002E020000000000000000000000FFFF0000000000020000000100
+      0000000400CA0B000005004C696E6535000200400200006D000000000000001D
+      0000000100040001000000000000000000FFFFFF002E02000000000000000000
+      0000FFFF00000000000200000001000000000400190C000005004C696E653600
+      0200900200006E000000000000001C0000000100040001000000000000000000
+      FFFFFF002E020000000000000000000000FFFF00000000000200000001000000
+      000400680C000005004C696E6537000200660000009F00000000000000190000
+      000100040001000000000000000000FFFFFF002E020000000000000000000000
+      FFFF00000000000200000001000000000400B70C000005004C696E6538000200
+      150100009E000000000000001A0000000100040001000000000000000000FFFF
+      FF002E020000000000000000000000FFFF000000000002000000010000000004
+      00060D000005004C696E65390002009A0100009E000000000000001A00000001
+      00040001000000000000000000FFFFFF002E020000000000000000000000FFFF
+      00000000000200000001000000000400560D000006004C696E653130000200E5
+      0100009E000000000000001A0000000100040001000000000000000000FFFFFF
+      002E020000000000000000000000FFFF00000000000200000001000000000400
+      A60D000006004C696E653131000200400200009E000000000000001A00000001
+      00040001000000000000000000FFFFFF002E020000000000000000000000FFFF
+      00000000000200000001000000000400F60D000006004C696E65313200020091
+      0200009E000000000000001A0000000100040001000000000000000000FFFFFF
+      002E020000000000000000000000FFFF00000000000200000001000000000000
+      900E000006004D656D6F313600020014000000420000008C0000001200000003
+      00000001000000000000000000FFFFFF1F2E02000000000001001C00C7EBC1EC
+      B5A5BAC5A3BA5B646D2E515F636F6D6D2E22716C6468225D00000000FFFF0000
+      0000000200000001000000000400CBCECCE5000A000000000000000000000000
+      000100020000000000FFFFFF00000000020000000000000000002A0F00000600
+      4D656D6F3137000200A800000042000000D00000001200000003000000010000
+      00000000000000FFFFFF1F2E02000000000001001C00B7A2D2A9C8D5C6DAA3BA
+      5B646D2E515F636F6D6D2E2266797271225D00000000FFFF0000000000020000
+      0001000000000400CBCECCE5000A000000000000000000000000000100020000
+      000000FFFFFF0000000002000000000000000000AF0F000006004D656D6F3138
+      000200F001000041000000640000001300000003000000010000000000000000
+      00FFFFFF1F2E020000000000010006005B747970655D00000000FFFF00000000
+      000200000001000000000500417269616C000A00000000000000000000000000
+      0100020000000000FFFFFF00000000020000000000000000004610000006004D
+      656D6F31390002001500000013010000C4000000140000000300000001000000
+      000000000000FFFFFF1F2E02000000000001001900B7A2D2A9C8CBA3BA5B646D
+      2E515F636F6D6D2E22667972225D00000000FFFF000000000002000000010000
+      00000400CBCECCE5000A000000000000000000000000000100020000000000FF
+      FFFF0000000002000000000000000000D010000006004D656D6F323000020038
+      0100001401000060000000140000000300000001000000000000000000FFFFFF
+      1F2E02000000000001000C00C7EBC1ECC8CBC7A9D7D6A3BA00000000FFFF0000
+      0000000200000001000000000400CBCECCE5000A000000000000000000000000
+      000100020000000000FFFFFF00000000020000000000000000006B1100000600
+      4D656D6F32310002003402000010010000CC0000001400000003000000010000
+      00000000000000FFFFFF1F2E02010100000001001D00BACFBCC6A3BA5B73756D
+      285B646D2E515F636F6D6D2E226A65225D295D00000000FFFF00000000000200
+      000001000000000400CBCECCE5000A0000000000000000000000000001000200
+      00000000FFFFFF00000000020000000000000000000812000006004D656D6F32
+      320002002001000030010000D800000014000000030000000100000000000000
+      0000FFFFFF1F2E02000000000001001F00B5DA5B50414745235DD2B3A3A8B9B2
+      5B544F54414C50414745535DD2B3A3A900000000FFFF00000000000200000001
+      000000000400CBCECCE5000A0000000000000000000000000001000200000000
+      00FFFFFF00000000020000000000000000009C12000006004D656D6F32340002
+      00580200004000000098000000140000000B00000001000000000000000000FF
+      FFFF1F2E02000000000001001500B5DA5B646D2E515F636F6D6D2E22636B6822
+      5DBAC500000000FFFF00000000000200000001000000000500417269616C000A
+      000000000000000000080000000100020000000000FFFFFF0000000002000000
+      0000000000004213000006004D656D6F31350002001500000016000000CC0200
+      00190000000300000001000000000000000000FFFFFF1F2E0200000000000100
+      2800C2E5D1F4CBBCC7D7D2BDD4BA5B646D2E715F636F6D6D2E226B736D63225D
+      D2A9C6B7C7EBC1ECB5A500000000FFFF00000000000200000001000000000400
+      BADACCE5000F0000000000000000000A0000000100020000000000FFFFFF0000
+      00000200000000000000FEFEFF000000000000000000000000FC000000000000
+      000000000000000000005800009C1847EB0BE34076D776A9D4FAE440}
+  end
+  object frDBDataSet1: TfrDBDataSet
+    DataSource = dm.DS_comm
+    Left = 464
+    Top = 200
+  end
+  object frShapeObject1: TfrShapeObject
+    Left = 496
+    Top = 200
+  end
+  object frTextExport1: TfrTextExport
+    ScaleX = 1.000000000000000000
+    ScaleY = 1.000000000000000000
+    Left = 523
+    Top = 200
+  end
+  object frRTFExport1: TfrRTFExport
+    ScaleX = 1.000000000000000000
+    ScaleY = 1.000000000000000000
+    Left = 552
+    Top = 200
+  end
+  object frCSVExport1: TfrCSVExport
+    ScaleX = 1.000000000000000000
+    ScaleY = 1.000000000000000000
+    Delimiter = ';'
+    Left = 582
+    Top = 200
+  end
+  object frHTMExport1: TfrHTMExport
+    ScaleX = 1.000000000000000000
+    ScaleY = 1.000000000000000000
+    Left = 611
+    Top = 200
+  end
+end

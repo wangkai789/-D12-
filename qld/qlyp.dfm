@@ -1,0 +1,581 @@
+object Fm_qlyp: TFm_qlyp
+  Left = 437
+  Top = 259
+  Caption = #33647#21697#35831#39046#21333#29983#25104
+  ClientHeight = 690
+  ClientWidth = 1354
+  Color = clBtnFace
+  Font.Charset = GB2312_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = #23435#20307
+  Font.Style = []
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  TextHeight = 12
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 1354
+    Height = 123
+    Align = alTop
+    BevelOuter = bvSpace
+    Ctl3D = True
+    ParentCtl3D = False
+    TabOrder = 0
+    ExplicitWidth = 1350
+    object grp1: TGroupBox
+      Left = 1
+      Top = 38
+      Width = 1352
+      Height = 51
+      Align = alTop
+      Caption = #36873#25321#26465#20214
+      TabOrder = 0
+      ExplicitWidth = 1348
+      object Label4: TLabel
+        Left = 120
+        Top = 23
+        Width = 48
+        Height = 12
+        Caption = #39046#29992#31185#23460
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 604
+        Top = 23
+        Width = 234
+        Height = 12
+        Caption = #36864#33647#35831#36755#20837#36127#20540#65292#21452#20987#21024#38500#21015#34920#20013#30340#35760#24405
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clRed
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label21: TLabel
+        Left = 857
+        Top = 31
+        Width = 36
+        Height = 12
+        Caption = #24211#31867#22411
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clRed
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        Visible = False
+      end
+      object cbb_yf: TComboBox
+        Left = 174
+        Top = 19
+        Width = 108
+        Height = 20
+        TabOrder = 0
+        OnChange = cbb_yfChange
+      end
+      object RdGp_type: TRadioGroup
+        Left = 294
+        Top = 9
+        Width = 113
+        Height = 37
+        Columns = 2
+        ItemIndex = 0
+        Items.Strings = (
+          #39046#33647
+          #36864#33647)
+        TabOrder = 1
+        OnClick = RdGp_typeClick
+      end
+      object RG_medlb: TRadioGroup
+        Left = 411
+        Top = 9
+        Width = 187
+        Height = 36
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #35199#33647
+          #20013#25104#33647
+          #20013#33609#33647)
+        TabOrder = 2
+        OnClick = RG_medlbClick
+      end
+      object cmbx_storetype: TComboBox
+        Left = 903
+        Top = 23
+        Width = 54
+        Height = 20
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clRed
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ItemIndex = 0
+        ParentFont = False
+        TabOrder = 3
+        Text = 'A'#24211
+        Visible = False
+        Items.Strings = (
+          'A'#24211
+          'B'#24211)
+      end
+      object RG_Dept: TRadioGroup
+        Left = 6
+        Top = 10
+        Width = 98
+        Height = 37
+        Columns = 2
+        ItemIndex = 0
+        Items.Strings = (
+          #33647#25151
+          #31185#23460)
+        TabOrder = 4
+        OnClick = RdGp_typeClick
+      end
+    end
+    object pnl2: TPanel
+      Left = 1
+      Top = 89
+      Width = 1352
+      Height = 34
+      Align = alTop
+      TabOrder = 1
+      ExplicitWidth = 1348
+      object Label1: TLabel
+        Left = 12
+        Top = 9
+        Width = 48
+        Height = 12
+        Caption = #33647#21697#32534#30721
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 337
+        Top = 9
+        Width = 36
+        Height = 12
+        Caption = #35831#39046#37327
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 672
+        Top = 9
+        Width = 48
+        Height = 12
+        Caption = #35831#39046#21333#21495
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object lb_kc: TLabel
+        Left = 450
+        Top = 9
+        Width = 48
+        Height = 12
+        Caption = #33647#24211#24211#23384
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+      end
+      object EdCode: TEdit
+        Left = 66
+        Top = 5
+        Width = 99
+        Height = 20
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+        ParentFont = False
+        TabOrder = 0
+        OnEnter = EdCodeEnter
+        OnKeyPress = EdCodeKeyPress
+      end
+      object Edit_qldh: TEdit
+        Left = 742
+        Top = 5
+        Width = 107
+        Height = 20
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 1
+      end
+      object Edit_dw: TEdit
+        Left = 570
+        Top = 5
+        Width = 28
+        Height = 20
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 2
+      end
+      object Ed_ym: TEdit
+        Left = 169
+        Top = 5
+        Width = 156
+        Height = 20
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 3
+      end
+      object Ed_sl: TEdit
+        Left = 382
+        Top = 5
+        Width = 63
+        Height = 20
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeMode = imClose
+        ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+        ParentFont = False
+        TabOrder = 4
+        OnKeyPress = Ed_slKeyPress
+      end
+      object Ed_kcl: TEdit
+        Left = 507
+        Top = 5
+        Width = 61
+        Height = 20
+        Color = clInfoBk
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+        ParentFont = False
+        TabOrder = 5
+      end
+    end
+    object pnl3: TPanel
+      Left = 1
+      Top = 1
+      Width = 1352
+      Height = 37
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 2
+      ExplicitWidth = 1348
+      object qd: TBitBtn
+        Left = 9
+        Top = 7
+        Width = 87
+        Height = 26
+        Caption = #20445#23384'[&C]'
+        Enabled = False
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000120B0000120B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00555555555555
+          555555FFFFFFFFFF5F5557777777777505555777777777757F55555555555555
+          055555555555FF5575F555555550055030555555555775F7F7F55555550FB000
+          005555555575577777F5555550FB0BF0F05555555755755757F555550FBFBF0F
+          B05555557F55557557F555550BFBF0FB005555557F55575577F555500FBFBFB0
+          305555577F555557F7F5550E0BFBFB003055557575F55577F7F550EEE0BFB0B0
+          305557FF575F5757F7F5000EEE0BFBF03055777FF575FFF7F7F50000EEE00000
+          30557777FF577777F7F500000E05555BB05577777F75555777F5500000555550
+          3055577777555557F7F555000555555999555577755555577755}
+        NumGlyphs = 2
+        ParentFont = False
+        TabOrder = 0
+        OnClick = qdClick
+      end
+      object tc: TBitBtn
+        Left = 98
+        Top = 7
+        Width = 87
+        Height = 26
+        Caption = #36864#20986'[&X]'
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000120B0000120B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00330000000000
+          03333377777777777F333301BBBBBBBB033333773F3333337F3333011BBBBBBB
+          0333337F73F333337F33330111BBBBBB0333337F373F33337F333301110BBBBB
+          0333337F337F33337F333301110BBBBB0333337F337F33337F333301110BBBBB
+          0333337F337F33337F333301110BBBBB0333337F337F33337F333301110BBBBB
+          0333337F337F33337F333301110BBBBB0333337F337FF3337F33330111B0BBBB
+          0333337F337733337F333301110BBBBB0333337F337F33337F333301110BBBBB
+          0333337F3F7F33337F333301E10BBBBB0333337F7F7F33337F333301EE0BBBBB
+          0333337F777FFFFF7F3333000000000003333377777777777333}
+        NumGlyphs = 2
+        ParentFont = False
+        TabOrder = 1
+        OnClick = tcClick
+      end
+      object dy: TBitBtn
+        Left = 187
+        Top = 6
+        Width = 87
+        Height = 27
+        Caption = #25171#21360'[&P]'
+        Enabled = False
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #23435#20307
+        Font.Style = []
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000130B0000130B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00300000000000
+          00033FFFFFFFFFFFFFFF0888888888888880777777777777777F088888888888
+          8880777777777777777F0000000000000000FFFFFFFFFFFFFFFF0F8F8F8F8F8F
+          8F80777777777777777F08F8F8F8F8F8F9F0777777777777777F0F8F8F8F8F8F
+          8F807777777777777F7F0000000000000000777777777777777F3330FFFFFFFF
+          03333337F3FFFF3F7F333330F0000F0F03333337F77773737F333330FFFFFFFF
+          03333337F3FF3FFF7F333330F00F000003333337F773777773333330FFFF0FF0
+          33333337F3FF7F3733333330F08F0F0333333337F7737F7333333330FFFF0033
+          33333337FFFF7733333333300000033333333337777773333333}
+        NumGlyphs = 2
+        ParentFont = False
+        TabOrder = 2
+        Visible = False
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 123
+    Width = 1354
+    Height = 567
+    Align = alClient
+    Caption = 'Panel1'
+    TabOrder = 2
+    ExplicitWidth = 1350
+    ExplicitHeight = 566
+    object DBGrid_qlyp: TDBGrid
+      Left = 1
+      Top = 1
+      Width = 1352
+      Height = 565
+      Align = alClient
+      Ctl3D = False
+      DataSource = dm.DS_song
+      Font.Charset = GB2312_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -14
+      Font.Name = #23435#20307
+      Font.Style = []
+      ImeName = #20013#25991' ('#31616#20307') - '#24494#36719#25340#38899
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 0
+      TitleFont.Charset = GB2312_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -14
+      TitleFont.Name = #23435#20307
+      TitleFont.Style = []
+      OnDblClick = DBGrid_qlypDblClick
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'ypbh'
+          Title.Alignment = taCenter
+          Title.Caption = #33647#21697#32534#21495
+          Width = 77
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ym'
+          Title.Alignment = taCenter
+          Title.Caption = #33647#21517
+          Width = 200
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'gg'
+          Title.Alignment = taCenter
+          Title.Caption = #35268#26684
+          Width = 70
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'produce'
+          Title.Caption = #20135#22320
+          Width = 150
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'qll'
+          Title.Alignment = taCenter
+          Title.Caption = #35831#39046#37327
+          Width = 91
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'jldw'
+          Title.Alignment = taCenter
+          Title.Caption = #21253#35013#21333#20301
+          Width = 89
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'je'
+          Title.Alignment = taCenter
+          Title.Caption = #37329#39069
+          Width = 95
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'sfl'
+          Title.Alignment = taCenter
+          Title.Caption = #23454#21457#37327
+          Width = 128
+          Visible = True
+        end>
+    end
+  end
+  object DBGrid_XYZB: TDBGrid
+    Left = 65
+    Top = 116
+    Width = 640
+    Height = 237
+    Color = clBtnHighlight
+    DataSource = dm.DS_MedStore
+    Font.Charset = GB2312_CHARSET
+    Font.Color = clBlack
+    Font.Height = -14
+    Font.Name = #23435#20307
+    Font.Style = []
+    ImeName = #20013#25991' ('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    ParentFont = False
+    TabOrder = 1
+    TitleFont.Charset = GB2312_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -14
+    TitleFont.Name = #23435#20307
+    TitleFont.Style = []
+    Visible = False
+    OnDblClick = DBGrid_XYZBDblClick
+    OnExit = DBGrid_XYZBExit
+    OnKeyPress = DBGrid_XYZBKeyPress
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ypbh'
+        Title.Caption = #32534#30721
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ym'
+        Title.Caption = #33647#21517
+        Width = 120
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'gg'
+        Title.Caption = #35268#26684
+        Width = 100
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'jx'
+        Title.Caption = #21058#22411
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'kcl'
+        Title.Caption = #24211#23384
+        Width = 66
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'jldw'
+        Title.Caption = #21253#35013#21333#20301
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'ylsj'
+        Title.Caption = #21333#20215
+        Width = 65
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'produce'
+        Title.Caption = #20135#22320
+        Width = 100
+        Visible = True
+      end>
+  end
+end

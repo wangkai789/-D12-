@@ -1,0 +1,162 @@
+program Pyk;
+
+uses
+  Forms,
+  About in 'public\About.pas' {FmAbout},
+  ChangePassWord in 'public\ChangePassWord.pas' {FmChangePassword},
+  czydl in 'public\czydl.pas' {fm_czydl},
+  data in 'public\data.pas' {dm: TDataModule},
+  Factory in 'public\Factory.pas',
+  main in 'main.pas' {Fm_main},
+  tjtj in 'tj\tjtj.pas' {Fm_tjtj},
+  yptj in 'tj\yptj.pas' {Fm_yptj},
+  tjtj_print in 'tj\tjtj_print.pas' {F_tjtj_print},
+  kccx in 'cx\kccx.pas' {Fm_kccx},
+  lsz in 'cx\lsz.pas' {Fm_lsz},
+  ypcx in 'cx\ypcx.pas' {Fm_ypcx},
+  q_ayxq in 'kctj\q_ayxq.pas' {qr_ayxq: TQuickRep},
+  q_acj in 'kctj\q_acj.pas' {qr_acj: TQuickRep},
+  q_aghdw in 'kctj\q_aghdw.pas' {qr_aghdw: TQuickRep},
+  q_aym in 'kctj\q_aym.pas' {qr_aym: TQuickRep},
+  kccxdy in 'kctj\kccxdy.pas' {fm_kccxdy},
+  ypzhtj in 'ypzhtj\ypzhtj.pas' {fm_ypzhtj},
+  q_tsypgl in 'ypzhtj\q_tsypgl.pas' {qr_tsypgl: TQuickRep},
+  q_tyygs in 'ypzhtj\q_tyygs.pas' {qr_tyygs: TQuickRep},
+  q_ylfltj in 'ypzhtj\q_ylfltj.pas' {qr_ylfltj: TQuickRep},
+  q_ypjetj in 'ypzhtj\q_ypjetj.pas' {qr_ypjetj: TQuickRep},
+  q_cjjetj in 'ypzhtj\q_cjjetj.pas' {qr_cjjetj: TQuickRep},
+  q_rkxxdy in 'crkxxtj\q_rkxxdy.pas' {qr_rkxxdy: TQuickRep},
+  q_ckmlxx in 'crkxxtj\q_ckmlxx.pas' {qr_ckmlxx: TQuickRep},
+  crkxxtj in 'crkxxtj\crkxxtj.pas' {fm_ypcrkxxtj},
+  sccjwh in 'wh\sccjwh.pas' {fm_sccjwh},
+  q_ckdy in 'q_ckdy.pas' {qr_ckdy: TQuickRep},
+  q_rkdy in 'q_rkdy.pas' {qr_rkdy: TQuickRep},
+  q_qld in 'q_qld.pas' {qr_qld: TQuickRep},
+  q_tyygsqd in 'tyygs\q_tyygsqd.pas' {Qr_tyygsqd: TQuickRep},
+  q_fkclcx in 'fkcl\q_fkclcx.pas' {qr_fkclcx: TQuickRep},
+  q_fkcl in 'fkcl\q_fkcl.pas' {qr_fkcl: TQuickRep},
+  fkcl in 'fkcl\fkcl.pas' {fm_fkcl},
+  ghdwkccx in 'cx\ghdwkccx.pas' {fm_ghdwkccx},
+  sccjkccx in 'cx\sccjkccx.pas' {fm_sccjkccx},
+  aqldcx in 'cx\aqldcx.pas' {fm_aqldcx},
+  q_rkd in 'q_rkd.pas' {qr_rkd: TQuickRep},
+  sxypcx in 'cx\sxypcx\sxypcx.pas' {fm_sxypcx},
+  splansh in 'public\splansh.pas' {Fm_splansh},
+  ypbjtzd in 'tj\ypbjtzd.pas' {fm_ypbjtzd},
+  yptz_print in 'tj\yptz_print.pas' {f_ypbjtzd},
+  arkdcx in 'cx\arkdcx.pas' {Fm_arkdcx},
+  rkdcd in 'rkdcd.pas' {fm_rkdcd},
+  rkdzf in 'rkdzf.pas' {fm_rkdzf},
+  q_rktzd in 'q_rktzd.pas' {qr_rktzd: TQuickRep},
+  qldcd in 'qldcd.pas' {fm_qldcd},
+  zfddy in 'zfddy\zfddy.pas' {fm_zfddy},
+  ykpd in 'pdgl\ykpd.pas' {fm_ykpd},
+  report_cftj in 'pdgl\report_cftj.pas' {F_report_cftj},
+  jyfcx in 'cx\jyfcx.pas' {Fm_jyfcx},
+  tyygs in 'tyygs\tyygs.pas' {fm_tyygs},
+  qrckdtj in 'tj\qrckdtj.pas' {qr_ckdtj: TQuickRep},
+  yfsell in 'tj\yfsell.pas' {fm_yfsell},
+  Rpt_yfssbb in 'Rpt_yfssbb.pas' {QR_yfssbb: TQuickRep},
+  qrrkdtj in 'qrrkdtj.pas' {qr_rkdtj: TQuickRep},
+  yprk in 'yprk.pas' {Fm_yprk},
+  bmly in 'bmly.pas' {Fm_bmly},
+  ypadd in 'ypadd.pas' {Fm_ypadd},
+  reportform in 'report\reportform.pas' {Fm_report},
+  medsend in 'medsend.pas' {Fm_medsend},
+  power in 'PUBLIC\power.pas' {Fm_power},
+  sqlist in 'PUBLIC\sqlist.pas' {Fm_Sqlist},
+  ypdwwh in 'WH\ypdwwh.pas' {Fm_ypdwwh},
+  depqlyp in 'qld\depqlyp.pas' {Fm_depqlyp},
+  ypxg in 'CX\ypxg.pas' {Fm_ypchange},
+  zpckgl in 'KSLY\zpckgl.pas' {fm_zpckgl},
+  ypsearch in 'CX\ypsearch.pas' {Fm_ypsearch},
+  ck in 'KSLY\ck.pas' {fm_ck},
+  ypjc in 'PDGL\ypjc.pas' {Fm_ypjc},
+  testbalance in 'PDGL\testbalance.pas' {fm_testbalance},
+  qxwh in 'PUBLIC\qxwh.pas' {frm_wh},
+  Medmodify in 'Medmodify.pas' {Fm_Medmodify},
+  qlyp in 'qld\qlyp.pas' {Fm_qlyp},
+  ykypgd in 'checkbank\ykypgd.pas' {Fm_ykyppd},
+  ypgd in 'checkbank\ypgd.pas' {Fm_yppd},
+  ParamSet in 'PUBLIC\ParamSet.pas' {Frm_ParamSet},
+  buyPlan in 'plan\buyPlan.pas',
+  frameMedbank in 'plan\frameMedbank.pas' {Frame_Medbank: TFrame},
+  ClassFactory in 'PUBLIC\ClassFactory.pas' {Fm_ClassFactory};
+
+{$R *.RES}
+
+begin
+  Application.Initialize;
+  Fm_splansh:=TFm_splansh.create(application);
+  Fm_splansh.Show;
+  Fm_splansh.Update ;
+  Fm_splansh.ProgressBar1.StepBy(20);
+  Application.Title := '“©ø‚œµÕ≥';
+  Application.CreateForm(TFm_main, Fm_main);
+  Application.CreateForm(Tfm_czydl, fm_czydl);
+  Application.CreateForm(Tdm, dm);
+  Application.CreateForm(Tfm_ypbjtzd, fm_ypbjtzd);
+  Application.CreateForm(Tf_ypbjtzd, f_ypbjtzd);
+  Application.CreateForm(TFm_arkdcx, Fm_arkdcx);
+  Application.CreateForm(Tfm_rkdcd, fm_rkdcd);
+  Application.CreateForm(Tfm_qldcd, fm_qldcd);
+  Application.CreateForm(Tfm_zfddy, fm_zfddy);
+  Application.CreateForm(Tfm_ykpd, fm_ykpd);
+  Application.CreateForm(TF_report_cftj, F_report_cftj);
+  Application.CreateForm(Tfm_rkdzf, fm_rkdzf);
+  Application.CreateForm(Tqr_tyygs, qr_tyygs);
+  Application.CreateForm(Tfm_tyygs, fm_tyygs);
+  Application.CreateForm(Tqr_ckdtj, qr_ckdtj);
+  Application.CreateForm(Tfm_yfsell, fm_yfsell);
+  Application.CreateForm(TQR_yfssbb, QR_yfssbb);
+  Application.CreateForm(Tqr_rkdtj, qr_rkdtj);
+  Application.CreateForm(TFm_yprk, Fm_yprk);
+  Application.CreateForm(TFm_bmly, Fm_bmly);
+  Application.CreateForm(TFm_ypadd, Fm_ypadd);
+  Application.CreateForm(Tqr_ckdy, qr_ckdy);
+  Application.CreateForm(Tqr_rkdy, qr_rkdy);
+  Application.CreateForm(Tqr_rktzd, qr_rktzd);
+  Application.CreateForm(Tqr_rkd, qr_rkd);
+  Application.CreateForm(TFm_report, Fm_report);
+  Application.CreateForm(TFm_medsend, Fm_medsend);
+  Application.CreateForm(TFm_power, Fm_power);
+  Application.CreateForm(TFm_Sqlist, Fm_Sqlist);
+  Application.CreateForm(TFm_ClassFactory, Fm_ClassFactory);
+  Application.CreateForm(TFm_ypdwwh, Fm_ypdwwh);
+  Application.CreateForm(TFm_depqlyp, Fm_depqlyp);
+  Application.CreateForm(TFm_ypchange, Fm_ypchange);
+  Application.CreateForm(Tfm_sccjwh, fm_sccjwh);
+  Application.CreateForm(Tfm_zpckgl, fm_zpckgl);
+  Application.CreateForm(Tfm_ck, fm_ck);
+  Application.CreateForm(Tfrm_wh, frm_wh);
+  Application.CreateForm(TFm_Medmodify, Fm_Medmodify);
+  Application.CreateForm(TFm_qlyp, Fm_qlyp);
+  Application.CreateForm(TFm_ykyppd, Fm_ykyppd);
+  Application.CreateForm(TFm_yppd, Fm_yppd);
+  Fm_splansh.ProgressBar1.StepBy(20);
+  Application.CreateForm(TFm_bmly, Fm_bmly);
+  Application.CreateForm(TF_tjtj_print, F_tjtj_print);
+  Application.CreateForm(TFm_lsz, Fm_lsz);
+  Application.CreateForm(Tqr_ayxq, qr_ayxq);
+  Application.CreateForm(Tqr_acj, qr_acj);
+  Application.CreateForm(Tqr_aghdw, qr_aghdw);
+  Application.CreateForm(Tqr_aym, qr_aym);
+  Application.CreateForm(Tqr_tsypgl, qr_tsypgl);
+  Application.CreateForm(Tqr_ylfltj, qr_ylfltj);
+  Fm_splansh.ProgressBar1.StepBy(20);
+  Application.CreateForm(Tqr_ypjetj, qr_ypjetj);
+  Application.CreateForm(Tqr_cjjetj, qr_cjjetj);
+  Application.CreateForm(Tqr_rkxxdy, qr_rkxxdy);
+  Application.CreateForm(Tqr_ckmlxx, qr_ckmlxx);
+  Fm_splansh.ProgressBar1.StepBy(20);
+  Application.CreateForm(Tqr_qld, qr_qld);
+  Application.CreateForm(TQr_tyygsqd, Qr_tyygsqd);
+  Application.CreateForm(Tqr_fkclcx, qr_fkclcx);
+  Application.CreateForm(Tqr_fkcl, qr_fkcl);
+  Application.CreateForm(Tfm_kccxdy, fm_kccxdy);
+
+  //Application.CreateForm(TFm_splansh, Fm_splansh);
+  Fm_splansh.Hide;
+  Fm_splansh.FREE;
+  Application.Run;
+end.

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="2023.1.3" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="EPSON LQ-1600KIII" PrintOptions.PrintOnSheet="0" PrintOptions.ShowDialog="False" ReportOptions.CreateDate="39681.3727506481" ReportOptions.Description.Text="" ReportOptions.LastChange="45423.4406721296" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSetName="frxDBDataset1"/>
+    <item DataSet="SendMedDetail" DataSetName="SendMedDetail"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" HGuides.Text="" VGuides.Text="" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" HGuides.Text="" VGuides.Text="" PaperWidth="225" PaperHeight="281" PaperSize="256" LeftMargin="0" RightMargin="0" TopMargin="0" BottomMargin="2" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0">
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22.67718" Left="0" Top="245.66945" Width="850.39425" ColumnWidth="0" ColumnGap="0" DataSetName="frxDBDataset1" RowCount="0">
+      <TfrxMemoView Name="frxDBDataset1ym" AllowVectorExport="True" Left="30.13389" Top="3.77953" Width="151.1812" Height="18.89765" DataSetName="frxDBDataset1" Font.Charset="1" Font.Color="-16777208" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;ym&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1gg" AllowVectorExport="True" Left="185.19697" Top="3.77953" Width="98.26778" Height="18.89765" DataSetName="frxDBDataset1" Font.Charset="1" Font.Color="-16777208" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;gg&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1mryl" AllowVectorExport="True" Left="305.92146" Top="2" Width="68.03154" Height="18.89765" DataSetName="frxDBDataset1" Font.Charset="1" Font.Color="-16777208" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;mryl&#34;][SendMedDetail.&#34;zxdw&#34;]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+      <TfrxMemoView Name="frxDBDataset1mcsl" AllowVectorExport="True" Left="383.85065" Top="1" Width="75.5906" Height="18.89765" DataSetName="frxDBDataset1" Font.Charset="1" Font.Color="-16777208" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;mcsl&#34;][SendMedDetail.&#34;cfzxdw&#34;]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+      <TfrxMemoView Name="frxDBDataset1rcs" AllowVectorExport="True" Left="470.22078" Top="1" Width="71.81107" Height="18.89765" DataSetName="frxDBDataset1" Font.Charset="1" Font.Color="-16777208" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;rcs&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1inp_place" AllowVectorExport="True" Left="639.07916" Top="1.77953" Width="68.03154" Height="18.89765" DataSetName="frxDBDataset1" Font.Charset="1" Font.Color="-16777208" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;qe&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1yf" AllowVectorExport="True" Left="551.81138" Top="1" Width="75.5906" Height="18.89765" DataSetName="frxDBDataset1" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;yf&#34;][SendMedDetail.&#34;frequency&#34;]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+      <TfrxMemoView Name="Memo26" AllowVectorExport="True" Left="710.55164" Top="0" Width="68.03154" Height="18.89765" DataSetName="frxDBDataset1" Font.Charset="1" Font.Color="-16777208" Font.Height="-12" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;ylsj&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Font.Charset="0" Font.Color="0" Font.Height="-13" Font.Name="宋体" Font.Style="0" Height="83.14966" Left="0" ParentFont="False" Top="18.89765" Width="850.39425">
+      <TfrxMemoView Name="Memo1" AllowVectorExport="True" Left="18.89765" Top="60.7953" Width="75.5906" Height="22.67718" Font.Charset="1" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="药名"/>
+      <TfrxMemoView Name="Memo19" AllowVectorExport="True" Left="162.51979" Top="60.7953" Width="75.5906" Height="22.67718" Font.Charset="1" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="规格"/>
+      <TfrxMemoView Name="Memo2" AllowVectorExport="True" Left="474.77984" Top="60.7953" Width="52.91342" Height="22.67718" Font.Charset="1" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="付数"/>
+      <TfrxMemoView Name="Memo3" AllowVectorExport="True" Left="302.3624" Top="60.7953" Width="56.69295" Height="22.67718" Font.Charset="1" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="摆药�"/>
+      <TfrxMemoView Name="Memo4" AllowVectorExport="True" Left="370.39394" Top="60.7953" Width="86.92919" Height="22.67718" Font.Charset="1" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="每次剂量"/>
+      <TfrxMemoView Name="Memo6" AllowVectorExport="True" Left="616.28386" Top="60.7953" Width="75.5906" Height="22.67718" Font.Charset="1" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="金额"/>
+      <TfrxMemoView Name="Memo13" AllowVectorExport="True" Left="155.74026" Top="0" Width="483.77984" Height="26.45667583" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" VAlign="vaBottom" Text="[hospital_name][hldy][yf]摆药�"/>
+      <TfrxMemoView Name="QRlab_date" AllowVectorExport="True" Left="48.13389" Top="30.7953" Width="302.3624" Height="18.89765" DisplayFormat.Kind="fkDateTime" Font.Charset="0" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" VAlign="vaBottom" Text="°ÚÒ©Ê±¼ä£º[fyrq]"/>
+      <TfrxMemoView Name="Memo8" AllowVectorExport="True" Left="362.83488" Top="30.01577" Width="124.72449" Height="18.89765" DisplayFormat.Kind="fkDateTime" Font.Charset="0" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" VAlign="vaBottom" Text="µ÷¼ÁÈË£º[fyr]"/>
+      <TfrxLineView Name="Line4" AllowVectorExport="True" Left="41.01577" Top="58.47248" Width="729.44929" Height="0" Color="0" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo17" AllowVectorExport="True" Left="569.70903" Top="31.57483" Width="166.29932" Height="18.89765" Font.Charset="0" Font.Color="0" Font.Height="-16" Font.Name="宋体" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="´òÓ¡ÀàÐÍ£º[printType]"/>
+      <TfrxMemoView Name="Memo16" AllowVectorExport="True" Left="555.59091" Top="62.47248" Width="41.57483" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="用法"/>
+      <TfrxMemoView Name="Memo5" AllowVectorExport="True" Left="702.99258" Top="60.47248" Width="75.5906" Height="22.67718" Font.Charset="1" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="单价"/>
+    </TfrxPageHeader>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="26.45671" Left="0" Top="355.27582" Width="850.39425">
+      <TfrxMemoView Name="Memo15" AllowVectorExport="True" Left="639.56741" Top="0.559059999999988" Width="188.9765" Height="22.67714583" Font.Charset="1" Font.Color="-16777208" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" VAlign="vaBottom" Text="PAGE[page#]OF [TotalPages#]"/>
+      <TfrxMemoView Name="Memo7" AllowVectorExport="True" Left="15.11812" Top="3.67718000000002" Width="86.92919" Height="18.89765" DisplayFormat.Kind="fkDateTime" Font.Charset="0" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" VAlign="vaBottom" Text="ËÍÒ©ÈË£º"/>
+      <TfrxMemoView Name="Memo12" AllowVectorExport="True" Left="124.72449" Top="3.67718000000002" Width="75.5906" Height="18.89765" DisplayFormat.Kind="fkDateTime" Font.Charset="0" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" VAlign="vaBottom" Text="È¡Ò©ÈË£º"/>
+      <TfrxMemoView Name="Memo14" AllowVectorExport="True" Left="498.89796" Top="3.67718000000002" Width="117.16543" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="共：[COUNT(MasterData1)]条记�"/>
+      <TfrxMemoView Name="Memo25" AllowVectorExport="True" Left="222.99227" Top="4.33859000000001" Width="113.3859" Height="18.89765" DisplayFormat.Kind="fkDateTime" Font.Charset="0" Font.Color="0" Font.Height="-14" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" VAlign="vaBottom" Text="ÉóºËÈË£º"/>
+      <TfrxMemoView Name="Memo11" AllowVectorExport="True" Left="366.61441" Top="3.77953000000002" Width="117.16543" Height="18.89765" DisplayFormat.Kind="fkDateTime" Font.Charset="0" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" VAlign="vaBottom" Text="Ç©×Ö»¤Ê¿£º"/>
+    </TfrxPageFooter>
+    <TfrxGroupHeader Name="GroupHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" Height="30.23624" Left="0" ParentFont="False" Top="162.51979" Width="850.39425" Condition="[SendMedDetail.&#34;zyh&#34;]">
+      <TfrxLineView Name="Line1" AllowVectorExport="True" Left="20.89765" Top="1.88188" Width="823.93754" Height="0" Color="0" Frame.Typ="4"/>
+      <TfrxLineView Name="Line2" AllowVectorExport="True" Left="20.89765" Top="29.89765" Width="827.71707" Height="0" Color="0" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo20" AllowVectorExport="True" Left="371.3624" Top="6.66141" Width="83.14966" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[SendMedDetail.&#34;room&#34;]"/>
+      <TfrxMemoView Name="Memo21" AllowVectorExport="True" Left="270.31509" Top="5.44094" Width="34.01577" Height="18.89763291" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;xb&#34;]"/>
+      <TfrxMemoView Name="Memo10" AllowVectorExport="True" Left="186.72449" Top="6.44094" Width="71.81107" Height="18.89763291" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[SendMedDetail.&#34;byxm&#34;]"/>
+      <TfrxMemoView Name="Memo22" AllowVectorExport="True" Left="314.88992" Top="6.55906" Width="45.35436" Height="18.89763291" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;nl&#34;]岁"/>
+      <TfrxMemoView Name="Memo9" AllowVectorExport="True" Left="95.67718" Top="6.55906" Width="75.5906" Height="18.89763291" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" Text="[SendMedDetail.&#34;zyh&#34;]"/>
+      <TfrxMemoView Name="Memo24" AllowVectorExport="True" Left="486.96877" Top="6.55906" Width="226.7718" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="[SendMedDetail.&#34;ksmc&#34;]"/>
+    </TfrxGroupHeader>
+    <TfrxGroupHeader Name="GroupHeader2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="7.55906" Left="0" Top="215.43321" Width="850.39425" Condition="&#60;SendMedDetail.&#34;cfdh&#34;&#62;"/>
+    <TfrxGroupFooter Name="GroupFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="宋体" Font.Style="0" Height="3.77953" Left="0" ParentFont="False" Top="291.02381" Width="850.39425">
+      <TfrxLineView Name="Line3" AllowVectorExport="True" Left="53.33859" Top="1.55905999999999" Width="793.7013" Height="0" Color="0" Frame.ShadowWidth="6" Frame.Style="fsDot" Frame.Typ="4" Frame.LeftLine.Style="fsSolid" Frame.RightLine.Style="fsSolid"/>
+    </TfrxGroupFooter>
+  </TfrxReportPage>
+</TfrxReport>

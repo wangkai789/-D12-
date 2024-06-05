@@ -1,0 +1,961 @@
+object Frm_IntegratedQuery: TFrm_IntegratedQuery
+  Left = -7
+  Top = 3
+  Caption = #32508#21512#26597#35810
+  ClientHeight = 606
+  ClientWidth = 1004
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Position = poMainFormCenter
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  TextHeight = 13
+  object pgc1: TPageControl
+    Left = 0
+    Top = 0
+    Width = 1004
+    Height = 606
+    ActivePage = ts5
+    Align = alClient
+    TabOrder = 0
+    object ts1: TTabSheet
+      Caption = #30424#28857#21464#21270
+      inline Frame_ChangeStore1: TFrame_ChangeStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 996
+          ExplicitHeight = 578
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited Label15: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label7: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label18: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited lbl_MedName: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label39: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 996
+            ExplicitHeight = 519
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts2: TTabSheet
+      Caption = #20837#24211
+      inline Frame_InStoreNew1: TFrame_InStoreNew
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        Font.Charset = GB2312_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = #23435#20307
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 996
+          inherited Label15: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label7: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label18: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lbl_MedName: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label1: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label2: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label39: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited edt_SearchCondition: TEdit
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited cbb_rklb: TComboBox
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited cbb_ghdw: TComboBox
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited cbb_yfbm: TComboBox
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        inherited PageControl1: TPageControl
+          Width = 996
+          Height = 514
+          ExplicitWidth = 996
+          ExplicitHeight = 514
+          inherited TabSheet1: TTabSheet
+            ExplicitWidth = 988
+            ExplicitHeight = 485
+            inherited Splitter1: TSplitter
+              Width = 988
+              ExplicitWidth = 1346
+            end
+            inherited cxgrd: TcxGrid
+              Width = 988
+              ExplicitWidth = 988
+            end
+            inherited cxGrid2: TcxGrid
+              Width = 988
+              Height = 77
+              ExplicitWidth = 988
+              ExplicitHeight = 77
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts3: TTabSheet
+      Caption = #20986#24211
+      ImageIndex = 2
+      inline Frame_OutStore1: TFrame_OutStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 996
+          ExplicitHeight = 578
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited Label15: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label7: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label18: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited lbl_MedName: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label39: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 509
+            ExplicitWidth = 996
+            ExplicitHeight = 509
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts10: TTabSheet
+      Caption = #20854#20182#20986#24211
+      ImageIndex = 9
+      inline Frame_OtherOutStore1: TFrame_OtherOutStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 996
+          inherited Label15: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label7: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label18: TLabel
+            Left = 1663
+            Top = 19
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitLeft = 1663
+            ExplicitTop = 19
+          end
+          inherited lbl_MedName: TLabel
+            Left = 1552
+            Top = 27
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitLeft = 1552
+            ExplicitTop = 27
+          end
+          inherited Label2: TLabel
+            Width = 48
+            Height = 13
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 48
+            ExplicitHeight = 13
+          end
+          inherited edt_SearchCondition: TEdit
+            Left = 1264
+            Top = 23
+            Height = 21
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitLeft = 1264
+            ExplicitTop = 23
+            ExplicitHeight = 21
+          end
+          inherited cbb_Reqdept: TComboBox
+            Height = 21
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitHeight = 21
+          end
+        end
+        inherited PageControl1: TPageControl
+          Width = 996
+          Height = 526
+          ExplicitWidth = 996
+          ExplicitHeight = 526
+          inherited TabSheet1: TTabSheet
+            ExplicitTop = 24
+            ExplicitHeight = 539
+            inherited Splitter1: TSplitter
+              ExplicitWidth = 1346
+            end
+            inherited cxGrid2: TcxGrid
+              Height = 11
+              ExplicitHeight = 11
+            end
+          end
+          inherited TabSheet2: TTabSheet
+            ExplicitTop = 24
+            ExplicitWidth = 988
+            ExplicitHeight = 498
+            inherited cxGrid1: TcxGrid
+              Width = 988
+              Height = 498
+              ExplicitWidth = 988
+              ExplicitHeight = 498
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts11: TTabSheet
+      Caption = #33647#25151#38144#21806
+      ImageIndex = 10
+      inline Frame_MedStoreSale1: TFrame_MedStoreSale
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 996
+          ExplicitHeight = 578
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited Label15: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label7: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label18: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited lbl_MedName: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label39: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 511
+            ExplicitWidth = 996
+            ExplicitHeight = 511
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts6: TTabSheet
+      Caption = #33647#25151#36864#33647
+      ImageIndex = 10
+      inline Frame_ReturnStore1: TFrame_ReturnStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 996
+          ExplicitHeight = 578
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited Label15: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label7: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label18: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited lbl_MedName: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label39: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 996
+            ExplicitHeight = 519
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts4: TTabSheet
+      Caption = #24211#23384
+      ImageIndex = 3
+      inline Frame_Medbank1: TFrame_Medbank
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited GroupBox8: TGroupBox
+          Width = 996
+          ExplicitWidth = 996
+          inherited lab_kc: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label8: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label16: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Ed_yznr_kc: TEdit
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Ed_max: TEdit
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited ComBox_kind: TComboBox
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        inherited Panel1: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited Label1: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label2: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Panel2: TPanel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        inherited cxgrd: TcxGrid
+          Width = 996
+          Height = 529
+          ExplicitWidth = 996
+          ExplicitHeight = 529
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts12: TTabSheet
+      Caption = #36827#38144#23384
+      ImageIndex = 11
+      inline Frame_Balance1: TFrame_Balance
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Splitter1: TSplitter
+          Width = 996
+          ExplicitWidth = 1354
+        end
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 996
+          inherited Label15: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label7: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited lbl_MedName: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label2: TLabel
+            Width = 48
+            Height = 13
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 48
+            ExplicitHeight = 13
+          end
+          inherited cbb_yfbm: TComboBox
+            Height = 21
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitHeight = 21
+          end
+          inherited edt_SearchCondition: TEdit
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        inherited cxgrd: TcxGrid
+          Width = 996
+          ExplicitWidth = 996
+        end
+        inherited cxGrid2: TcxGrid
+          Width = 996
+          Height = 165
+          ExplicitWidth = 996
+          ExplicitHeight = 165
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts5: TTabSheet
+      Caption = #35843#20215
+      ImageIndex = 4
+      inline Frame_PriceChangeStore1: TFrame_PriceChangeStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 996
+          ExplicitHeight = 578
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited Label15: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label7: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label18: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited lbl_MedName: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label39: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 996
+            ExplicitHeight = 519
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts7: TTabSheet
+      Caption = #21442#32771#24211#23384
+      ImageIndex = 6
+      inline Frame_BalancesStore1: TFrame_BalancesStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 996
+          ExplicitHeight = 578
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited Label15: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label7: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label18: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited lbl_MedName: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label39: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 996
+            ExplicitHeight = 519
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts8: TTabSheet
+      Caption = #38144#21806#21033#28070
+      ImageIndex = 7
+      inline Frame_ProfitStore1: TFrame_ProfitStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 996
+          ExplicitHeight = 578
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited Label15: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label7: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label18: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited lbl_MedName: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label39: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 996
+            ExplicitHeight = 519
+          end
+          inherited DBGrid_xyzb: TDBGrid
+            OnDblClick = nil
+            OnExit = nil
+            OnKeyPress = nil
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+    object ts9: TTabSheet
+      Caption = #21344#29992#24211#23384
+      ImageIndex = 11
+      inline Frame_OccupyStore1: TFrame_OccupyStore
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 996
+          inherited Label18: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label39: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited edt_SearchCondition: TEdit
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited cbb_yfbm: TComboBox
+            Height = 21
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitHeight = 21
+          end
+        end
+        inherited PageControl1: TPageControl
+          Width = 996
+          Height = 514
+          ExplicitWidth = 996
+          ExplicitHeight = 514
+          inherited TabSheet1: TTabSheet
+            ExplicitTop = 24
+            ExplicitWidth = 988
+            ExplicitHeight = 486
+            inherited Splitter1: TSplitter
+              Width = 988
+              ExplicitWidth = 1332
+            end
+            inherited cxgrd: TcxGrid
+              Width = 988
+              ExplicitWidth = 988
+            end
+            inherited cxGrid2: TcxGrid
+              Width = 988
+              Height = 166
+              ExplicitWidth = 988
+              ExplicitHeight = 166
+            end
+          end
+        end
+        inherited cxStyleRepository: TcxStyleRepository
+          PixelsPerInch = 96
+          inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+            BuiltIn = True
+          end
+          inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+            BuiltIn = True
+          end
+        end
+      end
+    end
+    object ts13: TTabSheet
+      Caption = #29006#33647#36153
+      ImageIndex = 12
+      inline Frame_BoilMed1: TFrame_BoilMed
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited GroupBox3: TGroupBox
+          Width = 996
+          ExplicitWidth = 996
+          inherited Label15: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited Label7: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        inherited cxgrd: TcxGrid
+          Width = 996
+          Height = 516
+          ExplicitWidth = 996
+          ExplicitHeight = 516
+        end
+      end
+    end
+    object ts14: TTabSheet
+      Caption = #39564#25910#35760#24405
+      ImageIndex = 13
+      inline Frame_ExamRecord1: TFrame_ExamRecord
+        Left = 0
+        Top = 0
+        Width = 996
+        Height = 578
+        Align = alClient
+        TabOrder = 0
+        ExplicitWidth = 996
+        ExplicitHeight = 578
+        inherited Frame_base1: TFrame_base
+          Width = 996
+          Height = 578
+          ExplicitWidth = 996
+          ExplicitHeight = 578
+          inherited GroupBox3: TGroupBox
+            Width = 996
+            ExplicitWidth = 996
+            inherited Label15: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label7: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label18: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited lbl_MedName: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited Label39: TLabel
+              StyleElements = [seFont, seClient, seBorder]
+            end
+            inherited edt_SearchCondition: TEdit
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+            inherited cbb_yfbm: TComboBox
+              Height = 21
+              StyleElements = [seFont, seClient, seBorder]
+              ExplicitHeight = 21
+            end
+          end
+          inherited cxgrd: TcxGrid
+            Width = 996
+            Height = 519
+            ExplicitWidth = 996
+            ExplicitHeight = 519
+          end
+          inherited cxStyleRepository: TcxStyleRepository
+            PixelsPerInch = 96
+            inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+              BuiltIn = True
+            end
+            inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+              BuiltIn = True
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,97 @@
+unit reportform;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, FR_DSet, FR_DBSet, FR_Class, FR_Shape, FR_Desgn, frxClass,
+  frxDBSet, frxDesgn;
+
+type
+  TFm_report = class(TForm)
+    frReport1: TfrReport;
+    frDBDataSet1: TfrDBDataSet;
+    frDBDataSet2: TfrDBDataSet;
+    frShapeObject1: TfrShapeObject;
+    frDesigner1: TfrDesigner;
+    frDBDataSet3: TfrDBDataSet;
+    frDBDataSet4: TfrDBDataSet;
+    frDBDataSet5: TfrDBDataSet;
+    frxrprt1: TfrxReport;
+    frxdbdtst_tj: TfrxDBDataset;
+    frxdsgnr1: TfrxDesigner;
+    RIP1: TfrxDBDataset;
+    Rip2: TfrxDBDataset;
+    Rip3: TfrxDBDataset;
+    frxDBDataset2: TfrxDBDataset;
+    procedure frReport1GetValue(const ParName: String;
+      var ParValue: Variant);
+    procedure frReport1BeforePrint(Memo: TStringList; View: TfrView);
+    procedure frxrprt1GetValue(const VarName: String; var Value: Variant);
+    procedure frxrprt1BeforePrint(Sender: TfrxReportComponent);
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+    Fdatefrom:string;
+    Fdateto:string;
+    Flb:string;
+    Fdatetime:string; //打印时间
+    Fhospital_NAME:string;
+    Ftbname:string; 
+  end;
+
+var
+  Fm_report: TFm_report;
+
+implementation
+uses data, main;
+
+{$R *.dfm}
+
+procedure TFm_report.frReport1GetValue(const ParName: String;
+  var ParValue: Variant);
+begin
+     if ParName='type' then
+     begin
+       case  frDBDataSet2.DataSet.FieldByName('type').AsInteger of
+       1:ParValue:='西药 字';
+       2:ParValue:='中草药 字';
+       3:ParValue:='中成药 字';
+       end;
+     end;
+   if  ParName='startdate' then    ParValue:=fdatefrom;
+   if  ParName='enddate' then      ParValue:=fdateto;
+   if  ParName='lb' then      ParValue:=flb;
+   if  ParName='username' then ParValue:=dm.FopidName;
+end;
+
+procedure TFm_report.frReport1BeforePrint(Memo: TStringList;
+  View: TfrView);
+begin
+  if View.Name='Mem_title' then memo.Text:=dm.SysInfo.hospitalName+'药品入库单';
+end;
+
+procedure TFm_report.frxrprt1GetValue(const VarName: String;
+  var Value: Variant);
+begin
+  if VarName='hospital'  then Value:=dm.SysInfo.hospitalName;
+  if VarName='dt'        then  Value:=Fdatetime;
+  if VarName='tbname'    then  Value:=Ftbname;
+end;
+
+procedure TFm_report.frxrprt1BeforePrint(Sender: TfrxReportComponent);
+var  aRipSignPath:string;
+begin
+  aRipSignPath:=dm.FMainPath+ 'images\RipSign.bmp';
+  if FileExists(aRipSignPath) then
+  begin
+     (frxrprt1.FindObject('RipSign1') as TfrxPictureView).Picture.LoadFromFile(aRipSignPath);
+     (frxrprt1.FindObject('RipSign2') as TfrxPictureView).Picture.LoadFromFile(aRipSignPath);
+     (frxrprt1.FindObject('RipSign2') as TfrxPictureView).Picture.LoadFromFile(aRipSignPath);
+  end;
+
+end;
+
+end.

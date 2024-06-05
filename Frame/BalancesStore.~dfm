@@ -1,0 +1,38 @@
+object Frame_BalancesStore: TFrame_BalancesStore
+  Left = 0
+  Top = 0
+  Width = 1348
+  Height = 687
+  TabOrder = 0
+  inline Frame_base1: TFrame_base
+    Left = 0
+    Top = 0
+    Width = 1348
+    Height = 687
+    Align = alClient
+    TabOrder = 0
+    inherited GroupBox3: TGroupBox
+      inherited btn_Search: TBitBtn
+        OnClick = Frame_base1btn_SearchClick
+      end
+      inherited btn_SearchInStoreTotal: TBitBtn
+        Enabled = False
+      end
+    end
+    inherited DBGrid_xyzb: TDBGrid
+      Left = 232
+      Top = 72
+    end
+    inherited cxStyleRepository: TcxStyleRepository
+      inherited GridTableViewStyleSheetDevExpress: TcxGridTableViewStyleSheet
+        BuiltIn = True
+      end
+      inherited GridCardViewStyleSheetDevExpress: TcxGridCardViewStyleSheet
+        BuiltIn = True
+      end
+    end
+    inherited FlexCelReport1: TFlexCelReport
+      DataModule = Frame_base1
+    end
+  end
+end

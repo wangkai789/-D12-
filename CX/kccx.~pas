@@ -1,0 +1,155 @@
+unit kccx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Grids, DBGrids, ExtCtrls, StdCtrls, Buttons;
+
+type
+  TFm_kccx = class(TForm)
+    EdCode: TEdit;
+    Panel1: TPanel;
+    DBGrid1: TDBGrid;
+    Label1: TLabel;
+    ed_kcl: TEdit;
+    Label2: TLabel;
+    DBGrid_XYZB: TDBGrid;
+    DBGrid_tj: TDBGrid;
+    procedure FormShow(Sender: TObject);
+    procedure EdCodeKeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid_XYZBDblClick(Sender: TObject);
+    procedure DBGrid_XYZBKeyPress(Sender: TObject; var Key: Char);
+    procedure EdCodeEnter(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid1DblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Fm_kccx: TFm_kccx;
+
+implementation
+
+uses data, czydl;
+
+{$R *.DFM}
+
+procedure TFm_kccx.FormShow(Sender: TObject);
+begin
+//  DBGrid_XYZB.Left:=50;  DBGrid_XYZB.Top:=97;
+
+  if (fm_czydl.level in [1,6,8]) or (fm_czydl.Ed_bh.text='502')  then
+  begin
+        DBGrid_tj.columns[1].Visible:=true;
+        DBGrid_tj.columns[2].Visible:=true;
+  end  else
+  begin
+        DBGrid_tj.columns[1].Visible:=false;
+        DBGrid_tj.columns[2].Visible:=false;
+  end;
+  dm.Q_comm.close;
+end;
+
+procedure TFm_kccx.EdCodeKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key<>#13 then exit;
+  with dm.Q_MedStore do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('exec  xyzb_cx :SearchCode ');
+    parambyname('SearchCode').AsString := '%'+EdCode.Text+'%';
+    open;
+    if recordcount>0 then
+    begin
+      if recordcount=1 then DBGrid_XYZBDblClick(sender)
+      else begin DBGrid_XYZB.Visible:=true; DBGrid_XYZB.SetFocus; end;
+    end
+    else
+    begin
+      application.MessageBox('无此药品!','错误提示',0+mb_iconstop);
+    end;
+  end;
+end;
+
+procedure TFm_kccx.DBGrid_XYZBDblClick(Sender: TObject);
+var code:string;
+    kcl:currency;
+begin
+  kcl:=0;
+  EdCode.Text :=dm.Q_MedStore['ym'];
+  code:= dm.Q_MedStore['ypbh'];
+  DBGrid_XYZB.Visible:=false;
+  with dm.q_comm do
+  begin
+    close;
+    sql.clear;
+    sql.add('select 药名=a.ym,规格=a.gg,药品批号=c.ypph,库存量=b.kcl,单位=a.jldw,零售价=ylsj,金额=b.kcl*a.ylsj,生产厂家=d.cm,供货单位=e.inc_name,入库时间=c.rkrq,失效日期=b.sxrq,a.ypbh ');
+    sql.add('from xyzb a,xykcun b,xykr c,sccj d,ghdw e where d.cjbm=c.cjbm and e.inc_code=c.ghdw and b.ypbh=:ypbh and b.ypbh=a.ypbh  and b.rkxh=c.rkxh  order by a.ym,b.sxrq ');
+    parambyname('ypbh').asstring:=code;
+    open;    //失效日期=convert(char(12),b.sxrq,102)
+    if RecordCount=0 then
+    begin
+    application.messagebox('库存无此药品，请再试！','提示',48);
+    edcode.SetFocus;
+    end
+    else
+    begin
+    while not dm.q_comm.eof  do
+    begin
+      kcl:=kcl+dm.q_comm['库存量'];
+      dm.q_comm.next;
+    end;
+    ed_kcl.text:=floattostr(kcl);
+    dbgrid1.SetFocus;
+    end;
+  end;
+end;
+
+procedure TFm_kccx.DBGrid_XYZBKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key=#13 then DBGrid_XYZBDblClick(Sender);
+end;
+
+procedure TFm_kccx.EdCodeEnter(Sender: TObject);
+begin
+DBGrid_XYZB.Visible:=false;
+edcode.clear;
+end;
+
+procedure TFm_kccx.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  action:=cafree;
+end;
+
+procedure TFm_kccx.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+var i:integer;
+begin
+   for i:=0 to DBGrid1.Columns.Count -1 do
+   begin
+     DBGrid1.Columns[i].Title.Alignment :=tacenter;
+   end;
+
+end;
+
+procedure TFm_kccx.DBGrid1DblClick(Sender: TObject);
+begin
+  with dm.Q_tj do
+  begin
+    close;
+    sql.clear;
+    sql.Add('exec dyyptjcx :ypbh');
+    parambyname('ypbh').asstring:=dm.Q_comm['ypbh'];
+    open;
+  end;
+end;
+
+end.
